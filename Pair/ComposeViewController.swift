@@ -25,12 +25,16 @@ class ComposeViewController: UIViewController {
     
     @IBAction func addPost(_ sender: Any) {
         //post to MainTableViewController as an off
+        //TO DO: post jobData to Firebase
+        //dismiss the view
+        
+        presentingViewController?.dismiss(animated: true, completion: nil)
         
     }
 
     @IBAction func cancelPost(_ sender: Any) {
-        //cancel post and return to MainTableViewController
-        dismiss(animated: true, completion: nil)
+        //cancel post and dismiss View to return to MainTableViewController
+        presentingViewController?.dismiss(animated: true, completion: nil)
         
     }
 
