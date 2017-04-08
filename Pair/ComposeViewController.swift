@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ComposeViewController: UIViewController {
+    
+    var ref: FIRDatabaseReference?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = FIRDatabase.database().reference()
+       
 
         // Do any additional setup after loading the view.
     }
@@ -27,6 +33,8 @@ class ComposeViewController: UIViewController {
         //post to MainTableViewController as an off
         //TO DO: post jobData to Firebase
         //dismiss the view
+        
+        ref?.child("Jobs").childByAutoId().setValue(jobDescription)//post job descript
         
         presentingViewController?.dismiss(animated: true, completion: nil)
         
