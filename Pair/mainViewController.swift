@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 
 class mainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var ref: FIRDatabaseReference!
+    var dbHandle: FIRDatabaseHandle?
     
     var jobData = ["Job1","Job2", "Job3","Job4"]
 
@@ -17,8 +19,12 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-
-        
+        ref = FIRDatabase.database().reference();
+        dbHandle = ref?.child("Jobs").observe(.childAdded, with:{(snapshot) in
+            if let item = snapshot.value as? String{
+                //self.jobData.append(contentsOf: <#T##Sequence#>)
+            }
+        })
     }
     
     @IBOutlet weak var tableView: UITableView!
