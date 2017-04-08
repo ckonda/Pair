@@ -181,11 +181,11 @@
                     <navigationItem key="navigationItem" id="Zre-yf-nhK">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="N61-0D-nna">
-                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
+                            <rect key="frame" x="109" y="6.5" width="157" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="First"/>
-                                <segment title="Second"/>
+                                <segment title="Job Feed"/>
+                                <segment title="Job Offers"/>
                             </segments>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="compose" id="w3B-X7-HTZ">
