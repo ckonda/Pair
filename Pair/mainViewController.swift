@@ -12,19 +12,30 @@ import Firebase
 class mainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var ref: FIRDatabaseReference!
     var dbHandle: FIRDatabaseHandle?
-    
-    var jobData = ["Job1","Job2", "Job3","Job4"]
-
+    var jobData = [JobModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        ref = FIRDatabase.database().reference();
-        dbHandle = ref?.child("Jobs").observe(.childAdded, with:{(snapshot) in
-            if let item = snapshot.value as? String{
-                //self.jobData.append(contentsOf: <#T##Sequence#>)
+        ref = FIRDatabase.database().reference().child("Jobs");
+        ref.observe(FIRDataEventType.value, with: {(snapshot) in
+            if snapshot.childrenCount>0{
+                self.jobData.removeAll()
+                for jobs in snapshot.children.allObjects as![FIRDataSnapshot]{
+                    //create object and initialize the values of it
+                    let job = jobs.value as? [String: AnyObject]
+                    let jobTitle = job?["title"]
+                    let jobPrice = job?["price"]
+                    let jobUsername = job?["username"]
+                    let jobSkill = job?["skill"]
+                    let jobObject = JobModel(job: jobTitle as! String?, price: jobPrice as! Int?, skill: jobSkill as! String?, username: jobUsername as! String?)
+                    //append data
+                    self.jobData.append(jobObject)
+                }
+                self.tableView.reloadData()
             }
         })
+    
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -35,11 +46,11 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell")
-        cell?.textLabel?.text = jobData[indexPath.row]
-        
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath) as! JobsTableViewCell
+        let job = jobData[indexPath.row]
+        cell.jobLabel.text = job.job
+        cell.descriptionLabel.text = job.username
+        return cell
     }
     
     
