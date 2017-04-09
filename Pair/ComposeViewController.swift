@@ -34,7 +34,7 @@ class ComposeViewController: UIViewController {
         //TO DO: post jobData to Firebase
         //dismiss the view
         
-        ref?.child("Jobs").childByAutoId().setValue(jobDescription)//post job descript
+        //ref?.child("Jobs").childByAutoId().setValue(jobDescription)//post job descript
         
         presentingViewController?.dismiss(animated: true, completion: nil)
         
