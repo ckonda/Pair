@@ -15,7 +15,9 @@ class loginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(red: 18/255, green: 149/255, blue: 216/255, alpha: 1)
+        
+        
+        view.backgroundColor = UIColor(red: 26/255, green: 188/255, blue: 156/255, alpha: 1)
         
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
@@ -269,8 +271,33 @@ class loginViewController: UIViewController {
         
     }
     
-   
-
+    
+    
+    
+    
+    
+    func registerUserintoDatabaseWithUID(values: [String: AnyObject]){
+        
+        let ref = FIRDatabase.database().reference()
+        let usersReference  = ref.child("Users")
+        
+        usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+            if err != nil {
+                print(err!)
+                return
+            }
+            
+            let user = User()
+            //this setter crashes if keys dont match
+            user.setValuesForKeys(values)
+            
+            
+            self.dismiss(animated: true, completion: nil)//dismiss login screen after making an account
+            
+        })
+    }
+    
+    
     
     func handleRegister(){
         
@@ -280,32 +307,23 @@ class loginViewController: UIViewController {
             return//if all fields not filled out completely, logout
         }
         //firebase authtification access( if not authenticated then throw error)
-        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
+        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             
-            if error != nil{
-                print(error!)
-                return
-            }
-            
-            guard let uid = user?.uid else {
+            if user != nil {
                 let values = ["name": name, "email": email]
+                self.registerUserintoDatabaseWithUID(values: values as [String : AnyObject])
                 
-             //   self.registerUserintoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
-                
-                return
-                
+            }
+            else {
+                //Error: check error
             }
             //user has been authenticated
-         
+        })
+    
     }
-        
-        
-
 
     
- 
 
-    }
     
 }
 

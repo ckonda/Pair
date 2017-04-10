@@ -83,8 +83,17 @@
 			isa = PBXGroup;
 			children = (
 				EE213E811E9AF155003999FC /* User.swift */,
+				BA4AA9841E9AED55001B1FDB /* JobModel.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		EE213E831E9AFFBF003999FC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BA4AA9821E99DD1D001B1FDB /* JobsTableViewCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		EE4EEBA01E7614B50044FE39 = {
@@ -108,12 +117,11 @@
 		EE4EEBAB1E7614B50044FE39 /* Pair */ = {
 			isa = PBXGroup;
 			children = (
+				EE213E831E9AFFBF003999FC /* View */,
 				EE213E801E9AF135003999FC /* Model */,
 				EE1445C01E8B57D4000C9E51 /* Controllers */,
 				EE4EEBAC1E7614B50044FE39 /* AppDelegate.swift */,
 				EE4EEBB01E7614B50044FE39 /* Main.storyboard */,
-				BA4AA9821E99DD1D001B1FDB /* JobsTableViewCell.swift */,
-				BA4AA9841E9AED55001B1FDB /* JobModel.swift */,
 				EE4EEBB31E7614B50044FE39 /* Assets.xcassets */,
 				EE4EEBB51E7614B50044FE39 /* LaunchScreen.storyboard */,
 				EE213E7E1E9837DC003999FC /* GoogleService-Info.plist */,
