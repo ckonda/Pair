@@ -9,10 +9,10 @@
 import Foundation
 
 
-class User: NSObject {
-    var name: String?
+public class User: NSObject {
+    var username: String?
     var email: String?
-    var profileImageUrl: String?
-    var id: String?
+    var password: String?
 }
+
 

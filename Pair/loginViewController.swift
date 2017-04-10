@@ -276,7 +276,7 @@ class loginViewController: UIViewController {
     
     
     
-    func registerUserintoDatabaseWithUID(values: [String: AnyObject]){
+    func registerUserintoDatabaseWithUID( values: [String: AnyObject]){
         
         let ref = FIRDatabase.database().reference()
         let usersReference  = ref.child("Users")
@@ -289,7 +289,14 @@ class loginViewController: UIViewController {
             
             let user = User()
             //this setter crashes if keys dont match
+         
+            
             user.setValuesForKeys(values)
+            
+           
+            
+          
+            
             
             
             self.dismiss(animated: true, completion: nil)//dismiss login screen after making an account
@@ -310,7 +317,8 @@ class loginViewController: UIViewController {
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             
             if user != nil {
-                let values = ["name": name, "email": email]
+          
+                let values = ["username": name, "email": email, "password": password]
                 self.registerUserintoDatabaseWithUID(values: values as [String : AnyObject])
                 
             }
