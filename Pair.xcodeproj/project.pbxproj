@@ -19,6 +19,10 @@
 		EE4EEBB41E7614B50044FE39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE4EEBB31E7614B50044FE39 /* Assets.xcassets */; };
 		EE4EEBB71E7614B50044FE39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE4EEBB51E7614B50044FE39 /* LaunchScreen.storyboard */; };
 		EEC34F811E9C763C00954927 /* logViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F801E9C763C00954927 /* logViewController.swift */; };
+		EEC34F831E9D67D500954927 /* offerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F821E9D67D500954927 /* offerViewController.swift */; };
+		EEC34F851E9D67E400954927 /* postViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F841E9D67E400954927 /* postViewController.swift */; };
+		EEC34F871E9D787800954927 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F861E9D787800954927 /* OfferTableViewCell.swift */; };
+		EEC34F891E9D7C4000954927 /* OfferModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F881E9D7C4000954927 /* OfferModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		EE4EEBB61E7614B50044FE39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE4EEBB81E7614B50044FE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEC34F801E9C763C00954927 /* logViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logViewController.swift; sourceTree = "<group>"; };
+		EEC34F821E9D67D500954927 /* offerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = offerViewController.swift; sourceTree = "<group>"; };
+		EEC34F841E9D67E400954927 /* postViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postViewController.swift; sourceTree = "<group>"; };
+		EEC34F861E9D787800954927 /* OfferTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
+		EEC34F881E9D7C4000954927 /* OfferModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,8 @@
 				EE1445BE1E8B57BB000C9E51 /* ComposeViewController.swift */,
 				EE1445C11E8B6F7F000C9E51 /* mainViewController.swift */,
 				EEC34F801E9C763C00954927 /* logViewController.swift */,
+				EEC34F821E9D67D500954927 /* offerViewController.swift */,
+				EEC34F841E9D67E400954927 /* postViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -84,6 +94,7 @@
 			children = (
 				EE213E811E9AF155003999FC /* User.swift */,
 				BA4AA9841E9AED55001B1FDB /* JobModel.swift */,
+				EEC34F881E9D7C4000954927 /* OfferModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -92,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				BA4AA9821E99DD1D001B1FDB /* JobsTableViewCell.swift */,
+				EEC34F861E9D787800954927 /* OfferTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -258,8 +270,12 @@
 				EE4EEBAD1E7614B50044FE39 /* AppDelegate.swift in Sources */,
 				BA4AA9831E99DD1D001B1FDB /* JobsTableViewCell.swift in Sources */,
 				EEC34F811E9C763C00954927 /* logViewController.swift in Sources */,
+				EEC34F891E9D7C4000954927 /* OfferModel.swift in Sources */,
 				EE1445BF1E8B57BB000C9E51 /* ComposeViewController.swift in Sources */,
 				EE213E821E9AF155003999FC /* User.swift in Sources */,
+				EEC34F851E9D67E400954927 /* postViewController.swift in Sources */,
+				EEC34F871E9D787800954927 /* OfferTableViewCell.swift in Sources */,
+				EEC34F831E9D67D500954927 /* offerViewController.swift in Sources */,
 				EE1445C21E8B6F80000C9E51 /* mainViewController.swift in Sources */,
 				BA4AA9851E9AED55001B1FDB /* JobModel.swift in Sources */,
 			);

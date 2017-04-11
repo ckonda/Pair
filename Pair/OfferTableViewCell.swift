@@ -1,36 +1,36 @@
 //
-//  JobsTableViewCell.swift
+//  OfferTableViewCell.swift
 //  Pair
 //
-//  Created by Radhakrishna Canchi on 4/8/17.
+//  Created by Chatan Konda on 4/11/17.
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Firebase
-import FirebaseAuth
 
-public class JobsTableViewCell: UITableViewCell {
-    @IBOutlet weak var jobLabel: UILabel!
-    
-    
-    @IBOutlet weak var descriptionLabel: UILabel!
-    
+
+public class OfferTableViewCell: UITableViewCell {
+   
     
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+   
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var offerLabel: UILabel!
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-     
+        
+        
     }
     
     public func configure(jobLabel: String, descriptionLabel:String){
-        self.jobLabel.text = jobLabel
+        self.offerLabel.text = jobLabel
         self.descriptionLabel.text = descriptionLabel
     }
-
+    
 }
+

@@ -65,8 +65,6 @@ class logViewController: UIViewController {
             return
             
         }
-        
-        
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in  //login with email
             
             if user != nil {
