@@ -11,11 +11,9 @@ import Firebase
 import FirebaseAuth
 
 public class JobsTableViewCell: UITableViewCell {
-    @IBOutlet weak var jobLabel: UILabel!
-    
+    @IBOutlet weak var postLabel: UILabel!
     
     @IBOutlet weak var descriptionLabel: UILabel!
-    
     
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,8 +26,8 @@ public class JobsTableViewCell: UITableViewCell {
      
     }
     
-    public func configure(jobLabel: String, descriptionLabel:String){
-        self.jobLabel.text = jobLabel
+    public func configure(postLabel: String, descriptionLabel:String){
+        self.postLabel.text = postLabel
         self.descriptionLabel.text = descriptionLabel
     }
 

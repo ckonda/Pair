@@ -11,7 +11,6 @@
 		BA4AA9831E99DD1D001B1FDB /* JobsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4AA9821E99DD1D001B1FDB /* JobsTableViewCell.swift */; };
 		BA4AA9851E9AED55001B1FDB /* JobModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4AA9841E9AED55001B1FDB /* JobModel.swift */; };
 		EE1445BF1E8B57BB000C9E51 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1445BE1E8B57BB000C9E51 /* ComposeViewController.swift */; };
-		EE1445C21E8B6F80000C9E51 /* mainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1445C11E8B6F7F000C9E51 /* mainViewController.swift */; };
 		EE213E7F1E9837DC003999FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE213E7E1E9837DC003999FC /* GoogleService-Info.plist */; };
 		EE213E821E9AF155003999FC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE213E811E9AF155003999FC /* User.swift */; };
 		EE4EEBAD1E7614B50044FE39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4EEBAC1E7614B50044FE39 /* AppDelegate.swift */; };
@@ -32,7 +31,6 @@
 		BA4AA9841E9AED55001B1FDB /* JobModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobModel.swift; sourceTree = "<group>"; };
 		D0E93F1CA1F55F5228401C27 /* Pods-Pair.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pair.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pair/Pods-Pair.release.xcconfig"; sourceTree = "<group>"; };
 		EE1445BE1E8B57BB000C9E51 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
-		EE1445C11E8B6F7F000C9E51 /* mainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainViewController.swift; sourceTree = "<group>"; };
 		EE213E7E1E9837DC003999FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE213E811E9AF155003999FC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EE4EEBA91E7614B50044FE39 /* Pair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pair.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				EE1445BE1E8B57BB000C9E51 /* ComposeViewController.swift */,
-				EE1445C11E8B6F7F000C9E51 /* mainViewController.swift */,
 				EEC34F801E9C763C00954927 /* logViewController.swift */,
 				EEC34F821E9D67D500954927 /* offerViewController.swift */,
 				EEC34F841E9D67E400954927 /* postViewController.swift */,
@@ -276,7 +273,6 @@
 				EEC34F851E9D67E400954927 /* postViewController.swift in Sources */,
 				EEC34F871E9D787800954927 /* OfferTableViewCell.swift in Sources */,
 				EEC34F831E9D67D500954927 /* offerViewController.swift in Sources */,
-				EE1445C21E8B6F80000C9E51 /* mainViewController.swift in Sources */,
 				BA4AA9851E9AED55001B1FDB /* JobModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

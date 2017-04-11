@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class postViewController: UIViewController {
+class postViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var ref: FIRDatabaseReference!
     var dbHandle: FIRDatabaseHandle?
@@ -50,7 +50,7 @@ class postViewController: UIViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath) as! JobsTableViewCell
         let job = jobData[indexPath.row]
-        cell.jobLabel.text = job.job
+        cell.postLabel.text = job.job
         cell.descriptionLabel.text = job.username
         return cell
     }
