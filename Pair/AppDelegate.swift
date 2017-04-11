@@ -20,10 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
 
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
+     //   window = UIWindow(frame: UIScreen.main.bounds)
+       // window?.makeKeyAndVisible()
         
-        window?.rootViewController = (rootViewController: loginViewController())
+       // window?.rootViewController =
+         //   UINavigationController(rootViewController: loginViewController())
+
         
         return true
     }
