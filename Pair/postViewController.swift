@@ -1,15 +1,17 @@
 //
-//  mainViewController.swift
+//  postViewController.swift
 //  Pair
 //
-//  Created by Chatan Konda on 3/28/17.
+//  Created by Chatan Konda on 4/11/17.
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
-class mainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class postViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     var ref: FIRDatabaseReference!
     var dbHandle: FIRDatabaseHandle?
     var jobData = [JobModel]()
@@ -35,12 +37,12 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.tableView.reloadData()
             }
         })
-    
+        
     }
     
+    
     @IBOutlet weak var tableView: UITableView!
-
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return jobData.count
     }
@@ -48,7 +50,7 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath) as! JobsTableViewCell
         let job = jobData[indexPath.row]
-        cell.jobLabel.text = job.job
+        cell.postLabel.text = job.job
         cell.descriptionLabel.text = job.username
         return cell
     }
@@ -57,29 +59,6 @@ class mainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     
-    
-    
-    
-    
-    func handleLogout(){
-        
-        do {
-            try FIRAuth.auth()?.signOut() //handles registration screen if user is not logged
-        }catch let logoutError {//keeps them logged in
-            print(logoutError)
-        }
-        
-        let logController = logViewController()
-        //logController. = self
-        present(logController, animated: true, completion: nil)//logout controller animation
-        
-    }
-    
-
-    
-    
-    
-
-
+  
 
 }
