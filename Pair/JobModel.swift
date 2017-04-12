@@ -12,13 +12,15 @@ public class JobModel{
     
     public var job: String?
     public var price: Int?
-    public var skill: String?
+//    public var skill: String?
     public var username: String?
+    public var description: String?
     
-    init(job:String?, price:Int?, skill:String?, username:String?){
+    init(job:String?, price:Int?, username:String?, description: String?){
         self.job = job
         self.price = price
-        self.skill = skill
+      //  self.skill = skill
         self.username = username
+        self.description = description
     }
 }
