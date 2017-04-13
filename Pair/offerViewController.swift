@@ -77,7 +77,7 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
           print("You selected cell #\(indexPath.row)!")
         
-        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        //tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
         
         let offers = offerData[indexPath.row]
       //  self.performSegue(withIdentifier: "offerBid", sender: offers)
@@ -94,7 +94,7 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
           
         
             let offerbidView = segue.destination as! offerBidViewController
-            offerbidView.username.text = offerData[0].username
+            offerbidView.selecteduserName = offerData[0].username!
             
             
             

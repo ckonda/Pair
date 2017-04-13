@@ -26,6 +26,10 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var jobDescription: UITextField!//box2
     @IBOutlet weak var jobPrice: UITextField!//box3
     
+    @IBAction func cancelPost(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+    }
     
     
     
@@ -39,10 +43,6 @@ class ComposeViewController: UIViewController {
         
     }
 
-    @IBAction func cancelPost(_ sender: Any) {
-        //cancel post and dismiss View to return to MainTableViewController
-        presentingViewController?.dismiss(animated: true, completion: nil)
-        
-    }
+
 
 }

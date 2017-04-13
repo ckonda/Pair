@@ -16,27 +16,24 @@ class offerComposeViewController: UIViewController {
 
     }
     
+    @IBAction func cancelPost(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     @IBOutlet weak var offerType: UITextField!
     
     @IBOutlet weak var offerDescription: UITextField!
 
     @IBOutlet weak var offerPrice: UITextField!
-  
-    @IBAction func cancelPost(_ sender: Any) {
-        
-               presentingViewController?.dismiss(animated: true, completion: nil)
-        
-        
-    }
+   
+    @IBOutlet weak var postAction: UIButton!
     
     @IBAction func postAction(_ sender: Any) {
-        
-        
-        presentingViewController?.dismiss(animated: true, completion: nil)
-        
-        
+           presentingViewController?.dismiss(animated: true, completion: nil)
     }
-    
     
     
 
