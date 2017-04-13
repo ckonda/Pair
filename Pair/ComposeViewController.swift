@@ -8,10 +8,17 @@
 
 import UIKit
 import FirebaseDatabase
+import Firebase
+import FirebaseCore
+import FirebaseAuth
+//import Fire
+import WebKit
 
 class ComposeViewController: UIViewController {
     
     var ref: FIRDatabaseReference?
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +43,24 @@ class ComposeViewController: UIViewController {
     //ref?.child("Jobs").childByAutoId().setValue(jobDescription)
         
         presentingViewController?.dismiss(animated: true, completion: nil)
+        let job1 = jobType.text!
+        let job2 = jobDescription.text!
+        let job3 = jobPrice.text!
+      //  let ref = FIRDatabase.database().reference()
+        
+        
+        let usersReference  = ref?.child("Users").child(uid)
+        
+    
+        
+        jobType.text = ""
+        jobDescription.text = ""
+        jobPrice.text = ""
+        
+        ref = FIRDatabase.database().reference()
+        ref?.child("Jobs").child(job1)
+        ref?.child("Jobs").child(job1).setValue(["Descriptions": job2])
+        ref?.child("Jobs").child(job1).setValue(["Price": job3])
         
     }
 
