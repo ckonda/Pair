@@ -24,16 +24,17 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
         ref.observe(FIRDataEventType.value, with: {(snapshot) in
             if snapshot.childrenCount>0{
                 self.offerData.removeAll()
-                for jobs in snapshot.children.allObjects as![FIRDataSnapshot]{
+                for offer in snapshot.children.allObjects as![FIRDataSnapshot]{
                     //create object and initialize the values of it
-                    let job = jobs.value as? [String: AnyObject]
-                    let jobTitle = job?["title"]
-                    let jobPrice = job?["price"]
-                    let jobUsername = job?["username"]
-                    let jobSkill = job?["skill"]
-                    let jobObject = OfferModel(job: jobTitle as! String?, price: jobPrice as! Int?, skill: jobSkill as! String?, username: jobUsername as! String?)
+                    let offer = offer.value as? [String: AnyObject]
+                    let offerTitle = offer?["title"]
+                    let offerPrice = offer?["price"]
+                    let offerUsername = offer?["username"]
+                    let offerDescription = offer?["description"]
+                   // let jobSkill = job?["skill"]
+                    let offerObject = OfferModel(offer: offerTitle as! String?, price: offerPrice as! Int?,username: offerUsername as! String? , description: offerDescription as! String?)
                     //append data
-                    self.offerData.append(jobObject)
+                    self.offerData.append(offerObject)
                 }
                 self.tableView.reloadData()
             }
@@ -59,9 +60,9 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "offerCell", for: indexPath) as! OfferTableViewCell
-        let job = offerData[indexPath.row]
-        cell.jobLabel.text = job.job
-        cell.descriptLabel.text = job.username
+        let offer = offerData[indexPath.row]
+       // cell.offerLabel.text = offer.offer
+        cell.descriptLabel.text = offer.username
         return cell
     }
     

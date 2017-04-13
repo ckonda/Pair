@@ -10,15 +10,16 @@ import Foundation
 
 public class OfferModel{
     
-    public var job: String?
+    public var offer: String?
     public var price: Int?
-    public var skill: String?
+    //public var skill: String?
     public var username: String?
+    public var description: String?
     
-    init(job:String?, price:Int?, skill:String?, username:String?){
-        self.job = job
+    init(offer:String?, price:Int?, username:String?, description: String?){
+        self.offer = offer
         self.price = price
-        self.skill = skill
         self.username = username
+        self.description = description
     }
 }

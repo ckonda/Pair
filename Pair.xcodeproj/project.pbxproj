@@ -23,6 +23,7 @@
 		EEC34F851E9D67E400954927 /* postViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F841E9D67E400954927 /* postViewController.swift */; };
 		EEC34F871E9D787800954927 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F861E9D787800954927 /* OfferTableViewCell.swift */; };
 		EEC34F891E9D7C4000954927 /* OfferModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F881E9D7C4000954927 /* OfferModel.swift */; };
+		EEC34F8B1E9EAFBC00954927 /* offerComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F8A1E9EAFBC00954927 /* offerComposeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		EEC34F841E9D67E400954927 /* postViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postViewController.swift; sourceTree = "<group>"; };
 		EEC34F861E9D787800954927 /* OfferTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
 		EEC34F881E9D7C4000954927 /* OfferModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferModel.swift; sourceTree = "<group>"; };
+		EEC34F8A1E9EAFBC00954927 /* offerComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = offerComposeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				EEC34F801E9C763C00954927 /* logViewController.swift */,
 				EEC34F821E9D67D500954927 /* offerViewController.swift */,
 				EEC34F841E9D67E400954927 /* postViewController.swift */,
+				EEC34F8A1E9EAFBC00954927 /* offerComposeViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				EE1445BF1E8B57BB000C9E51 /* ComposeViewController.swift in Sources */,
 				EE213E821E9AF155003999FC /* User.swift in Sources */,
 				EEC34F851E9D67E400954927 /* postViewController.swift in Sources */,
+				EEC34F8B1E9EAFBC00954927 /* offerComposeViewController.swift in Sources */,
 				EEC34F871E9D787800954927 /* OfferTableViewCell.swift in Sources */,
 				BA66DB461E9EB2120048253A /* SWRevealViewController.m in Sources */,
 				EEC34F831E9D67D500954927 /* offerViewController.swift in Sources */,

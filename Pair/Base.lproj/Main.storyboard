@@ -100,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3638" y="178"/>
+            <point key="canvasLocation" x="3660" y="178"/>
         </scene>
         <!--Compose View Controller-->
         <scene sceneID="Icn-KQ-wA4">
@@ -256,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ivb-Ea-yIK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6303" y="609"/>
+            <point key="canvasLocation" x="6303" y="544"/>
         </scene>
         <!--Post View Controller-->
         <scene sceneID="q6y-fs-H4U">
@@ -492,10 +492,10 @@
             </objects>
             <point key="canvasLocation" x="5502" y="544"/>
         </scene>
-        <!--Compose View Controller-->
+        <!--Offer Compose View Controller-->
         <scene sceneID="Haz-Ts-V8v">
             <objects>
-                <viewController id="MY6-Au-HgX" customClass="ComposeViewController" customModule="Pair" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MY6-Au-HgX" customClass="offerComposeViewController" customModule="Pair" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wFm-RF-A1q"/>
                         <viewControllerLayoutGuide type="bottom" id="gMm-HW-Crr"/>
@@ -510,7 +510,7 @@
                                     <navigationItem title="Pair" id="0r5-Qq-cbc">
                                         <barButtonItem key="leftBarButtonItem" systemItem="trash" id="m61-wp-zrA">
                                             <connections>
-                                                <action selector="cancelPost:" destination="MY6-Au-HgX" id="Vi9-cX-0Qz"/>
+                                                <action selector="cancelPost:" destination="MY6-Au-HgX" id="8IS-w5-X0t"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="u4j-6l-mVt">
@@ -528,6 +528,7 @@
                                 <state key="normal" title="Post"/>
                                 <connections>
                                     <action selector="addPost:" destination="MY6-Au-HgX" eventType="touchUpInside" id="QQZ-m3-xPS"/>
+                                    <action selector="postAction:" destination="MY6-Au-HgX" eventType="touchUpInside" id="YMo-Pu-XyO"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ZZz-Ge-Tby">
@@ -566,14 +567,18 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelPost" destination="m61-wp-zrA" id="ijw-Ni-W4Q"/>
                         <outlet property="jobDescription" destination="cAz-u6-Ljq" id="RjT-b3-NVg"/>
                         <outlet property="jobPrice" destination="Sn2-TR-5uc" id="Qc2-uG-V9I"/>
                         <outlet property="jobType" destination="FwW-mT-EZS" id="ir4-DB-dI9"/>
+                        <outlet property="offerDescription" destination="cAz-u6-Ljq" id="3Na-QM-jTW"/>
+                        <outlet property="offerPrice" destination="Sn2-TR-5uc" id="eqs-x9-qh0"/>
+                        <outlet property="offerType" destination="FwW-mT-EZS" id="yAi-fM-KK9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhc-OW-5uF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7294" y="629"/>
+            <point key="canvasLocation" x="7294" y="544"/>
         </scene>
     </scenes>
 </document>
