@@ -24,6 +24,7 @@
 		EEC34F871E9D787800954927 /* OfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F861E9D787800954927 /* OfferTableViewCell.swift */; };
 		EEC34F891E9D7C4000954927 /* OfferModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F881E9D7C4000954927 /* OfferModel.swift */; };
 		EEC34F8B1E9EAFBC00954927 /* offerComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F8A1E9EAFBC00954927 /* offerComposeViewController.swift */; };
+		EEC34F911E9F007E00954927 /* offerBidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F901E9F007E00954927 /* offerBidViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		EEC34F861E9D787800954927 /* OfferTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferTableViewCell.swift; sourceTree = "<group>"; };
 		EEC34F881E9D7C4000954927 /* OfferModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferModel.swift; sourceTree = "<group>"; };
 		EEC34F8A1E9EAFBC00954927 /* offerComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = offerComposeViewController.swift; sourceTree = "<group>"; };
+		EEC34F901E9F007E00954927 /* offerBidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = offerBidViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				EEC34F821E9D67D500954927 /* offerViewController.swift */,
 				EEC34F841E9D67E400954927 /* postViewController.swift */,
 				EEC34F8A1E9EAFBC00954927 /* offerComposeViewController.swift */,
+				EEC34F901E9F007E00954927 /* offerBidViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				EE4EEBAD1E7614B50044FE39 /* AppDelegate.swift in Sources */,
 				BA4AA9831E99DD1D001B1FDB /* JobsTableViewCell.swift in Sources */,
 				EEC34F811E9C763C00954927 /* logViewController.swift in Sources */,
+				EEC34F911E9F007E00954927 /* offerBidViewController.swift in Sources */,
 				EEC34F891E9D7C4000954927 /* OfferModel.swift in Sources */,
 				EE1445BF1E8B57BB000C9E51 /* ComposeViewController.swift in Sources */,
 				EE213E821E9AF155003999FC /* User.swift in Sources */,
