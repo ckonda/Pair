@@ -86,11 +86,11 @@
 		EE1445C01E8B57D4000C9E51 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EE1445BE1E8B57BB000C9E51 /* ComposeViewController.swift */,
 				EEC34F801E9C763C00954927 /* logViewController.swift */,
-				EEC34F821E9D67D500954927 /* offerViewController.swift */,
+				EE1445BE1E8B57BB000C9E51 /* ComposeViewController.swift */,
 				EEC34F841E9D67E400954927 /* postViewController.swift */,
 				EEC34F8A1E9EAFBC00954927 /* offerComposeViewController.swift */,
+				EEC34F821E9D67D500954927 /* offerViewController.swift */,
 				EEC34F901E9F007E00954927 /* offerBidViewController.swift */,
 			);
 			name = Controllers;
