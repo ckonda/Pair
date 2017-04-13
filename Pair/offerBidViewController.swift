@@ -13,10 +13,11 @@ class offerBidViewController: UIViewController {
     
    // var passedJobName
     
-    var offerName: String!
-    var img:String?
+     var selecteduserName: String = ""
+
     
-    @IBOutlet weak var jobName: UILabel!
+    @IBOutlet weak var username: UILabel!
+    
     
     
     
@@ -24,8 +25,10 @@ class offerBidViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     //   jobName = String()
+        print(username)
+
         
+    
         
         
     }

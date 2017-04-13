@@ -58,7 +58,7 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
         return offerData.count
     }
     
-    var bidpassUsername: String!
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "offerCell", for: indexPath) as! OfferTableViewCell
@@ -66,13 +66,11 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
        // cell.offerLabel.text = offer.offer
         cell.descriptLabel.text = offer.username
         
-        bidpassUsername = offer.username//for passing to bid
         
         
         
         return cell
     }
-    
     
 
     
@@ -81,8 +79,9 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
         
         tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
         
-        performSegue(withIdentifier: "offerBid", sender: self)
-        
+        let offers = offerData[indexPath.row]
+      //  self.performSegue(withIdentifier: "offerBid", sender: offers)
+   
 
     }
 
@@ -92,15 +91,18 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
         
         if (segue.identifier == "offerBid") {
             // initialize new view controller and cast it as your view controller
-            var offerbidView = segue.destination as! offerBidViewController
-            
-            
-            offerbidView.offerName = bidpassUsername
+          
+        
+            let offerbidView = segue.destination as! offerBidViewController
+            offerbidView.username.text = offerData[0].username
             
             
             
          
         }
+    
+        
+        
     }
     
     
