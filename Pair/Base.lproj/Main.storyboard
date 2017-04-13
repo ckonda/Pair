@@ -227,6 +227,7 @@
                                         <connections>
                                             <outlet property="descriptLabel" destination="eEa-dD-1iM" id="0Gm-BL-YfB"/>
                                             <outlet property="jobLabel" destination="tKg-1F-3C2" id="4o0-nm-ZN7"/>
+                                            <segue destination="UER-aC-9E4" kind="show" identifier="offerBid" id="pUe-ee-GTC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -469,6 +470,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhc-OW-5uF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7294" y="544"/>
+        </scene>
+        <!--Offer Bid View Controller-->
+        <scene sceneID="3EF-6h-JWh">
+            <objects>
+                <viewController id="UER-aC-9E4" customClass="offerBidViewController" customModule="Pair" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3RF-Q7-D5n"/>
+                        <viewControllerLayoutGuide type="bottom" id="9LM-or-MJp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1JP-Bj-PsK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Job Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U49-wx-5EO">
+                                <rect key="frame" x="166" y="187" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="jobName" destination="U49-wx-5EO" id="Cq3-at-QDg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iP2-TP-mFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7293.6000000000004" y="1307.4962518740631"/>
         </scene>
     </scenes>
 </document>
