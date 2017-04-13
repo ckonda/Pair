@@ -80,7 +80,7 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
         tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
         
         let offers = offerData[indexPath.row]
-      //  self.performSegue(withIdentifier: "offerBid", sender: offers)
+      // self.performSegue(withIdentifier: "offerBid", sender: offers)
    
 
     }
