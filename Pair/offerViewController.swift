@@ -63,7 +63,7 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "offerCell", for: indexPath) as! OfferTableViewCell
         let offer = offerData[indexPath.row]
-       // cell.offerLabel.text = offer.offer
+        cell.jobLabel.text = offer.offer
         cell.descriptLabel.text = offer.username
         
         

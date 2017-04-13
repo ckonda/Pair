@@ -13,6 +13,7 @@ import FirebaseAuth
 public class JobsTableViewCell: UITableViewCell {
     @IBOutlet weak var postLabel: UILabel!
     
+
     @IBOutlet weak var descriptionLabel: UILabel!
     
     public override func awakeFromNib() {
