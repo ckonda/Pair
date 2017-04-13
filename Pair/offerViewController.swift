@@ -12,6 +12,7 @@ import FirebaseAuth
 
 class offerViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var openMenu: UIBarButtonItem!
     var ref: FIRDatabaseReference!
     var dbHandle: FIRDatabaseHandle?
     var offerData = [OfferModel]()
@@ -37,6 +38,13 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
                 self.tableView.reloadData()
             }
         })
+        
+        if revealViewController() != nil{
+            openMenu.target = revealViewController()
+            openMenu.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+
         
     }
     
