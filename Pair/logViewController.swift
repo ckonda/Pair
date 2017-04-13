@@ -44,6 +44,7 @@ class logViewController: UIViewController {
     @IBAction func signInButton(_ sender: UIButton) {
         
         handleLoginRegister()
+        performSegue(withIdentifier: "gotoMain", sender: self)
    
     }
     

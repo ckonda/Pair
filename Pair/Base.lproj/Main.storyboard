@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A312a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tai-9C-v37">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A312a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -69,6 +69,7 @@
                                         <state key="normal" title="Sign In"/>
                                         <connections>
                                             <action selector="signInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F2Y-YH-T44"/>
+                                            <segue destination="Rpi-it-KIC" kind="show" identifier="gotoMain" id="1bY-dw-aeG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -604,7 +605,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iP2-TP-mFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7293.6000000000004" y="1307.4962518740631"/>
+            <point key="canvasLocation" x="7348" y="1299"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1bY-dw-aeG"/>
+    </inferredMetricsTieBreakers>
 </document>
