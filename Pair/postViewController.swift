@@ -12,11 +12,22 @@ import FirebaseAuth
 
 class postViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    
+    /*if revealViewController() != nil {
+        openMenu.target
+    }*/
+    //openMenu.target = revealViewController()
+    @IBOutlet weak var openMenu: UIBarButtonItem!
+    
     var ref: FIRDatabaseReference!
     var dbHandle: FIRDatabaseHandle?
     var jobData = [JobModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
+                //openMenu.target = self.revealViewController()
+        //openMenu.action = Selector("revealToggle:")
+        
         tableView.delegate = self
         tableView.dataSource = self
         ref = FIRDatabase.database().reference().child("Jobs");
@@ -38,6 +49,14 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.tableView.reloadData()
             }
         })
+        
+        
+        if revealViewController() != nil{
+            openMenu.target = revealViewController()
+            openMenu.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+
         
     }
     

@@ -10,6 +10,7 @@
 		5148AC9E5F26884BB211C435 /* Pods_Pair.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A1A98EFC0D23F0EC43FA47 /* Pods_Pair.framework */; };
 		BA4AA9831E99DD1D001B1FDB /* JobsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4AA9821E99DD1D001B1FDB /* JobsTableViewCell.swift */; };
 		BA4AA9851E9AED55001B1FDB /* JobModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4AA9841E9AED55001B1FDB /* JobModel.swift */; };
+		BA66DB461E9EB2120048253A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66DB451E9EB2120048253A /* SWRevealViewController.m */; };
 		EE1445BF1E8B57BB000C9E51 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1445BE1E8B57BB000C9E51 /* ComposeViewController.swift */; };
 		EE213E7F1E9837DC003999FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE213E7E1E9837DC003999FC /* GoogleService-Info.plist */; };
 		EE213E821E9AF155003999FC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE213E811E9AF155003999FC /* User.swift */; };
@@ -31,6 +32,9 @@
 		AB92A5F66FAA8D0B44DF9A32 /* Pods-Pair.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pair.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pair/Pods-Pair.debug.xcconfig"; sourceTree = "<group>"; };
 		BA4AA9821E99DD1D001B1FDB /* JobsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobsTableViewCell.swift; sourceTree = "<group>"; };
 		BA4AA9841E9AED55001B1FDB /* JobModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobModel.swift; sourceTree = "<group>"; };
+		BA66DB431E9EB2100048253A /* Pair-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pair-Bridging-Header.h"; sourceTree = "<group>"; };
+		BA66DB441E9EB2120048253A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		BA66DB451E9EB2120048253A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		D0E93F1CA1F55F5228401C27 /* Pods-Pair.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pair.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pair/Pods-Pair.release.xcconfig"; sourceTree = "<group>"; };
 		EE1445BE1E8B57BB000C9E51 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		EE213E7E1E9837DC003999FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -137,10 +141,13 @@
 				EE1445C01E8B57D4000C9E51 /* Controllers */,
 				EE4EEBAC1E7614B50044FE39 /* AppDelegate.swift */,
 				EE4EEBB01E7614B50044FE39 /* Main.storyboard */,
+				BA66DB441E9EB2120048253A /* SWRevealViewController.h */,
+				BA66DB451E9EB2120048253A /* SWRevealViewController.m */,
 				EE4EEBB31E7614B50044FE39 /* Assets.xcassets */,
 				EE4EEBB51E7614B50044FE39 /* LaunchScreen.storyboard */,
 				EE213E7E1E9837DC003999FC /* GoogleService-Info.plist */,
 				EE4EEBB81E7614B50044FE39 /* Info.plist */,
+				BA66DB431E9EB2100048253A /* Pair-Bridging-Header.h */,
 			);
 			path = Pair;
 			sourceTree = "<group>";
@@ -181,6 +188,7 @@
 					EE4EEBA81E7614B50044FE39 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = T24NKQARLL;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -280,6 +288,7 @@
 				EEC34F851E9D67E400954927 /* postViewController.swift in Sources */,
 				EEC34F8B1E9EAFBC00954927 /* offerComposeViewController.swift in Sources */,
 				EEC34F871E9D787800954927 /* OfferTableViewCell.swift in Sources */,
+				BA66DB461E9EB2120048253A /* SWRevealViewController.m in Sources */,
 				EEC34F831E9D67D500954927 /* offerViewController.swift in Sources */,
 				BA4AA9851E9AED55001B1FDB /* JobModel.swift in Sources */,
 			);
@@ -403,12 +412,15 @@
 			baseConfigurationReference = AB92A5F66FAA8D0B44DF9A32 /* Pods-Pair.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = T24NKQARLL;
 				INFOPLIST_FILE = Pair/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MAC.Pair;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pair/Pair-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -419,12 +431,14 @@
 			baseConfigurationReference = D0E93F1CA1F55F5228401C27 /* Pods-Pair.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = T24NKQARLL;
 				INFOPLIST_FILE = Pair/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MAC.Pair;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pair/Pair-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
