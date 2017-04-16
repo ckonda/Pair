@@ -4,7 +4,7 @@
 //
 //  Created by Radhakrishna Canchi on 4/8/17.
 //  Copyright © 2017 Apple. All rights reserved.
-//
+
 
 import UIKit
 import Firebase
@@ -22,7 +22,6 @@ public class JobsTableViewCell: UITableViewCell {
 
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
      
     }
     

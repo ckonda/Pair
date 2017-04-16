@@ -18,6 +18,8 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
     var offerData = [OfferModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         tableView.delegate = self
         tableView.dataSource = self
         ref = FIRDatabase.database().reference().child("Offer");
@@ -27,12 +29,12 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
                 for offer in snapshot.children.allObjects as![FIRDataSnapshot]{
                     //create object and initialize the values of it
                     let offer = offer.value as? [String: AnyObject]
-                    let offerTitle = offer?["title"]
-                    let offerPrice = offer?["price"]
-                    let offerUsername = offer?["username"]
-                    let offerDescription = offer?["description"]
+                    let offerTitle = offer?["title"] as! String?
+                    let offerPrice = offer?["price"] as! Int?
+                    let offerUsername = offer?["username"]as! String?
+                    let offerDescription = offer?["description"]as! String?
                    // let jobSkill = job?["skill"]
-                    let offerObject = OfferModel(offer: offerTitle as! String?, price: offerPrice as! Int?,username: offerUsername as! String? , description: offerDescription as! String?)
+                    let offerObject = OfferModel(offer: offerTitle, price: offerPrice,username: offerUsername, description: offerDescription)
                     //append data
                     self.offerData.append(offerObject)
                 }
@@ -74,31 +76,32 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
     
 
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-          print("You selected cell #\(indexPath.row)!")
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     
+        let index = tableView.indexPathForSelectedRow?.row
         
-        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-        
-        let offers = offerData[indexPath.row]
-      // self.performSegue(withIdentifier: "offerBid", sender: offers)
-   
+       performSegue(withIdentifier: "offerBid", sender: index)
 
     }
+    
+    
 
     
-     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
-    
+      override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
+    
         if (segue.identifier == "offerBid") {
             // initialize new view controller and cast it as your view controller
-          
-        
-            let offerbidView = segue.destination as! offerBidViewController
-            offerbidView.username.text = offerData[0].username
             
-            
-            
-         
+            if let offerbidView = segue.destination as? offerBidViewController{ //set segue destination to new vid
+                
+                offerbidView.selecteduserName = offerData[0].username!
+                offerbidView.selectedDescription = offerData[0].description!
+                
+
+             
+      
+            }
         }
     
         
@@ -106,8 +109,5 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
     }
     
     
-
-
-
-
+    
 }

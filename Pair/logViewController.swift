@@ -25,11 +25,11 @@ class logViewController: UIViewController {
         if segmentedControl.selectedSegmentIndex == 0 {
             signinButton.setTitle("Sign in", for: .normal)
             handleLoginRegister()
-             print("greetings")
+
         }else {
             signinButton.setTitle("Join", for: .normal)
             handleLoginRegister()
-            print("hello")
+
         }
     }
     
@@ -59,6 +59,10 @@ class logViewController: UIViewController {
     
     func handleLogin(){//log back in using email and pass word only
         
+        var FBRef: FIRDatabaseReference!
+        
+        FBRef = FIRDatabase.database().reference();
+        
         guard let email = emailtextField.text, let password = passwordtextField.text else{
             
             print("Service Unavailable, Please try again")
@@ -67,7 +71,19 @@ class logViewController: UIViewController {
         }
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in  //login with email
             
+            let userID: String = (FIRAuth.auth()?.currentUser?.uid)!
+            
+            FBRef.child("Users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+                let dict = snapshot.value as? NSDictionary
+                let username = dict?["username"] as? String!
+                
+                AppDelegate.user.username = username
+            })
+            
+            
             if user != nil {
+                
+                
                 
                self.performSegue(withIdentifier: "gotoMain", sender: self)
                 
@@ -77,9 +93,10 @@ class logViewController: UIViewController {
                 //ERROR: catch handle
                 print("login error")
             }
-            
-            
         })
+        
+        AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text)
+        self.performSegue(withIdentifier: "gotoMain", sender: self)
     }
     
     

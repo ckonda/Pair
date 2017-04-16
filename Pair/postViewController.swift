@@ -37,16 +37,17 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
                 for jobs in snapshot.children.allObjects as![FIRDataSnapshot]{
                     //create object and initialize the values of it
                     let job = jobs.value as? [String: AnyObject]
-                    let jobTitle = job?["title"]//job type
-                    let jobPrice = job?["price"]//job price
-                    let jobUsername = job?["username"]// username
-                   //let jobSkill = job?["skill"]
-                    let jobDescription = job?["description"]// job description
-                    let jobObject = JobModel(job: jobTitle as! String?, price: jobPrice as! Int?,  username: jobUsername as! String?, description: jobDescription as! String?)
+                    let jobTitle = job?["title"] as! String?//job type
+                    let jobPrice = job?["price"] as! Int?//job price
+                    let jobUsername = job?["username"] as! String?// username
+                    //let jobSkill = job?["skill"]
+                    let jobDescription = job?["description"] as! String?// job description
+                    let jobObject = JobModel(job: jobTitle , price: jobPrice ,  username: jobUsername , description: jobDescription )
                     //append data
                     self.jobData.append(jobObject)
                 }
                 self.tableView.reloadData()
+
             }
         })
         

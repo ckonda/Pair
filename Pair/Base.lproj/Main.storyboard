@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A312a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A312a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tai-9C-v37">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -228,7 +228,7 @@
                                         <connections>
                                             <outlet property="descriptLabel" destination="eEa-dD-1iM" id="0Gm-BL-YfB"/>
                                             <outlet property="jobLabel" destination="tKg-1F-3C2" id="4o0-nm-ZN7"/>
-                                            <segue destination="UER-aC-9E4" kind="show" identifier="offerBid" id="pUe-ee-GTC"/>
+                                            <segue destination="UER-aC-9E4" kind="showDetail" identifier="offerBid" id="pUe-ee-GTC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -302,6 +302,7 @@
                                         <connections>
                                             <outlet property="descriptionLabel" destination="pYc-VT-Ub7" id="zrb-Lw-sFm"/>
                                             <outlet property="postLabel" destination="Ghh-Jl-drR" id="8W1-Aq-hWO"/>
+                                            <segue destination="SBI-4l-f4f" kind="showDetail" id="DdF-QF-Lzm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -436,6 +437,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JWz-sf-nYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5502" y="-820"/>
+        </scene>
+        <!--Post Bid View Controller-->
+        <scene sceneID="Tl0-Fz-qUL">
+            <objects>
+                <viewController id="SBI-4l-f4f" customClass="postBidViewController" customModule="Pair" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ai5-Ny-BRJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="WC1-ji-U8U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5iK-yn-8gk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1u-1o-PYi">
+                                <rect key="frame" x="148" y="148" width="79" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="jobDescription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ck-sS-8hV">
+                                <rect key="frame" x="131" y="276" width="112" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="jobDescription" destination="9Ck-sS-8hV" id="v8P-mF-5rE"/>
+                        <outlet property="offerName" destination="b1u-1o-PYi" id="agn-dP-PTg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m76-gY-LQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7293.6000000000004" y="-865.81709145427294"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ear-do-4P2">
@@ -601,10 +640,63 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upv-mF-C3M">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Bid Detail" id="4KE-zG-EQJ">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PA7-Qn-p79">
+                                            <connections>
+                                                <action selector="cancelButton:" destination="UER-aC-9E4" id="01n-Da-hfc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Offer Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cG9-zb-NND">
+                                <rect key="frame" x="146" y="216" width="83" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WI3-zg-8ja">
+                                <rect key="frame" x="139" y="414" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oO1-zo-hSf">
+                                <rect key="frame" x="139" y="488" width="98" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="bidButton:" destination="UER-aC-9E4" eventType="touchUpInside" id="Dc2-Px-jgV"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmc-vt-NBs">
+                                <rect key="frame" x="123" y="286" width="129" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This job requires a higher bid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBk-TE-auk">
+                                <rect key="frame" x="76" y="565" width="222" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="bidEnter" destination="WI3-zg-8ja" id="X2A-hE-e0o"/>
+                        <outlet property="bidInvalid" destination="eBk-TE-auk" id="VUK-KC-Wad"/>
+                        <outlet property="offerPrice" destination="cG9-zb-NND" id="ez1-Jt-DA1"/>
+                        <outlet property="userDescription" destination="tmc-vt-NBs" id="F8U-PF-jWZ"/>
                         <outlet property="username" destination="GiX-Zn-WRO" id="PM3-Zj-313"/>
                     </connections>
                 </viewController>
