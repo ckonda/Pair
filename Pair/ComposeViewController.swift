@@ -13,23 +13,80 @@ import FirebaseCore
 import FirebaseAuth
 //import Fire
 import WebKit
+import CoreLocation
 
-class ComposeViewController: UIViewController {
+
+
+class ComposeViewController: UIViewController, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
+    
+    var LocCity:String? = nil
     
     var ref: FIRDatabaseReference?
     
-    
+    //var locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ref = FIRDatabase.database().reference() //.child("Jobs").childByAutoId()
-   
-       
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+        
+        print("Hi")
+        
+    
         
         // Do any additional setup after loading the view.
     }
 
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: { (placemarks, error) in
+            
+            if error != nil
+            {
+                print("Error: " + "(error?.localizedDescription)")
+                return
+            }
+            
+            if (placemarks?.count)! > 0
+            {
+                let pm = placemarks?[0]
+                self.displayLocationInfo(placemark: pm!)
+                
+            }
+            
+            
+            
+            
+        })
+    }
+    
+    
+    
+    func displayLocationInfo(placemark: CLPlacemark)
+    {
+        self.locationManager.stopUpdatingLocation()
+        print(placemark.locality!)
+        print(placemark.postalCode!)
+        print(placemark.administrativeArea!)
+        print(placemark.country!)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error: " + error.localizedDescription)
+    }
+    
+    
+    
+    
+    
+    
+    
     @IBOutlet weak var jobType: UITextField!//box1
     @IBOutlet weak var jobDescription: UITextField!//box2
     @IBOutlet weak var jobPrice: UITextField!//box3
