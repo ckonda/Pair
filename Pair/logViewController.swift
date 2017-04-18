@@ -10,11 +10,16 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class logViewController: UIViewController {
+class logViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        nametextField.delegate = self
+        emailtextField.delegate = self
+        passwordtextField.delegate = self
+        
    
     }
 
@@ -32,6 +37,32 @@ class logViewController: UIViewController {
 
         }
     }
+    
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nametextField.resignFirstResponder()
+        emailtextField.resignFirstResponder()
+        passwordtextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nametextField.resignFirstResponder()
+        emailtextField.resignFirstResponder()
+        passwordtextField.resignFirstResponder()
+        
+        return true
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     @IBOutlet weak var nametextField: UITextField!
     
@@ -70,23 +101,22 @@ class logViewController: UIViewController {
             
         }
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in  //login with email
-            
-            let userID: String = (FIRAuth.auth()?.currentUser?.uid)!
-            
-            FBRef.child("Users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
-                let dict = snapshot.value as? NSDictionary
-                let username = dict?["username"] as? String!
-                
-                AppDelegate.user.username = username
-            })
-            
+    
             
             if user != nil {
                 
                 
+                let userID: String = (FIRAuth.auth()?.currentUser?.uid)!
                 
-               self.performSegue(withIdentifier: "gotoMain", sender: self)
-                
+                FBRef.child("Users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let dict = snapshot.value as? NSDictionary
+                    let username = dict?["username"] as? String!
+                    
+                    AppDelegate.user.username = username
+                       self.performSegue(withIdentifier: "gotoMain", sender: self)
+                   
+                })
+            
                 
             }
             else {
@@ -95,8 +125,9 @@ class logViewController: UIViewController {
             }
         })
         
-        AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text)
-        self.performSegue(withIdentifier: "gotoMain", sender: self)
+        AppDelegate.user.initialize(username: self.nametextField.text, email: self.emailtextField.text, password: self.passwordtextField.text)
+        
+        //self.performSegue(withIdentifier: "gotoMain", sender: self)
     }
     
     
@@ -120,7 +151,7 @@ class logViewController: UIViewController {
             
             
             user.setValuesForKeys(values)
-            
+        
             self.performSegue(withIdentifier: "gotoMain", sender: self)
             
            
@@ -147,6 +178,7 @@ class logViewController: UIViewController {
                 let values = ["username": name, "email": email, "password": password]
                 self.registerUserintoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
                 
+//                AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text)
             }
             else {
                 print("register error")

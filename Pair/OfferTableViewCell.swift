@@ -12,9 +12,15 @@ import Firebase
 
 public class OfferTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var descriptLabel: UILabel!
-   
-    @IBOutlet weak var jobLabel: UILabel!
+
+    
+    
+    @IBOutlet weak var offerLabel: UILabel!
+    
+    
+    @IBOutlet weak var offerPrice: UILabel!
+    
+    
     
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,9 +36,9 @@ public class OfferTableViewCell: UITableViewCell {
         
     }
     
-    public func configure(jobLabel: String, descriptionLabel:String){
-        self.jobLabel.text = jobLabel
-        self.descriptLabel.text = descriptionLabel
+    public func configure(offerLabel: String, offerPrice: String){
+        self.offerLabel.text = offerLabel
+        self.offerPrice.text = offerPrice
     }
     
 }

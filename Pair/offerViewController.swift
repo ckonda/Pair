@@ -16,28 +16,32 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
     var ref: FIRDatabaseReference!
     var dbHandle: FIRDatabaseHandle?
     var offerData = [OfferModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
 
         tableView.delegate = self
         tableView.dataSource = self
-        ref = FIRDatabase.database().reference().child("Offer");
+        ref = FIRDatabase.database().reference().child("Offers");
         ref.observe(FIRDataEventType.value, with: {(snapshot) in
             if snapshot.childrenCount>0{
                 self.offerData.removeAll()
                 for offer in snapshot.children.allObjects as![FIRDataSnapshot]{
                     //create object and initialize the values of it
                     let offer = offer.value as? [String: AnyObject]
-                    let offerTitle = offer?["title"] as! String?
+                    let offerType = offer?["offer"] as! String?
                     let offerPrice = offer?["price"] as! Int?
                     let offerUsername = offer?["username"]as! String?
-                    let offerDescription = offer?["description"]as! String?
-                   // let jobSkill = job?["skill"]
-                    let offerObject = OfferModel(offer: offerTitle, price: offerPrice,username: offerUsername, description: offerDescription)
+                    let offerSkill = offer?["skill"]as! String?
+                    let offerId = offer?["offerid"] as! String?
+                    let offerObject = OfferModel(offer: offerType, price: offerPrice,username: offerUsername, skill: offerSkill, offerid: offerId)
                     //append data
-                    self.offerData.append(offerObject)
+         
+                  //  self.offerData.append(offerObject)
+                    self.offerData.insert(offerObject, at: 0)
                 }
+                
                 self.tableView.reloadData()
             }
         })
@@ -65,11 +69,10 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "offerCell", for: indexPath) as! OfferTableViewCell
         let offer = offerData[indexPath.row]
-        cell.jobLabel.text = offer.offer
-        cell.descriptLabel.text = offer.username
+        cell.offerLabel.text = offer.offer
+        cell.offerPrice.text = String(describing: offer.price!)
         
-        
-        
+      
         
         return cell
     }
@@ -92,21 +95,17 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
     
         if (segue.identifier == "offerBid") {
             // initialize new view controller and cast it as your view controller
-            
-            if let offerbidView = segue.destination as? offerBidViewController{ //set segue destination to new vid
                 
-                offerbidView.selecteduserName = offerData[0].username!
-                offerbidView.selectedDescription = offerData[0].description!
                 
-
-             
-      
-            }
+                if let indexPath = self.tableView.indexPathForSelectedRow{
+                    let offerbidView = segue.destination as? offerBidViewController
+                    
+                    offerbidView?.selecteduserName = offerData[indexPath.row].username!
+                    offerbidView?.selectedSkill = offerData[indexPath.row].skill!
+                    
+                }
         }
-    
-        
-        
-    }
+     }
     
     
     

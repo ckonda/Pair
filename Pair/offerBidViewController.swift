@@ -22,12 +22,14 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
     
     
     public var selecteduserName = String()
-    public var selectedDescription = String()
+    public var selectedSkill = String()
     public var selectedPrice = Int()
     //public var selectedLocation = String()
     
+    
+    
 
-    @IBOutlet weak var userDescription: UILabel!
+    @IBOutlet weak var userDescription: UILabel!//user Skill
     
     @IBOutlet weak var username: UILabel!
     
@@ -59,7 +61,6 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
         
         ref = dbRef.child("Offer").child("tutor")
  
-        
         if let text = bidEnter.text {//String to variable
             guard let bid = Int(text) else {//variable to integers to BID
                // return bid
@@ -67,20 +68,19 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
             }
             let selectedPrice = bid
             
-            ref = dbRef.child("Offer").child("tutor")
+            //ref = dbRef.child("Offer")
+            //child("tutor")
             
             let oldBid = ref.observe(FIRDataEventType.value, with: { (snapshot) in
                 
                 if let dict = snapshot.value as? NSDictionary  {
                     if let oldPrice = dict.value(forKey: "price"){
                         print(oldPrice)
-                        
                     }
                 }
                 else {
                     print("Bid is nil")
                 }
-                
             })
             
             let biddey = Int(oldBid)
@@ -104,16 +104,6 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var bidInvalid: UILabel!
     
-
-    
-    
-    
-    
-    
-    
-    
-    
-
     
     
     
@@ -125,8 +115,9 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
     
         bidEnter.delegate = self
         
-        username.text = selecteduserName
-        userDescription.text = selectedDescription
+        
+         username.text = selecteduserName
+        userDescription.text = selectedSkill
     //  offerPrice.text = selectedPrice as String
 
         

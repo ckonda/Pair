@@ -16,5 +16,17 @@ class Message: NSObject {
     var text: String?
     var timestamp: NSNumber?
     var toID: String?
+    var messageID: String?
+    
+    
+    
+    init(fromID:String?, text:String?, timestamp:NSNumber?, toID: String?, messageID: String?){
+        self.fromID = fromID
+        self.text = text
+        self.timestamp = timestamp
+        self.toID = toID
+        self.messageID = messageID
+        
+    }
     
 }

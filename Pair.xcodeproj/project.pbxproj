@@ -11,7 +11,7 @@
 		BA4AA9831E99DD1D001B1FDB /* JobsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4AA9821E99DD1D001B1FDB /* JobsTableViewCell.swift */; };
 		BA4AA9851E9AED55001B1FDB /* JobModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4AA9841E9AED55001B1FDB /* JobModel.swift */; };
 		BA66DB461E9EB2120048253A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66DB451E9EB2120048253A /* SWRevealViewController.m */; };
-		EE1445BF1E8B57BB000C9E51 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1445BE1E8B57BB000C9E51 /* ComposeViewController.swift */; };
+		EE1445BF1E8B57BB000C9E51 /* postComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1445BE1E8B57BB000C9E51 /* postComposeViewController.swift */; };
 		EE213E7F1E9837DC003999FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE213E7E1E9837DC003999FC /* GoogleService-Info.plist */; };
 		EE213E821E9AF155003999FC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE213E811E9AF155003999FC /* User.swift */; };
 		EE4EEBAD1E7614B50044FE39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4EEBAC1E7614B50044FE39 /* AppDelegate.swift */; };
@@ -27,6 +27,8 @@
 		EEC34F891E9D7C4000954927 /* OfferModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F881E9D7C4000954927 /* OfferModel.swift */; };
 		EEC34F8B1E9EAFBC00954927 /* offerComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F8A1E9EAFBC00954927 /* offerComposeViewController.swift */; };
 		EEC34F911E9F007E00954927 /* offerBidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F901E9F007E00954927 /* offerBidViewController.swift */; };
+		EEE3D8391EA5B360009C5DDC /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3D8381EA5B360009C5DDC /* MessagesTableViewCell.swift */; };
+		EEE3D83B1EA5CA6F009C5DDC /* messagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3D83A1EA5CA6F009C5DDC /* messagesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +40,7 @@
 		BA66DB441E9EB2120048253A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		BA66DB451E9EB2120048253A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		D0E93F1CA1F55F5228401C27 /* Pods-Pair.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pair.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pair/Pods-Pair.release.xcconfig"; sourceTree = "<group>"; };
-		EE1445BE1E8B57BB000C9E51 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		EE1445BE1E8B57BB000C9E51 /* postComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postComposeViewController.swift; sourceTree = "<group>"; };
 		EE213E7E1E9837DC003999FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE213E811E9AF155003999FC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EE4EEBA91E7614B50044FE39 /* Pair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pair.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +58,8 @@
 		EEC34F881E9D7C4000954927 /* OfferModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferModel.swift; sourceTree = "<group>"; };
 		EEC34F8A1E9EAFBC00954927 /* offerComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = offerComposeViewController.swift; sourceTree = "<group>"; };
 		EEC34F901E9F007E00954927 /* offerBidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = offerBidViewController.swift; sourceTree = "<group>"; };
+		EEE3D8381EA5B360009C5DDC /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
+		EEE3D83A1EA5CA6F009C5DDC /* messagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messagesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,12 +95,10 @@
 			isa = PBXGroup;
 			children = (
 				EEC34F801E9C763C00954927 /* logViewController.swift */,
-				EE1445BE1E8B57BB000C9E51 /* ComposeViewController.swift */,
-				EEC34F841E9D67E400954927 /* postViewController.swift */,
-				EEC34F8A1E9EAFBC00954927 /* offerComposeViewController.swift */,
-				EEC34F821E9D67D500954927 /* offerViewController.swift */,
-				EEC34F901E9F007E00954927 /* offerBidViewController.swift */,
-				EEC3383F1EA16F410024FC53 /* postBidViewController.swift */,
+				EEE3D83A1EA5CA6F009C5DDC /* messagesViewController.swift */,
+				EEE3D8311EA5A46B009C5DDC /* BidControllers */,
+				EEE3D82F1EA5A417009C5DDC /* ComposeControllers */,
+				EEE3D8301EA5A434009C5DDC /* MainControllers */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -117,6 +119,7 @@
 			children = (
 				BA4AA9821E99DD1D001B1FDB /* JobsTableViewCell.swift */,
 				EEC34F861E9D787800954927 /* OfferTableViewCell.swift */,
+				EEE3D8381EA5B360009C5DDC /* MessagesTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -156,6 +159,33 @@
 				BA66DB431E9EB2100048253A /* Pair-Bridging-Header.h */,
 			);
 			path = Pair;
+			sourceTree = "<group>";
+		};
+		EEE3D82F1EA5A417009C5DDC /* ComposeControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EE1445BE1E8B57BB000C9E51 /* postComposeViewController.swift */,
+				EEC34F8A1E9EAFBC00954927 /* offerComposeViewController.swift */,
+			);
+			name = ComposeControllers;
+			sourceTree = "<group>";
+		};
+		EEE3D8301EA5A434009C5DDC /* MainControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EEC34F841E9D67E400954927 /* postViewController.swift */,
+				EEC34F821E9D67D500954927 /* offerViewController.swift */,
+			);
+			name = MainControllers;
+			sourceTree = "<group>";
+		};
+		EEE3D8311EA5A46B009C5DDC /* BidControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EEC3383F1EA16F410024FC53 /* postBidViewController.swift */,
+				EEC34F901E9F007E00954927 /* offerBidViewController.swift */,
+			);
+			name = BidControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,12 +315,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEC338401EA16F410024FC53 /* postBidViewController.swift in Sources */,
+				EEE3D8391EA5B360009C5DDC /* MessagesTableViewCell.swift in Sources */,
 				EE4EEBAD1E7614B50044FE39 /* AppDelegate.swift in Sources */,
 				BA4AA9831E99DD1D001B1FDB /* JobsTableViewCell.swift in Sources */,
 				EEC34F811E9C763C00954927 /* logViewController.swift in Sources */,
 				EEC34F911E9F007E00954927 /* offerBidViewController.swift in Sources */,
+				EEE3D83B1EA5CA6F009C5DDC /* messagesViewController.swift in Sources */,
 				EEC34F891E9D7C4000954927 /* OfferModel.swift in Sources */,
-				EE1445BF1E8B57BB000C9E51 /* ComposeViewController.swift in Sources */,
+				EE1445BF1E8B57BB000C9E51 /* postComposeViewController.swift in Sources */,
 				EE8D082F1EA41F0F00EF293E /* Message.swift in Sources */,
 				EE213E821E9AF155003999FC /* User.swift in Sources */,
 				EEC34F851E9D67E400954927 /* postViewController.swift in Sources */,

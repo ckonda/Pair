@@ -10,17 +10,17 @@ import Foundation
 
 public class JobModel{
     
-    public var job: String?
+    public var jobName: String?
     public var price: Int?
-//    public var skill: String?
     public var username: String?
     public var description: String?
+    public var postid : String?
     
-    init(job:String?, price:Int?, username:String?, description: String?){
-        self.job = job
+    init(jobName:String?, price:Int?, username:String?, description: String?, postid: String?){
+        self.jobName = jobName
         self.price = price
-      //  self.skill = skill
         self.username = username
         self.description = description
+        self.postid = postid
     }
 }

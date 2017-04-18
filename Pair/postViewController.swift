@@ -12,21 +12,27 @@ import FirebaseAuth
 
 class postViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
-    
     /*if revealViewController() != nil {
         openMenu.target
     }*/
     //openMenu.target = revealViewController()
     @IBOutlet weak var openMenu: UIBarButtonItem!
     
+    
     var ref: FIRDatabaseReference!
     var dbHandle: FIRDatabaseHandle?
     var jobData = [JobModel]()
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //self.tableView.reloadData()
+        //animateTable()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-                //openMenu.target = self.revealViewController()
-        //openMenu.action = Selector("revealToggle:")
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -42,24 +48,34 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let jobUsername = job?["username"] as! String?// username
                     //let jobSkill = job?["skill"]
                     let jobDescription = job?["description"] as! String?// job description
-                    let jobObject = JobModel(job: jobTitle , price: jobPrice ,  username: jobUsername , description: jobDescription )
+                    let jobId = job?["postid"] as! String?
+                    
+                    let jobObject = JobModel(jobName: jobTitle , price: jobPrice ,  username: jobUsername , description: jobDescription , postid: jobId)
                     //append data
-                    self.jobData.append(jobObject)
+                   // self.jobData.append(jobObject)
+                    
+                           self.jobData.insert(jobObject, at: 0)
                 }
-                self.tableView.reloadData()
+              // self.tableView.reloadData()
+      
+             self.animateTable()//animate in progress
+                
+                
+                
+                
 
             }
         })
-        
         
         if revealViewController() != nil{
             openMenu.target = revealViewController()
             openMenu.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-
-        
     }
+    
+    
+    
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -71,15 +87,68 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath) as! JobsTableViewCell
         let job = jobData[indexPath.row]
-        cell.postLabel.text = job.job
-        cell.descriptionLabel.text = job.username
+        cell.postLabel.text = job.jobName
+        cell.postPrice.text = String(describing: job.price!)
+        
+
+       // cell.descriptionLabel.text = job.username
         return cell
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let index = tableView.indexPathForSelectedRow?.row
+        performSegue(withIdentifier: "gotoBid", sender: index)
+        
     }
     
     
     
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+            if (segue.identifier == "gotoBid") {
+                // initialize new view controller and cast it as your view controller
+                if let indexPath = self.tableView.indexPathForSelectedRow{
+                    let postbidView = segue.destination as? postBidViewController
+                    
+                    postbidView?.selectedName = jobData[indexPath.row].jobName!
+                    postbidView?.selectedDescription = jobData[indexPath.row].description!
+                    postbidView?.selectedID = jobData[indexPath.row].postid!
+                
+                }
+            }
+    }
   
+    
+    
+    func animateTable(){
+        tableView.reloadData()
+        let cells = tableView.visibleCells//each individual cells size in cells
+        
+        let tableViewHeight = tableView.bounds.size.height
+        
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
+        }
+        var delayNum = 0//count the time delayed in animation
+        for cell in cells {
+            UIView.animate(withDuration: 1.75, delay: Double(delayNum) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+                
+            }, completion: nil)
+            delayNum += 1
+        }
+    }
+    
+    
+    
+    
+    
+
+
 
 }

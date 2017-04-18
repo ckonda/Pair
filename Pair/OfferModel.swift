@@ -12,14 +12,17 @@ public class OfferModel{
     
     public var offer: String?
     public var price: Int?
-    //public var skill: String?
     public var username: String?
-    public var description: String?
+    public var skill: String?
+    public var offerid: String?
     
-    init(offer:String?, price:Int?, username:String?, description: String?){
+    init(offer:String?, price:Int?, username:String?, skill: String?, offerid: String?){
         self.offer = offer
         self.price = price
         self.username = username
-        self.description = description
+        self.skill = skill
+        self.offerid = offerid
     }
+    
+    
 }
