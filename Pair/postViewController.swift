@@ -27,6 +27,8 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        //handleLogout()
         //self.tableView.reloadData()
         //animateTable()
     }
@@ -146,6 +148,22 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    
+    
+//    func handleLogout(){
+//        
+//        do {
+//            try FIRAuth.auth()?.signOut() //handles registration screen if user is not logged
+//        }catch let logoutError {//keeps them logged in
+//            print(logoutError)
+//        }
+//        
+////        let loginController = logViewController()
+////        loginController.postController = self
+////        
+////        present(loginController, animated: true, completion: nil)//logout controller animation
+////        
+//    }
     
     
     

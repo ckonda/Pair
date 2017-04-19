@@ -76,13 +76,13 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         
         let postRef =  self.ref?.child("Jobs").childByAutoId()
         let postId = postRef?.key
+        
         let postData = [
             "title": JobType,
             "price": JobPrice!,
             "description": JobDescription,
             "username": AppDelegate.user.userID!,
             "postid": postId!
-            
             ] as [String : Any]
         
         postRef?.setValue(postData)

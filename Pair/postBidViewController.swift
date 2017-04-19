@@ -67,29 +67,25 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         
         let date = Date()
         let calendar = Calendar.current
-        
         let hour = calendar.component(.hour, from: date)
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
+        let timestamp = "\(hour):\(minutes):\(seconds)"
+        
+        let messageRef = self.ref?.child("Messages").childByAutoId()
+        let messageID = messageRef?.key
+            let messageItem = [
+            "fromID": AppDelegate.user.userID!,
+            "toID": toID,
+            "timestamp": timestamp,
+            "text": messageexample,
+            "messageID": messageID!
+            ]  as [String : Any]
+        
+        messageRef?.setValue(messageItem)
+            
 
-        let timestamp = "hours = \(hour):\(minutes):\(seconds)"
         
-        
-        print(timestamp)
-    
-//        let messageKey = self.ref.child("Messages").childByAutoId()
-//        let messageID = messageKey.key
-//        
-//            let messageItem = [
-//            "fromID": AppDelegate.user.userID!,
-//            "toID": toID,
-//            "timestamp": timestamp,
-//            "text": messageexample,
-//            "messageID": messageID
-//            ]  as [String : Any]
-//            
-//        messageKey.setValue(messageItem)
-//        
         
         dismiss(animated: true, completion: nil)
         
@@ -103,10 +99,8 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         jobDescription.text = selectedDescription
         jobName.text = selectedName
         
-
         
-        
-        
+        ref = FIRDatabase.database().reference()
         
   
         

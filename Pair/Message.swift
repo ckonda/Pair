@@ -14,13 +14,13 @@ class Message: NSObject {
     
     var fromID: String?
     var text: String?
-    var timestamp: NSNumber?
+    var timestamp: String?
     var toID: String?
     var messageID: String?
     
     
     
-    init(fromID:String?, text:String?, timestamp:NSNumber?, toID: String?, messageID: String?){
+    init(fromID:String?, text:String?, timestamp:String?, toID: String?, messageID: String?){
         self.fromID = fromID
         self.text = text
         self.timestamp = timestamp

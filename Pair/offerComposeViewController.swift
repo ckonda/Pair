@@ -75,8 +75,6 @@ class offerComposeViewController: UIViewController, UITextFieldDelegate {
         let postRef =  self.ref?.child("Offers").childByAutoId()
         let offerId = postRef?.key
 
-        
-        
         let offerData = [
         "title": OfferType,
         "price": OfferPrice!,

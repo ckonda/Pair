@@ -21,19 +21,23 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     var senderDisplayName: String?
   //  var newMessageTextField: UITextField?
-    private var messages = [Message]()//hold messages in block
-
-    private lazy var messageRef:FIRDatabaseReference = FIRDatabase.database().reference().child("Messages")
     
+    
+    var ref: FIRDatabaseReference!
+    
+    private lazy var messageRef: FIRDatabaseReference = FIRDatabase.database().reference().child("Messages")
     private var messageRefHandle: FIRDatabaseHandle?
     
+    
+
+
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "RW RIC"
         observeMessages()
-        
+        ref = FIRDatabase.database().reference()
         
      
         self.tableView.reloadData()
@@ -55,7 +59,7 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessagesTableViewCell
         
-        let message = messages[indexPath.row]
+        let message = messageData[indexPath.row]
         
         cell.fromID.text = message.fromID
         cell.timeStamp.text = String(describing: message.timestamp)
@@ -72,26 +76,48 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return messageData.count
     }
+    
+     var messageData = [Message]()
+    
+
     
     
     private func observeMessages(){
+
         
-        messageRefHandle = messageRef.observe(.childAdded, with: { (snapshot) in
-            let messagesData = snapshot.value as! Dictionary<String, AnyObject>
-            let messageID = snapshot.key
-            
-            if let name = messagesData["name"] as! String! {
-//                self.messages.append(Message(fromID: <#T##String?#>, text: <#T##String?#>, timestamp: <#T##NSNumber?#>, toID: <#T##String?#>, messageID: <#T##String?#>))
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        ref = FIRDatabase.database().reference().child("Messages");
+        ref.observe(FIRDataEventType.value, with: {(snapshot) in
+            if snapshot.childrenCount>0{
+                self.messageData.removeAll()
+                for messages in snapshot.children.allObjects as![FIRDataSnapshot]{
+                    //create object and initialize the values of it
+                    let message = messages.value as? [String: AnyObject]
+                    let fromID = message?["fromID"] as! String?//job type
+                    let text = message?["text"] as! String?//job price
+                    let timestamp = message?["timestamp"] as! String?// username
+                    let toID = message?["toID"] as! String?// job description
+                    let messageID = message?["messageID"] as! String?
+                    
+                    let messageObject = Message(fromID: fromID, text: text, timestamp: timestamp, toID: toID, messageID: messageID)
+                    //append data
+                    // self.jobData.append(jobObject)
+                    
+                    self.messageData.insert(messageObject, at: 0)
+                }
+                self.tableView.reloadData()
                 
-            }else{
-                print("could not decode channel data")
+                //self.animateTable()//animate in progress
+                
             }
-            
-            
-            
         })
+
+
+        
     }
     
     

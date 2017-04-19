@@ -22,6 +22,8 @@ class logViewController: UIViewController, UITextFieldDelegate {
         
    
     }
+    
+       var postController: postViewController?
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
 
