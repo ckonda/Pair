@@ -11,6 +11,9 @@ import Foundation
 
 public class MessagesTableViewCell: UITableViewCell {
     
+    
+    @IBOutlet weak var fromID: UILabel!
+    @IBOutlet weak var timeStamp: UILabel!
 
     
     public override func awakeFromNib() {
@@ -27,11 +30,11 @@ public class MessagesTableViewCell: UITableViewCell {
         
     }
     
-    public func configure(jobLabel: String, descriptionLabel:String){
+    public func configure(fromID: String, timeStamp: String){
         
-        
-//        self.jobLabel.text = jobLabel
-//        self.descriptLabel.text = descriptionLabel
+        self.fromID.text = fromID
+        self.timeStamp.text = timeStamp
+
     }
     
 }

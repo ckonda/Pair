@@ -108,16 +108,16 @@ class logViewController: UIViewController, UITextFieldDelegate {
                 
                 let userID: String = (FIRAuth.auth()?.currentUser?.uid)!
                 
+                
                 FBRef.child("Users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
                     let dict = snapshot.value as? NSDictionary
                     let username = dict?["username"] as? String!
                     
+                    AppDelegate.user.initialize(username: self.nametextField.text, email: self.emailtextField.text, password: self.passwordtextField.text, userID: userID )
+                    
                     AppDelegate.user.username = username
                        self.performSegue(withIdentifier: "gotoMain", sender: self)
-                   
                 })
-            
-                
             }
             else {
                 //ERROR: catch handle
@@ -125,14 +125,10 @@ class logViewController: UIViewController, UITextFieldDelegate {
             }
         })
         
-        AppDelegate.user.initialize(username: self.nametextField.text, email: self.emailtextField.text, password: self.passwordtextField.text)
+  
         
         //self.performSegue(withIdentifier: "gotoMain", sender: self)
     }
-    
-    
-    
-    
     
     
     func registerUserintoDatabaseWithUID(uid: String, values: [String: AnyObject]){
@@ -145,21 +141,22 @@ class logViewController: UIViewController, UITextFieldDelegate {
                 print(err!)
                 return
             }
-            
             let user = User()
             //this setter crashes if keys dont match
             
             
+      //  AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid)
+
             user.setValuesForKeys(values)
         
             self.performSegue(withIdentifier: "gotoMain", sender: self)
-            
-           
         })
     }
     
     
+    
     func handleRegister(){
+        print("1")
         
         guard let email = emailtextField.text, let password = passwordtextField.text, let name = nametextField.text else{
             
@@ -169,16 +166,24 @@ class logViewController: UIViewController, UITextFieldDelegate {
         //firebase authtification access( if not authenticated then throw error)
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             
+            print("2")
+            
             guard let uid = user?.uid else {
                 return
-                
             }
+            
             if user != nil {
                 
-                let values = ["username": name, "email": email, "password": password]
+                print("3")
+                let values = ["username": name, "email": email, "password": password, "userID": uid]
+                
+                AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid)
+                
+                //print(uid)
+                
                 self.registerUserintoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
                 
-//                AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text)
+             
             }
             else {
                 print("register error")

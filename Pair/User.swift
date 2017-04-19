@@ -13,11 +13,13 @@ public class User: NSObject {
     var username: String?
     var email: String?
     var password: String?
+    var userID: String?
     
-    func initialize(username: String?, email: String?, password: String?){
+    func initialize(username: String?, email: String?, password: String?,userID: String?){
         self.username = username;
         self.email = email;
         self.password = password;
+        self.userID = userID;
     }
     
     

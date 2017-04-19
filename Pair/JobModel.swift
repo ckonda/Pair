@@ -12,7 +12,7 @@ public class JobModel{
     
     public var jobName: String?
     public var price: Int?
-    public var username: String?
+    public var username: String?//userid
     public var description: String?
     public var postid : String?
     

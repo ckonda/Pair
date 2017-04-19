@@ -18,6 +18,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     
     public var postID = String()
     
+    private lazy var messageRef:FIRDatabaseReference = FIRDatabase.database().reference().child("Messages")
     
     
     public var selectedName = String()
@@ -25,6 +26,11 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     public var selectedPrice = Int()
     public var selectedID = String()//the ID for the current post
 
+    
+    public var toID = String()
+    
+    
+    
   
     
     @IBOutlet weak var cancelPost: UIBarButtonItem!
@@ -34,7 +40,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var jobDescription: UILabel!
     
-    
+
     
     
     
@@ -54,12 +60,38 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    var messageexample = "hello"
+    
     
     @IBAction func bidButton(_ sender: Any) {
         
-   
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        let seconds = calendar.component(.second, from: date)
+
+        let timestamp = "hours = \(hour):\(minutes):\(seconds)"
         
         
+        print(timestamp)
+    
+//        let messageKey = self.ref.child("Messages").childByAutoId()
+//        let messageID = messageKey.key
+//        
+//            let messageItem = [
+//            "fromID": AppDelegate.user.userID!,
+//            "toID": toID,
+//            "timestamp": timestamp,
+//            "text": messageexample,
+//            "messageID": messageID
+//            ]  as [String : Any]
+//            
+//        messageKey.setValue(messageItem)
+//        
+        
+        dismiss(animated: true, completion: nil)
         
         
     }

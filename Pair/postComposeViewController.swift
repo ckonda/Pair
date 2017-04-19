@@ -72,6 +72,7 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         let JobType = jobType.text!
         let JobDescription = jobDescription.text!
         let JobPrice = Int(jobPrice.text!)
+
         
         let postRef =  self.ref?.child("Jobs").childByAutoId()
         let postId = postRef?.key
@@ -79,8 +80,9 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
             "title": JobType,
             "price": JobPrice!,
             "description": JobDescription,
-            "username": AppDelegate.user.username!,
+            "username": AppDelegate.user.userID!,
             "postid": postId!
+            
             ] as [String : Any]
         
         postRef?.setValue(postData)
@@ -126,29 +128,26 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     
     
-    func displayLocationInfo(placemark: CLPlacemark)
+    func displayLocationInfo(placemark: CLPlacemark) -> String
     {
         self.locationManager.stopUpdatingLocation()
         print(placemark.locality!)
         print(placemark.postalCode!)
         print(placemark.administrativeArea!)
         print(placemark.country!)
+        
+        let location = placemark.country
+        
+        return location!
     }
+    
+    
+ 
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error: " + error.localizedDescription)
+        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
 

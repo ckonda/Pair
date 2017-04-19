@@ -12,7 +12,7 @@ public class OfferModel{
     
     public var offer: String?
     public var price: Int?
-    public var username: String?
+    public var username: String?//offer user id
     public var skill: String?
     public var offerid: String?
     

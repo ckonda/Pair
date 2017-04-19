@@ -81,7 +81,7 @@ class offerComposeViewController: UIViewController, UITextFieldDelegate {
         "title": OfferType,
         "price": OfferPrice!,
         "skill":OfferSkill,
-        "username": AppDelegate.user.username!,
+        "username": AppDelegate.user.userID!,
          "offerID": offerId!
         ] as [String : Any]
         
