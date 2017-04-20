@@ -20,6 +20,8 @@ class logViewController: UIViewController, UITextFieldDelegate {
         emailtextField.delegate = self
         passwordtextField.delegate = self
         
+        nametextField.isHidden = true
+        
    
     }
     
@@ -31,9 +33,13 @@ class logViewController: UIViewController, UITextFieldDelegate {
         
         if segmentedControl.selectedSegmentIndex == 0 {
             signinButton.setTitle("Sign in", for: .normal)
+            nametextField.isHidden = true
+            
             handleLoginRegister()
 
         }else {
+            
+            nametextField.isHidden = false
             signinButton.setTitle("Join", for: .normal)
             handleLoginRegister()
 
