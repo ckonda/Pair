@@ -60,12 +60,6 @@ class logViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    
-    
-    
-    
-    
-    
     @IBOutlet weak var nametextField: UITextField!
     
     @IBOutlet weak var emailtextField: UITextField!
@@ -167,7 +161,6 @@ class logViewController: UIViewController, UITextFieldDelegate {
         }
         //firebase authtification access( if not authenticated then throw error)
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-            
             print("2")
             
             guard let uid = user?.uid else {
@@ -184,8 +177,6 @@ class logViewController: UIViewController, UITextFieldDelegate {
                 //print(uid)
                 
                 self.registerUserintoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
-                
-             
             }
             else {
                 print("register error")
@@ -197,6 +188,7 @@ class logViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+
     
     
   

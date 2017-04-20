@@ -29,6 +29,8 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         
+       // let newPlace = self.displayLocationInfo(placemark: CLPlacemark)
+        
         
         jobType.delegate = self
         jobDescription.delegate = self
@@ -87,7 +89,7 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         
         postRef?.setValue(postData)
         
-       dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -106,27 +108,21 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: { (placemarks, error) in
-            
             if error != nil
             {
                 print("Error: " + "(error?.localizedDescription)")
                 return
             }
-            
             if (placemarks?.count)! > 0
             {
                 let pm = placemarks?[0]
                 self.displayLocationInfo(placemark: pm!)
-                
             }
-    
-            
         })
     }
     
-    
+
     
     func displayLocationInfo(placemark: CLPlacemark) -> String
     {
@@ -141,8 +137,7 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         return location!
     }
     
-    
- 
+
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error: " + error.localizedDescription)

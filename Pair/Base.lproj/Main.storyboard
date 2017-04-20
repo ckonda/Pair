@@ -376,6 +376,7 @@
                                         <connections>
                                             <outlet property="fromID" destination="G71-f2-tnd" id="ixB-6f-GNr"/>
                                             <outlet property="timeStamp" destination="Jg1-9p-vrE" id="qRl-0X-rFI"/>
+                                            <segue destination="lRo-cP-1us" kind="show" identifier="gotoMessage" id="Wnj-1c-7m5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -403,45 +404,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="niG-kC-tZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5852" y="-1096.1019490254873"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="5Pz-BE-8eD">
-            <objects>
-                <viewController id="JOX-La-Kll" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LBM-gl-GcX"/>
-                        <viewControllerLayoutGuide type="bottom" id="9Gc-Dh-YNw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xWJ-wW-tQT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Bh-Px-NHC">
-                                <rect key="frame" x="0.0" y="600" width="375" height="67"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="lRo-cP-1us" kind="embed" id="cvi-8F-lVG"/>
-                                </connections>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yI8-QK-5hz">
-                                <rect key="frame" x="301" y="618" width="74" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Send"/>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3tg-sK-gea">
-                                <rect key="frame" x="6" y="618" width="293" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HLB-7d-D6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6677.6000000000004" y="-1226.5367316341831"/>
         </scene>
         <!--Post Bid View Controller-->
         <scene sceneID="Tl0-Fz-qUL">
@@ -760,23 +722,23 @@
             </objects>
             <point key="canvasLocation" x="7293.6000000000004" y="1307.4962518740631"/>
         </scene>
-        <!--View Controller-->
+        <!--Chat View Controller-->
         <scene sceneID="M1G-4v-kFU">
             <objects>
-                <viewController id="lRo-cP-1us" sceneMemberID="viewController">
+                <viewController id="lRo-cP-1us" customClass="chatViewController" customModule="Pair" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rpe-wO-GkW"/>
                         <viewControllerLayoutGuide type="bottom" id="nFc-Gt-u5Y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="E7v-tH-pr7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUi-2i-9NQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6604" y="-779"/>
+            <point key="canvasLocation" x="6650" y="-1162"/>
         </scene>
         <!--Post Compose View Controller-->
         <scene sceneID="5V1-YX-1QM">
