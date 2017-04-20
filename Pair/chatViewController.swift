@@ -157,7 +157,6 @@ class chatViewController: JSQMessagesViewController {
     
     
     
-    
     private func observeMessages() {
         print("entered obserev messages")
        // messageRef = messageRef.child("Messages")
