@@ -16,7 +16,10 @@ class chatViewController: JSQMessagesViewController {
     var newMessageRefHandle: FIRDatabaseHandle?
     
     
-   // private lazy var messageRef: FIRDatabaseReference = self.messageRef.child("Messages")
+   // var messageRef: FIRDatabaseReference = self.messageRef.child("Messages")
+    
+    
+    var messageRef = FIRDatabase.database().reference().child("Messages")
     var ref: FIRDatabaseReference!
     
     var messages = [JSQMessage]()
@@ -60,7 +63,7 @@ class chatViewController: JSQMessagesViewController {
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
-     //   observeMessages()
+        observeMessages()
         
         self.senderId = FIRAuth.auth()?.currentUser?.uid
        
@@ -154,29 +157,35 @@ class chatViewController: JSQMessagesViewController {
     
     
     
-//    
-//    private func observeMessages() {
-//        messageRef = messageRef.child("Messages")
-//    
-//        let messageQuery = messageRef.queryLimited(toLast:25)
-//        
-//         //We can use the observe method to listen for new
-//        // messages being written to the Firebase DB
-//        newMessageRefHandle = messageQuery.observe(.childAdded, with: { (snapshot) -> Void in
-//        
-//            let messageData = snapshot.value as! Dictionary<String, String>
-//            
-//            if let id = messageData["senderId"] as String!, let name = messageData["senderName"] as String!, let text = messageData["text"] as String!, text.characters.count > 0 {
-//            
-//                self.addMessage(withId: self.selectedMessageID, name: "Chatan", text: self.selectedText)
-//                
-//        
-//                self.finishReceivingMessage()
-//            } else {
-//                print("Error! Could not decode message data")
-//            }
-//        })
-//    }
+    
+    private func observeMessages() {
+        print("entered obserev messages")
+       // messageRef = messageRef.child("Messages")
+        print("messageRef declared")
+        let messageQuery = messageRef.queryLimited(toLast:25)
+        
+         //We can use the observe method to listen for new
+        // messages being written to the Firebase DB
+        newMessageRefHandle = messageQuery.observe(.childAdded, with: { (snapshot) -> Void in
+        
+            let messageData = snapshot.value as! Dictionary<String, String>
+            
+            print(snapshot.value!)
+            
+            if let fromid = messageData["fromID"] as String!, let name = messageData["toID"] as String!, let text = messageData["text"] as String!, let timestamp = messageData["timestamp"], let messageid = messageData["messageID"] {
+            
+                self.addMessage(withId: self.selectedMessageID, name: "Chatan", text: self.selectedText)
+                
+                print(self.selectedMessageID)
+                print(self.selectedText)
+                
+        
+                self.finishReceivingMessage()
+            } else {
+                print("Error! Could not decode message data")
+            }
+        })
+    }
     
 //    
 //    senderId
