@@ -84,7 +84,8 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
             "price": JobPrice!,
             "description": JobDescription,
             "username": AppDelegate.user.userID!,
-            "postid": postId!
+            "postid": postId!,
+            "name": AppDelegate.user.username!
             ] as [String : Any]
         
         postRef?.setValue(postData)

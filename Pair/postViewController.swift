@@ -51,8 +51,9 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
                     //let jobSkill = job?["skill"]
                     let jobDescription = job?["description"] as! String?// job description
                     let jobId = job?["postid"] as! String?
+                    let name = job?["name"] as! String?
                     
-                    let jobObject = JobModel(jobName: jobTitle , price: jobPrice ,  username: jobUsername , description: jobDescription , postid: jobId)
+                    let jobObject = JobModel(jobName: jobTitle , price: jobPrice ,  username: jobUsername , description: jobDescription , postid: jobId, name: name)
                     //append data
                    // self.jobData.append(jobObject)
                     

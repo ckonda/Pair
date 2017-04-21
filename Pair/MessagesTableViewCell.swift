@@ -12,7 +12,9 @@ import Foundation
 public class MessagesTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var fromID: UILabel!
+
+    @IBOutlet weak var senderName: UILabel!
+    
     @IBOutlet weak var timeStamp: UILabel!
 
     
@@ -30,9 +32,9 @@ public class MessagesTableViewCell: UITableViewCell {
         
     }
     
-    public func configure(fromID: String, timeStamp: String){
+    public func configure(senderName: String, timeStamp: String){
         
-        self.fromID.text = fromID
+        self.senderName.text = senderName
         self.timeStamp.text = timeStamp
 
     }

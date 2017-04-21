@@ -374,7 +374,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="fromID" destination="G71-f2-tnd" id="ixB-6f-GNr"/>
+                                            <outlet property="senderName" destination="G71-f2-tnd" id="V4m-B0-HHc"/>
                                             <outlet property="timeStamp" destination="Jg1-9p-vrE" id="qRl-0X-rFI"/>
                                             <segue destination="lRo-cP-1us" kind="show" identifier="gotoMessage" id="Wnj-1c-7m5"/>
                                         </connections>

@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 
 
+
 class postBidViewController: UIViewController, UITextFieldDelegate {
     
     
@@ -72,21 +73,22 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         let seconds = calendar.component(.second, from: date)
         let timestamp = "\(hour):\(minutes):\(seconds)"
         
-        let messageRef = self.ref?.child("Messages").childByAutoId()
-        let messageID = messageRef?.key
+        let messageRef = self.ref?.child("Messages").childByAutoId()//new channel created
+        let channelID = messageRef?.key//key for channel ID
+        let newRef = messageRef?.childByAutoId()//message ID created
+        let newKey = newRef?.key//key for message ID
             let messageItem = [
             "fromID": AppDelegate.user.userID!,
             "toID": toID,
             "timestamp": timestamp,
             "text": messageexample,
-            "messageID": messageID!
+            "messageID": newKey!,
+            "channelID": channelID!,
+            "name": AppDelegate.user.username!
             ]  as [String : Any]
         
-        messageRef?.setValue(messageItem)
+        newRef?.setValue(messageItem)
             
-
-        
-        
         dismiss(animated: true, completion: nil)
         
         

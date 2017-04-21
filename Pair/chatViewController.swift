@@ -33,6 +33,8 @@ class chatViewController: JSQMessagesViewController {
     public var selectedtimeStamp = String()
     public var selectedMessageID = String()//the ID for the current post
     public var selectedText = String()
+    
+    public var selectedchannelID = String()//channel ID for the post
 
     
 //    "fromID": message?.fromID,
@@ -46,7 +48,7 @@ class chatViewController: JSQMessagesViewController {
     
     var message: Message?{
         didSet{
-            title = "hello"//message?.fromID
+            title = "greetings"//message?.fromID
         }
     }
     
@@ -65,7 +67,7 @@ class chatViewController: JSQMessagesViewController {
         
         observeMessages()
         
-        self.senderId = FIRAuth.auth()?.currentUser?.uid
+        //self.senderId = FIRAuth.auth()?.currentUser?.uid
        
     }
     
@@ -135,7 +137,7 @@ class chatViewController: JSQMessagesViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
         
-        let ref = FIRDatabase.database().reference().child("Messages")
+        let ref = FIRDatabase.database().reference().child("Messages").child(selectedchannelID)
         let itemRef = ref.childByAutoId()
      //   let itemKey = itemRef.key
         
@@ -143,8 +145,9 @@ class chatViewController: JSQMessagesViewController {
         "fromID": selectedfromID,
         "toID": selectedtoID,
         "timestamp": selectedtimeStamp,
-        "text": selectedText,
-        "messageID": selectedMessageID
+        "text": (AppDelegate.user.username! + ":" + selectedText),
+        "messageID": selectedMessageID,
+        "channelID": selectedchannelID
         ]
         
         itemRef.setValue(messageItem)

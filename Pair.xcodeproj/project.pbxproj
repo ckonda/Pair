@@ -21,6 +21,7 @@
 		EE4EEBB71E7614B50044FE39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE4EEBB51E7614B50044FE39 /* LaunchScreen.storyboard */; };
 		EE8D082F1EA41F0F00EF293E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8D082E1EA41F0F00EF293E /* Message.swift */; };
 		EEBAC1871EA7DAAF00BE22F9 /* chatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */; };
+		EEBAC1891EA9809D00BE22F9 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAC1881EA9809D00BE22F9 /* Channel.swift */; };
 		EEC338401EA16F410024FC53 /* postBidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC3383F1EA16F410024FC53 /* postBidViewController.swift */; };
 		EEC34F811E9C763C00954927 /* logViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F801E9C763C00954927 /* logViewController.swift */; };
 		EEC34F831E9D67D500954927 /* offerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F821E9D67D500954927 /* offerViewController.swift */; };
@@ -54,6 +55,7 @@
 		EE4EEBB81E7614B50044FE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE8D082E1EA41F0F00EF293E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatViewController.swift; sourceTree = "<group>"; };
+		EEBAC1881EA9809D00BE22F9 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		EEC3383F1EA16F410024FC53 /* postBidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postBidViewController.swift; sourceTree = "<group>"; };
 		EEC34F801E9C763C00954927 /* logViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logViewController.swift; sourceTree = "<group>"; };
 		EEC34F821E9D67D500954927 /* offerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = offerViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				BA4AA9841E9AED55001B1FDB /* JobModel.swift */,
 				EEC34F881E9D7C4000954927 /* OfferModel.swift */,
 				EE8D082E1EA41F0F00EF293E /* Message.swift */,
+				EEBAC1881EA9809D00BE22F9 /* Channel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEC338401EA16F410024FC53 /* postBidViewController.swift in Sources */,
+				EEBAC1891EA9809D00BE22F9 /* Channel.swift in Sources */,
 				EEE3D8391EA5B360009C5DDC /* MessagesTableViewCell.swift in Sources */,
 				EE4EEBAD1E7614B50044FE39 /* AppDelegate.swift in Sources */,
 				BA4AA9831E99DD1D001B1FDB /* JobsTableViewCell.swift in Sources */,
