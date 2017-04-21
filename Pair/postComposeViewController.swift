@@ -14,25 +14,38 @@ import CoreLocation
 class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
     var ref: FIRDatabaseReference?
+    //var location: CLLocation! //to store location
     
-    let locationManager = CLLocationManager()
-    var LocCity:String? = nil
+    
+    lazy var locationManager: CLLocationManager = {
+        let _locationManager = CLLocationManager()
+        _locationManager.requestWhenInUseAuthorization()
+        // adjsut _locationManager
+        return _locationManager
+    }()
+    //let locationManager = CLLocationManager()
+    //var LocCity:String? = nil
   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ref = FIRDatabase.database().reference()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
         
-        
-        self.locationManager.delegate = self
+      /*  self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         
+ */
         
         jobType.delegate = self
         jobDescription.delegate = self
         jobPrice.delegate = self
+        //location1.delegate = self
     }
     
     
@@ -52,14 +65,14 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     @IBOutlet weak var jobPrice: UITextField!
     
-    
-    
+   // @IBOutlet weak var location1: UITextField!
+    var location1 = "Merced, CA"
     
     func textFieldShouldReturn(_ jobType: UITextField) -> Bool {
           self.jobType.resignFirstResponder()
           self.jobDescription.resignFirstResponder()
           self.jobPrice.resignFirstResponder()
-
+       // self.location1.resignFirstResponder()
      return true
     }
 
@@ -72,8 +85,19 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         let JobType = jobType.text!
         let JobDescription = jobDescription.text!
         let JobPrice = Int(jobPrice.text!)
+       // let location1 = self.location1.text!
 
+        //let location1 = location1.text!
         
+        //location2 = locationManager.location
+        //var long = "\(location.coordinate.longitude)"
+       // var lat = "\(location.coordinate.latitude)"
+        //print (location)
+        
+        //print (long)
+        //print (lat)
+        
+        print ("Hi my name is rahul")
         let postRef =  self.ref?.child("Jobs").childByAutoId()
         let postId = postRef?.key
         
@@ -82,7 +106,9 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
             "price": JobPrice!,
             "description": JobDescription,
             "username": AppDelegate.user.userID!,
-            "postid": postId!
+            "postid": postId!,
+            "location": location1
+            //"location": location!
             ] as [String : Any]
         
         postRef?.setValue(postData)
@@ -105,7 +131,7 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
 
     
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+  /*  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: { (placemarks, error) in
             
@@ -122,7 +148,6 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
                 
             }
     
-            
         })
     }
     
@@ -148,7 +173,7 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         print("Error: " + error.localizedDescription)
         
     }
-    
+    */
     
 
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A312a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -81,6 +81,10 @@
                                     <constraint firstItem="z3S-Iz-QjB" firstAttribute="leading" secondItem="dYc-kj-z3f" secondAttribute="leading" constant="60" id="p1M-D6-2jw"/>
                                 </constraints>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="YAMI" translatesAutoresizingMaskIntoConstraints="NO" id="Ybb-er-jfa">
+                                <rect key="frame" x="67" y="110" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -94,6 +98,7 @@
                         <outlet property="emailtextField" destination="S9O-hq-7Wf" id="SRx-GE-sF5"/>
                         <outlet property="nametextField" destination="aCa-d0-yUU" id="bLu-hk-aVd"/>
                         <outlet property="passwordtextField" destination="z3S-Iz-QjB" id="jbc-Ir-hOv"/>
+                        <outlet property="profilePicture" destination="Ybb-er-jfa" id="fdC-a4-KLH"/>
                         <outlet property="segmentedControl" destination="qg3-pw-NPe" id="u16-Do-4Dy"/>
                         <outlet property="signinButton" destination="Pzw-NM-kye" id="2z3-K2-JeU"/>
                         <segue destination="tai-9C-v37" kind="show" identifier="gotoMain" id="Csd-Ty-jSb"/>
@@ -101,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3327" y="-645"/>
+            <point key="canvasLocation" x="3325.5999999999999" y="-645.42728635682158"/>
         </scene>
         <!--Offer View Controller-->
         <scene sceneID="kbV-wa-IDx">
@@ -321,11 +326,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fxp-Rd-YJf">
+                                <rect key="frame" x="16" y="28" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6GF-Nm-Xl4">
+                                <rect key="frame" x="16" y="28" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3m-gh-Hb4">
+                                <rect key="frame" x="22" y="164" width="234" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Import Image"/>
+                                <connections>
+                                    <action selector="importImage:" destination="etK-ds-dhu" eventType="touchUpInside" id="5KA-Dn-bUj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="emailLabel" destination="Dcd-zV-Ebq" id="ULe-Sb-HRy"/>
+                        <outlet property="myImageView" destination="6GF-Nm-Xl4" id="CnF-uh-bYr"/>
                         <outlet property="uName" destination="zBq-rx-MyI" id="ysw-IC-vKn"/>
                     </connections>
                 </viewController>
@@ -877,4 +899,7 @@
             <point key="canvasLocation" x="7364" y="-131.78410794602701"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="YAMI" width="561" height="592"/>
+    </resources>
 </document>
