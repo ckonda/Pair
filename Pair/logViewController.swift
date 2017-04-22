@@ -10,11 +10,18 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class logViewController: UIViewController, UITextFieldDelegate {
+
+let defaults: UserDefaults = UserDefaults.standard
+
+class logViewController: UIViewController, UITextFieldDelegate ,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        profilePicture.isUserInteractionEnabled = true
+        profilePicture.addGestureRecognizer(tapGestureRecognizer)
         
         nametextField.delegate = self
         emailtextField.delegate = self
@@ -29,6 +36,61 @@ class logViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
 
+    @IBOutlet weak var profilePicture: UIImageView!
+    
+    
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("canceled picker")
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+        
+        // Your action
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        var selectedImageFromPicker: UIImage?
+        
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage
+        {
+            
+            
+            // info["UIImagePickerControllerOriginalImage"]
+            
+            selectedImageFromPicker = editedImage
+            //print (editedImage.size)
+        } else if let originalImage =
+            info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            
+            
+            selectedImageFromPicker = originalImage
+            //print(originalImage.size)
+            
+        }
+        
+        if let selectedImage = selectedImageFromPicker
+        {
+            profilePicture.image = selectedImage
+        }
+        dismiss(animated: true, completion: nil)
+        
+        //print(info)
+    }
+    
+    
+    
+    
     @IBAction func segmentedSelect(_ sender: UISegmentedControl) {
         
         if segmentedControl.selectedSegmentIndex == 0 {
@@ -75,7 +137,6 @@ class logViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signinButton: UIButton!
     
     @IBAction func signInButton(_ sender: UIButton) {
-        
         handleLoginRegister()
    
     }
@@ -115,7 +176,7 @@ class logViewController: UIViewController, UITextFieldDelegate {
                     let dict = snapshot.value as? NSDictionary
                     let username = dict?["username"] as? String!
                     
-                    AppDelegate.user.initialize(username: self.nametextField.text, email: self.emailtextField.text, password: self.passwordtextField.text, userID: userID )
+                    //AppDelegate.user.initialize(username: self.nametextField.text, email: self.emailtextField.text, password: self.passwordtextField.text, userID: userID )
                     
                     AppDelegate.user.username = username
                        self.performSegue(withIdentifier: "gotoMain", sender: self)
@@ -167,22 +228,50 @@ class logViewController: UIViewController, UITextFieldDelegate {
         }
         //firebase authtification access( if not authenticated then throw error)
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
+            
             print("2")
             
             guard let uid = user?.uid else {
                 return
             }
             
-            if user != nil {
+            // if user != nil {
+            
+            let imageName = NSUUID().uuidString
+            let storageRef = FIRStorage.storage().reference().child("\(imageName).png")
+            
+            let profileImage = self.profilePicture.image!
+            
+            
+            if let uploadData = UIImagePNGRepresentation(profileImage){
                 
-                print("3")
-                let values = ["username": name, "email": email, "password": password, "userID": uid]
+                storageRef.put(uploadData, metadata: nil, completion: {(metadata, error) in
+                    if error != nil {
+                        print(error!)
+                        return
+                    }
+                    
+                    
+                    if let profileImageUrl = metadata?.downloadURL()?.absoluteString{
+                        
+                        let values = ["username": name, "email": email, "password": password, "userID": uid, "profileImageUrl": profileImageUrl]
+                        
+                        AppDelegate.user.initialize(username: name, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid, profileImageUrl: profileImageUrl)
+                        
+                        
+                        self.registerUserintoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
+                        
+                        defaults.setValuesForKeys(values)
+                        
+                        
+                    }
+                    
+                    
+                })
+                // }
                 
-                AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid)
+                //  AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid, profileImageURL: profileImageUrl )
                 
-                //print(uid)
-                
-                self.registerUserintoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
             }
             else {
                 print("register error")
@@ -192,7 +281,7 @@ class logViewController: UIViewController, UITextFieldDelegate {
         })
         
     }
-    
+
     
 
     

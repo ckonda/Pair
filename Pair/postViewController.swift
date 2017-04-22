@@ -51,10 +51,11 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
                     //let jobSkill = job?["skill"]
                     let jobDescription = job?["description"] as! String?// job description
                     let jobId = job?["postid"] as! String?
+                    let jobImage = job?["profileImageUrl"] as! String?
                     let name = job?["name"] as! String?
                     let location = job?["location"] as! String?
                     
-                    let jobObject = JobModel(jobName: jobTitle , price: jobPrice ,  username: jobUsername , description: jobDescription , postid: jobId, name: name, location: location)
+                  let jobObject = JobModel(jobName: jobTitle , price: jobPrice , username: jobUsername , description: jobDescription , postid: jobId,profileImageUrl: jobImage ,location: location, name: name)
                     //append data
                    // self.jobData.append(jobObject)
                     
@@ -94,6 +95,36 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.postLabel.text = job.jobName
         cell.postPrice.text = String(describing: job.price!)
         cell.locationLabel.text = job.location
+        
+        
+        if let profileImage = job.profileImageUrl {
+            
+            let url = URL(string: profileImage)
+            print("before")
+            
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                if error != nil{
+                    print(error!)//download hit error so return out
+                }
+                
+                DispatchQueue.main.async(execute: {
+                
+                    cell.profilePic.image = UIImage(data: data!)
+                    
+                    
+                })
+                
+                
+            }).resume()
+        }
+
+        
+        
+        
+        
+        
+        
+        
         
 
        // cell.descriptionLabel.text = job.username

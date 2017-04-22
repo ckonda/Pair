@@ -24,8 +24,17 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         print(emailLabel.text!)
         print("\n")
-        emailLabel.text?.append( AppDelegate.user.email!)
-        uName.text?.append(AppDelegate.user.username!)
+       // emailLabel.text?.append(UserDefaults.standard.object(forKey: "email"))
+        
+        
+        
+        if let email = UserDefaults.standard.object(forKey: "email") as? String, let userName = UserDefaults.standard.object(forKey: "username") as? String
+        {
+            uName.text?.append(userName)
+           // emailLabel.text.append(email)
+        }
+        
+  
         print(emailLabel.text!)
         // Do any additional setup after loading the view.
     }

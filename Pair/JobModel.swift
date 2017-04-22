@@ -15,10 +15,11 @@ public class JobModel{
     public var username: String?//userid
     public var description: String?
     public var postid : String?
+    public var profileImageUrl: String?
     public var name: String?
     public var location: String?
     
-    init(jobName:String?, price:Int?, username:String?, description: String?, postid: String?, name: String?, location: String?){
+    init(jobName:String?, price:Int?, username:String?, description: String?, postid: String?, profileImageUrl: String?, location: String?, name: String?){
         self.jobName = jobName
         self.price = price
         self.username = username
@@ -26,5 +27,6 @@ public class JobModel{
         self.postid = postid
         self.name = name
         self.location = location
+        self.profileImageUrl = profileImageUrl
     }
 }
