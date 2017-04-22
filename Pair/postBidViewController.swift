@@ -80,13 +80,8 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         
         //print(messageRef3)
         
-        let channel: String = checkIfThreadExists(destID: toID)!
-        if channel == "" {
-            print("We will have to make a new Channel because there is no channel that holds these two users")
-        }
-        else{
-            print("we will continue our messages in the channel \(channel)")
-        }
+     
+      
         //print(messageRef2)
         //print(messageRef.value)
         let channelID = messageRef?.key//key for channel ID
@@ -109,60 +104,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func checkIfThreadExists(destID: String) -> String?{
-        //let var resultChannelID: String? = nil
-        var resultChannelID = ""
-        var breakLoop: BooleanLiteralType = false;
-        ref = FIRDatabase.database().reference().child("Messages");
-        ref.observe(FIRDataEventType.value, with: {(snapshot) in
-            if snapshot.childrenCount>0{
-                //var resultChannelID = ""
-                let enumerator = snapshot.children
-                while let rest = enumerator.nextObject() as? FIRDataSnapshot {
-                    let newObj = rest.children
-                    while let rest1 = newObj.nextObject() as? FIRDataSnapshot{
-                        // let messageInfo = rest1.children
-                        let dataDict =  rest1.value as? NSDictionary
-                        let sourceIDDB = dataDict?["fromID"] as! String?;
-                        let destIDDB = dataDict?["toID"] as! String?;
-                        let text = dataDict?["text"];
-                        let name = dataDict?["name"];
-                        let timestamp = dataDict?["timestamp"];
-                        let channelID = dataDict?["channelID"] as? String!;
-                        let messageID = dataDict?["messageID"];
-
-                        if(sourceIDDB == AppDelegate.user.userID && destIDDB == destID){
-                            print("Channel: \(channelID!)")
-                            print("Sending from: \(AppDelegate.user.userID)")
-                            print("Sending to: \(destID)")
-                            //return channelID
-                            resultChannelID = channelID!
-                            print("resultChannelID after one of the if else: \(channelID!!)")
-                        }
-                        else if(sourceIDDB == destID && destIDDB == AppDelegate.user.userID){
-                            print("Channel: \(channelID!)")
-                            print("Sending from: \(AppDelegate.user.userID)")
-                            print("Sending to: \(destID)")
-                            //return channelID
-                            resultChannelID = channelID!
-                            print("resultChannelID after one of the if else: \(channelID!!)")
-                        }
-                        else{
-                            //print("Channel not between \(AppDelegate.user.userID) and \(destID)")
-                            continue
-                        }
-                        print("channel id result = \(resultChannelID)")
-                    }
-                    //print("success")
-                }
-                
-            }
-            return resultChannelID
-        })
-        //print("resultChannelID = \(resultChannelID)")
-        //return resultChannelID
-    }
-
+   
 
 
 

@@ -83,11 +83,13 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
             "title": JobType,
             "price": JobPrice!,
             "description": JobDescription,
-            "username": AppDelegate.user.userID!,
+            "name": UserDefaults.standard.object(forKey: "username")!,
             "postid": postId!,
-            "name": AppDelegate.user.username!,
-            "location": "Merced,CA"
+            "location": "Merced, CA",
+            "username": UserDefaults.standard.object(forKey: "userID")!,
+            "profileImageUrl": UserDefaults.standard.object(forKey: "profileImageUrl")!
             ] as [String : Any]
+        
         
         postRef?.setValue(postData)
         
