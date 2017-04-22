@@ -78,6 +78,7 @@ class logViewController: UIViewController, UITextFieldDelegate, UIImagePickerCon
        var postController: postViewController?
 
    
+  
     @IBOutlet weak var profilePicture: UIImageView!
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -203,7 +204,8 @@ class logViewController: UIViewController, UITextFieldDelegate, UIImagePickerCon
             
             //AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid, profileImageURL: profileImageUrl )
 
-            user.setValuesForKeys(values)
+            //user.setValuesForKeys(values)
+            
             
             print("3")
         
@@ -213,6 +215,61 @@ class logViewController: UIViewController, UITextFieldDelegate, UIImagePickerCon
         
         //let values = ["username": name, "email": email, "password": password, "userID": uid, "profileImageURL": metadata.downloadUrl()]
     }
+    
+    
+    
+    
+    
+    
+    
+//    func handleRegister(){
+//        
+//        guard let email = emailTextField.text, let password = passwordTextField.text, let name = nameTextField.text else{
+//            
+//            print("Service Unavailable, Please try again")
+//            return//if all fields not filled out completely, logout
+//        }
+//        //firebase authtification access( if not authenticated then throw error)
+//        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
+//            
+//            if error != nil{
+//                print(error!)
+//                return
+//            }
+//            
+//            guard let uid = user?.uid else {
+//                return
+//                
+//            }
+//            //user has been authenticated
+//            let imageName = NSUUID().uuidString//unique uid stored in imagename
+//            let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpeg")
+//            
+//            
+//            
+//            if let profileImage = self.profileImageView.image, let uploadData = UIImageJPEGRepresentation(profileImage, 0.1){
+//                
+//                //  if let uploadData = UIImagePNGRepresentation(self.profileImageView.image!){
+//                
+//                storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+//                    if error != nil {
+//                        print(error!)
+//                        return
+//                    }
+//                    if let profileImageUrl =  metadata?.downloadURL()?.absoluteString{
+//                        let values = ["name": name, "email": email, "profileImageUrl": profileImageUrl]
+//                        
+//                        self.registerUserintoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
+//                    }
+//                })
+//            }
+//            
+//        })
+//        print("Thank you")
+//    }
+//    
+//    
+    
     
     
     
@@ -233,13 +290,15 @@ class logViewController: UIViewController, UITextFieldDelegate, UIImagePickerCon
                 return
             }
             
-            
-            
             if user != nil {
                 
-                let storageRef = FIRStorage.storage().reference().child("myImage.png")
+                let imageName = NSUUID().uuidString
+                let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpeg")
                 
-                if let uploadData = UIImagePNGRepresentation(self.profilePicture.image!){
+                let profileImage = self.profilePicture.image!
+                
+                
+                if let uploadData = UIImagePNGRepresentation(profileImage){
                     
                     storageRef.put(uploadData, metadata: nil, completion: {(metadata, error) in
                         
@@ -254,7 +313,7 @@ class logViewController: UIViewController, UITextFieldDelegate, UIImagePickerCon
                             let values = ["username": name, "email": email, "password": password, "userID": uid, "profileImageURL": profileImageUrl]
                             
                             
-                              AppDelegate.user.initialize(username: name, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid, profileImageUrl: profileImageUrl)
+                              AppDelegate.user.initialize(username: name, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid, profileImageUrl: "newphoto")
                             
                             
                             self.registerUserintoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
