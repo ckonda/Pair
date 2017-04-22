@@ -52,8 +52,9 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let jobDescription = job?["description"] as! String?// job description
                     let jobId = job?["postid"] as! String?
                     let name = job?["name"] as! String?
+                    let location = job?["location"] as! String?
                     
-                    let jobObject = JobModel(jobName: jobTitle , price: jobPrice ,  username: jobUsername , description: jobDescription , postid: jobId, name: name)
+                    let jobObject = JobModel(jobName: jobTitle , price: jobPrice ,  username: jobUsername , description: jobDescription , postid: jobId, name: name, location: location)
                     //append data
                    // self.jobData.append(jobObject)
                     
@@ -92,6 +93,7 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         let job = jobData[indexPath.row]
         cell.postLabel.text = job.jobName
         cell.postPrice.text = String(describing: job.price!)
+        cell.locationLabel.text = job.location
         
 
        // cell.descriptionLabel.text = job.username

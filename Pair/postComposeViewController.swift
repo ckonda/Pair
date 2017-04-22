@@ -85,7 +85,8 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
             "description": JobDescription,
             "username": AppDelegate.user.userID!,
             "postid": postId!,
-            "name": AppDelegate.user.username!
+            "name": AppDelegate.user.username!,
+            "location": "Merced,CA"
             ] as [String : Any]
         
         postRef?.setValue(postData)

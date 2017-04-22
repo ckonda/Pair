@@ -18,6 +18,9 @@ public class JobsTableViewCell: UITableViewCell {
     @IBOutlet weak var postPrice: UILabel!
     
     
+    @IBOutlet weak var locationLabel: UILabel!
+    
+    
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,10 +31,11 @@ public class JobsTableViewCell: UITableViewCell {
      
     }
     
-    public func configure(postLabel: String, postPrice:String){
+    public func configure(postLabel: String, postPrice:String, locationLabel: String){
         self.postLabel.text = postLabel
 //        self.descriptionLabel.text = descriptionLabel
         self.postPrice.text = postPrice
+        self.locationLabel.text = locationLabel
     }
 
 }

@@ -148,100 +148,32 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         ref.observe(FIRDataEventType.value, with: {(snapshot) in
             if snapshot.childrenCount>0{
                 self.messageData.removeAll()
-                for thread in snapshot.children.allObjects as![FIRDataSnapshot]{
+                
+                let enumerator = snapshot.children
+                
+                while let rest = enumerator.nextObject() as? FIRDataSnapshot {
+                    //print("..")
                     
-                    print("thread\(thread.key)")
-                    let childRef = FIRDatabase.database().reference().child("Messages").child(thread.key)
-                    print("childRef\(childRef)")
-                    childRef.observe(.value, with: { (childSnapshot) in
-                        print("child JSON of \(thread.key)")
-                        for child in snapshot.children.allObjects as![FIRDataSnapshot]{
+                    //print(rest.key)
                     
-                              //print(child.key)
-                            let newRef = childRef.child(child.key)
-                            
-                       
-                            
-                            
-                            
-//                            let dict1 = snapshot.value as? NSDictionary
-//                            let values = dict1?.allValues
-//                            
-//                            print(values!)
-//                            
-        
-                           
-//                            print(child)
-//                            let childObj = child.value as? [String: AnyObject]
-//                            let child2Obj = childObj?[thread.key as! String] as? [String: AnyObject]
-//                            print("thread\(thread.key)")
-//                            print(childObj!)
-//                            print(child2Obj)
-//                            let name = childObj?["name"] as! String?
-//                            let text = childObj?["text"] as! String?
-//                            print("name: \(name) text: \(text)")
-                            //let name = child?
-                        }
-                        
-                    })
-                    //let childJSON = JSONSerialization
-                    //print(thread.children
-                    //let messageArr = thread.children.allObjects as! [String: AnyObject]
-                    //print(threadID.child())
-                    
-                    //print("loop iter")
-                    //print("threadChildRef: \(threadChildRef)")
-                    //var newRef = new Firebase(url: thread.key)
-                    //print("threadChildRef \(threadChildRef.)")
-                    /*self.ref.child(thread.key).observe(FIRDataEventType.value, with: { (messageSnapshot) in
-                        if(snapshot.childrenCount > 0){
-                            for messages in messageSnapshot.children.allObjects as! [FIRDataSnapshot]{
-                                
-                                let message = messages.value as? [String: AnyObject]
-                                let fromID = message?["fromID"] as! String?//job type
-                                let text = message?["text"] as! String?//job price
-                                let timestamp = message?["timestamp"] as! String?// username
-                                let toID = message?["toID"] as! String?// job description
-                                let messageID = message?["messageID"] as! String?
-                                let channelID = message?["channelID"] as! String?
-                                let name = message?["name"] as! String?
-                                
-                                print("message:\(message!)")
-                                print("fromID: \(fromID!)")
-                                print("text: \(text!)")
-                                print("timestamp: \(timestamp!)")
-                                print("toID: \(toID!)")
-                                print("messageID: \(messageID!)")
-                                print("channelID: \(channelID!)")
-                                print("name: \(name!)")
+                    let newObj = rest.children
+                    while let rest1 = newObj.nextObject() as? FIRDataSnapshot{
+                       // let messageInfo = rest1.children
+                        let dataDict =  rest1.value as? NSDictionary
 
-                            }
-                        }
-                    })*/
-                    /*let message = messages.value as? [String: AnyObject]
-                    let fromID = message?["fromID"] as! String?//job type
-                    let text = message?["text"] as! String?//job price
-                    let timestamp = message?["timestamp"] as! String?// username
-                    let toID = message?["toID"] as! String?// job description
-                    let messageID = message?["messageID"] as! String?
-                    let channelID = message?["channelID"] as! String?
-                    let name = message?["name"] as! String?
-                    
-                    print(message!)
-                    print(fromID!)
-                    print(text!)
-                    print(timestamp!)
-                    print(toID!)
-                    print(messageID!)
-                    print(channelID!)
-                    print(name!)
-                    
-                    let messageObject = Message(fromID: fromID, text: text, timestamp: timestamp, toID: toID, messageID: messageID, channelID: channelID, name: name)
-                    //append data
-                    // self.jobData.append(jobObject)
-                    
-                    self.messageData.insert(messageObject, at: 0)*/
-                    
+                        let fromID = dataDict?["fromID"];
+                        let toID = dataDict?["toID"];
+                        let text = dataDict?["text"];
+                        let name = dataDict?["name"];
+                        let timestamp = dataDict?["timestamp"];
+                        let channelID = dataDict?["channelID"];
+                        let messageID = dataDict?["messageID"];
+                        
+                        let newMessageData = Message(fromID: fromID as? String, text: text as? String, timestamp: timestamp as? String, toID: toID as? String, messageID: messageID as? String, channelID: channelID as? String, name: name as? String)
+                        
+                        self.messageData.insert(newMessageData, at: 0)
+                    }
+
                 }
                 self.tableView.reloadData()
                 //self.animateTable()//animate in progress
@@ -253,7 +185,6 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         else{
             print("messageData is empty")
         }
-        
         
     }
     
