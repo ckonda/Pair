@@ -167,7 +167,9 @@ class logViewController: UIViewController, UITextFieldDelegate, UIImagePickerCon
                     let dict = snapshot.value as? NSDictionary
                     let username = dict?["username"] as? String!
                     
-                   // AppDelegate.user.initialize(username: self.nametextField.text, email: self.emailtextField.text, password: self.passwordtextField.text, userID: userID, profileImageUrl: profileImageUrl)
+                    
+                    
+              //     AppDelegate.user.initialize(username: self.nametextField.text, email: self.emailtextField.text, password: self.passwordtextField.text, userID: userID, profileImageUrl: profileImageUrl)
                     
                     AppDelegate.user.username = username
                        self.performSegue(withIdentifier: "gotoMain", sender: self)
@@ -197,17 +199,27 @@ class logViewController: UIViewController, UITextFieldDelegate, UIImagePickerCon
                 print(err!)
                 return
             }
+            
             let user = User()
+            
+            UserDefaults.setValuesForKeys(values)
+
+            
             //this setter crashes if keys dont match
             
-            
+//            for (key,entry) in values {
+//                
+//                user.setValue(entry, forKey: key)
+//                
+//            }
             
             //AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid, profileImageURL: profileImageUrl )
-
-            //user.setValuesForKeys(values)
             
+           //  user.setValuesForKeys(values)
+            //user.setValue(username, forKeyPath: "username")
+        
             
-            print("3")
+         
         
             self.performSegue(withIdentifier: "gotoMain", sender: self)
         })
@@ -222,55 +234,7 @@ class logViewController: UIViewController, UITextFieldDelegate, UIImagePickerCon
     
     
     
-//    func handleRegister(){
-//        
-//        guard let email = emailTextField.text, let password = passwordTextField.text, let name = nameTextField.text else{
-//            
-//            print("Service Unavailable, Please try again")
-//            return//if all fields not filled out completely, logout
-//        }
-//        //firebase authtification access( if not authenticated then throw error)
-//        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
-//            
-//            if error != nil{
-//                print(error!)
-//                return
-//            }
-//            
-//            guard let uid = user?.uid else {
-//                return
-//                
-//            }
-//            //user has been authenticated
-//            let imageName = NSUUID().uuidString//unique uid stored in imagename
-//            let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpeg")
-//            
-//            
-//            
-//            if let profileImage = self.profileImageView.image, let uploadData = UIImageJPEGRepresentation(profileImage, 0.1){
-//                
-//                //  if let uploadData = UIImagePNGRepresentation(self.profileImageView.image!){
-//                
-//                storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
-//                    if error != nil {
-//                        print(error!)
-//                        return
-//                    }
-//                    if let profileImageUrl =  metadata?.downloadURL()?.absoluteString{
-//                        let values = ["name": name, "email": email, "profileImageUrl": profileImageUrl]
-//                        
-//                        self.registerUserintoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
-//                    }
-//                })
-//            }
-//            
-//        })
-//        print("Thank you")
-//    }
-//    
-//    
-    
-    
+
     
     
     func handleRegister(){
@@ -290,10 +254,10 @@ class logViewController: UIViewController, UITextFieldDelegate, UIImagePickerCon
                 return
             }
             
-            if user != nil {
+           // if user != nil {
                 
                 let imageName = NSUUID().uuidString
-                let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpeg")
+                let storageRef = FIRStorage.storage().reference().child("\(imageName).png")
                 
                 let profileImage = self.profilePicture.image!
                 
@@ -301,43 +265,31 @@ class logViewController: UIViewController, UITextFieldDelegate, UIImagePickerCon
                 if let uploadData = UIImagePNGRepresentation(profileImage){
                     
                     storageRef.put(uploadData, metadata: nil, completion: {(metadata, error) in
-                        
                         if error != nil {
-                            
                             print(error!)
                             return
                         }
                         
-                        if let profileImageUrl = metadata?.downloadURL()?.absoluteString
-                        {
+                        
+                        if let profileImageUrl = metadata?.downloadURL()?.absoluteString{
+                            
+                            print(profileImageUrl)
+                           
                             let values = ["username": name, "email": email, "password": password, "userID": uid, "profileImageURL": profileImageUrl]
                             
+                            AppDelegate.user.initialize(username: name, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid, profileImageUrl: profileImageUrl)
                             
-                              AppDelegate.user.initialize(username: name, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid, profileImageUrl: "newphoto")
                             
+                           self.registerUserintoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
                             
-                            self.registerUserintoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
                         }
-                        
-                        
-                        
-                        
-                        
-                        //print(metadata)
-                        
+                    
+                      
                     })
-                }
+               // }
 
-                print("3")
-                
-                
               //  AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid, profileImageURL: profileImageUrl )
                 
-                //print(uid)
-                
-                
-                
-             
             }
             else {
                 print("register error")

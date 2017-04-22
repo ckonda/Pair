@@ -30,9 +30,6 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     public var toID = String()
     
     
-    
-  
-    
     @IBOutlet weak var cancelPost: UIBarButtonItem!
     
     

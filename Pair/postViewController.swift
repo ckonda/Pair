@@ -28,6 +28,12 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewWillAppear(animated)
         
         
+//       print(AppDelegate.user.username!)
+//       // print(AppDelegate.user.profileImageUrl!)
+//      print(AppDelegate.user.email!)
+//       print(AppDelegate.user.userID!)
+//        print(AppDelegate.user.password!)
+        
         //handleLogout()
         //self.tableView.reloadData()
         //animateTable()
@@ -92,6 +98,7 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.postLabel.text = job.jobName
         cell.postPrice.text = String(describing: job.price!)
         
+        cell.imageView?.image = UIImage(named: "YAMI")
 
        // cell.descriptionLabel.text = job.username
         return cell
