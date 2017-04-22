@@ -100,14 +100,15 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         print ("Hi my name is rahul")
         let postRef =  self.ref?.child("Jobs").childByAutoId()
         let postId = postRef?.key
+         let uName = UserDefaults.standard.object(forKey: "userID")
         
         let postData = [
             "title": JobType,
             "price": JobPrice!,
             "description": JobDescription,
-            "username": AppDelegate.user.userID!,
+            "username": uName,
             "postid": postId!,
-            "location": location1
+            "location": "Merced, CA"
             //"location": location!
             ] as [String : Any]
         

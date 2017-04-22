@@ -98,7 +98,15 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.postLabel.text = job.jobName
         cell.postPrice.text = String(describing: job.price!)
         
-        cell.imageView?.image = UIImage(named: "YAMI")
+        
+   //     if let
+        if let image = UserDefaults.standard.object(forKey: "profileImageUrl") as? String
+        {
+            cell.imageView?.image = UIImage(named: image)
+        }
+        
+        
+        
 
        // cell.descriptionLabel.text = job.username
         return cell

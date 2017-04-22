@@ -205,13 +205,7 @@ class logViewController: UIViewController, UITextFieldDelegate, UIImagePickerCon
             UserDefaults.setValuesForKeys(values)
 
             
-            //this setter crashes if keys dont match
-            
-//            for (key,entry) in values {
-//                
-//                user.setValue(entry, forKey: key)
-//                
-//            }
+         
             
             //AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid, profileImageURL: profileImageUrl )
             

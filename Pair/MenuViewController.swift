@@ -58,11 +58,11 @@ class MenuViewController: UIViewController, UINavigationControllerDelegate, UIIm
         
         if let email = UserDefaults.standard.object(forKey: "email") as? String
         {
-            emailLabel.text?.append(email)
+            uName.text?.append(email)
         }
         
         
-        uName.text?.append(AppDelegate.user.username!)
+        //uName.text?.append(AppDelegate.user.username!)
         print(emailLabel.text!)
         // Do any additional setup after loading the view.
     }
