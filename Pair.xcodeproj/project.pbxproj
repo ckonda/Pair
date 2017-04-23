@@ -19,6 +19,9 @@
 		EE4EEBB21E7614B50044FE39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE4EEBB01E7614B50044FE39 /* Main.storyboard */; };
 		EE4EEBB41E7614B50044FE39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE4EEBB31E7614B50044FE39 /* Assets.xcassets */; };
 		EE4EEBB71E7614B50044FE39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE4EEBB51E7614B50044FE39 /* LaunchScreen.storyboard */; };
+		EE58D78D1EAC8E7D00D6B9B1 /* pendingBidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D78C1EAC8E7D00D6B9B1 /* pendingBidCell.swift */; };
+		EE58D78F1EAC8E9000D6B9B1 /* pastBids.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D78E1EAC8E9000D6B9B1 /* pastBids.swift */; };
+		EE58D7911EAC8EB100D6B9B1 /* pendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D7901EAC8EB100D6B9B1 /* pendingViewController.swift */; };
 		EE8D082F1EA41F0F00EF293E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8D082E1EA41F0F00EF293E /* Message.swift */; };
 		EEBAC1871EA7DAAF00BE22F9 /* chatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */; };
 		EEBAC1891EA9809D00BE22F9 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAC1881EA9809D00BE22F9 /* Channel.swift */; };
@@ -56,6 +59,9 @@
 		EE4EEBB31E7614B50044FE39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE4EEBB61E7614B50044FE39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE4EEBB81E7614B50044FE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE58D78C1EAC8E7D00D6B9B1 /* pendingBidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pendingBidCell.swift; sourceTree = "<group>"; };
+		EE58D78E1EAC8E9000D6B9B1 /* pastBids.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pastBids.swift; sourceTree = "<group>"; };
+		EE58D7901EAC8EB100D6B9B1 /* pendingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pendingViewController.swift; sourceTree = "<group>"; };
 		EE8D082E1EA41F0F00EF293E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatViewController.swift; sourceTree = "<group>"; };
 		EEBAC1881EA9809D00BE22F9 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 				EEE3D8311EA5A46B009C5DDC /* BidControllers */,
 				EEE3D82F1EA5A417009C5DDC /* ComposeControllers */,
 				EEE3D8301EA5A434009C5DDC /* MainControllers */,
+				EE58D7901EAC8EB100D6B9B1 /* pendingViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -125,6 +132,7 @@
 				EEC34F881E9D7C4000954927 /* OfferModel.swift */,
 				EE8D082E1EA41F0F00EF293E /* Message.swift */,
 				EEBAC1881EA9809D00BE22F9 /* Channel.swift */,
+				EE58D78E1EAC8E9000D6B9B1 /* pastBids.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -132,6 +140,7 @@
 		EE213E831E9AFFBF003999FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EE58D78C1EAC8E7D00D6B9B1 /* pendingBidCell.swift */,
 				BA4AA9821E99DD1D001B1FDB /* JobsTableViewCell.swift */,
 				EEC34F861E9D787800954927 /* OfferTableViewCell.swift */,
 				EEE3D8381EA5B360009C5DDC /* MessagesTableViewCell.swift */,
@@ -343,11 +352,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE58D7911EAC8EB100D6B9B1 /* pendingViewController.swift in Sources */,
 				EEC338401EA16F410024FC53 /* postBidViewController.swift in Sources */,
 				EEBAC1891EA9809D00BE22F9 /* Channel.swift in Sources */,
 				EEE3D8391EA5B360009C5DDC /* MessagesTableViewCell.swift in Sources */,
 				EE4EEBAD1E7614B50044FE39 /* AppDelegate.swift in Sources */,
 				BA4AA9831E99DD1D001B1FDB /* JobsTableViewCell.swift in Sources */,
+				EE58D78F1EAC8E9000D6B9B1 /* pastBids.swift in Sources */,
 				EEC34F811E9C763C00954927 /* logViewController.swift in Sources */,
 				EEC34F911E9F007E00954927 /* offerBidViewController.swift in Sources */,
 				EEE3D83B1EA5CA6F009C5DDC /* messagesViewController.swift in Sources */,
@@ -355,6 +366,7 @@
 				EE1445BF1E8B57BB000C9E51 /* postComposeViewController.swift in Sources */,
 				EE8D082F1EA41F0F00EF293E /* Message.swift in Sources */,
 				EE213E821E9AF155003999FC /* User.swift in Sources */,
+				EE58D78D1EAC8E7D00D6B9B1 /* pendingBidCell.swift in Sources */,
 				EEC34F851E9D67E400954927 /* postViewController.swift in Sources */,
 				EEC34F8B1E9EAFBC00954927 /* offerComposeViewController.swift in Sources */,
 				EE33E6781EA6995100A63FBA /* MenuViewController.swift in Sources */,
