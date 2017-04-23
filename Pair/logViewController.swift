@@ -186,7 +186,7 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
                     
                    // AppDelegate.user.initialize(username: self.nametextField.text, email: self.emailtextField.text, password: self.passwordtextField.text, userID: userID, profileImageUrl: profileImageUrl )
                     
-                    AppDelegate.user.username = username
+                  //  UserDefaults.standard.object(forKey: "username") as String? = username
                        self.performSegue(withIdentifier: "gotoMain", sender: self)
                 })
             }

@@ -622,6 +622,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bidEnter" destination="zlP-21-qxT" id="5t5-L1-1Vu"/>
                         <outlet property="cancelPost" destination="dmw-Kg-Plz" id="QoN-eW-OMd"/>
                         <outlet property="jobDescription" destination="cI0-fg-2WE" id="kO3-gG-5om"/>
                         <outlet property="jobName" destination="o0A-H5-CUs" id="M7j-RB-HbV"/>

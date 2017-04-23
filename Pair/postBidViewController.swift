@@ -53,6 +53,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
 //    @IBOutlet weak var jobDescription: UILabel!
     
     
+    @IBOutlet weak var bidEnter: UITextField!
     
 
     @IBAction func cancelView(_ sender: Any) {
@@ -73,32 +74,46 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         let seconds = calendar.component(.second, from: date)
         let timestamp = "\(hour):\(minutes):\(seconds)"
         
-        let messageRef = self.ref?.child("Messages").childByAutoId()//new channel created
-        //let messageRef2 = self.ref?.child("Messages").queryEqual(toValue: "zyDkBgJKhdYka1oirEWnFZTcSIh1")
-        
-        //let messageRef3 = self.ref?.child("Messages").root.queryEqual(toValue: "zyDkBgJKhdYka1oirEWnFZTcSIh1")
-        
-        //print(messageRef3)
-        
-     
-      
-        //print(messageRef2)
-        //print(messageRef.value)
-        let channelID = messageRef?.key//key for channel ID
-        let newRef = messageRef?.childByAutoId()//message ID created
-        let newKey = newRef?.key//key for message ID
-        let messageItem = [
-            "fromID": AppDelegate.user.userID!,
-            "toID": toID,
-            "timestamp": timestamp,
-            "text": messageexample,
-            "messageID": newKey!,
-            "channelID": channelID!,
-            "name": AppDelegate.user.username!
-        ]  as [String : Any]
-        
-        //newRef?.setValue(messageItem)
+        if let text = bidEnter.text {//String to variable
+            guard let bid = Int(text) else {//variable to integers to BID
+                // return bid
+                return
+            }
+            let newPrice = bid
             
+            
+            let bidRef = self.ref?.child("Bids").childByAutoId()//new channel created
+            
+            
+            let newKey = bidRef?.key//key for message ID
+            let postBid = [
+                "bidderID": UserDefaults.standard.object(forKey: "userID")!,
+                "ownerID": toID,
+                "postID": selectedID,
+                "postPrice": newPrice,
+                "timestamp": timestamp
+                ] as [String : Any]
+            
+            bidRef?.setValue(postBid)//setting val
+            
+        
+        }
+        
+        
+//        let bidRef = self.ref?.child("Bids").childByAutoId()//new channel created
+//     
+//
+//        let newKey = bidRef?.key//key for message ID
+//        let postBid = [
+//            "bidderID": toID,
+//            "ownerID": UserDefaults.standard.object(forKey: "userID")!,
+//            "postID": selectedID,
+//            "postPrice": ,
+//            "timestamp": timestamp
+//            ] as [String : Any]
+//        
+//        bidRef?.setValue(postBid)//setting val
+        
         dismiss(animated: true, completion: nil)
         
         
