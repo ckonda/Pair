@@ -17,6 +17,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     
     var ref: FIRDatabaseReference!
     
+    @IBOutlet weak var bidEnter: UITextField!
     public var postID = String()
     
     private lazy var messageRef:FIRDatabaseReference = FIRDatabase.database().reference().child("Messages")
@@ -40,6 +41,18 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var jobName: UILabel!
     
     @IBOutlet weak var jobDescription: UILabel!
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        bidEnter.resignFirstResponder()
+        
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        bidEnter.resignFirstResponder()
+        
+        return true
+    }
     
 
     
@@ -73,8 +86,12 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         let seconds = calendar.component(.second, from: date)
         let timestamp = "\(hour):\(minutes):\(seconds)"
         
-        let messageRef = self.ref?.child("Messages").childByAutoId()//new channel created
-        //let messageRef2 = self.ref?.child("Messages").queryEqual(toValue: "zyDkBgJKhdYka1oirEWnFZTcSIh1")
+        let messageRef = self.ref?.child("Messages").child("hello")       //messageRef?.setValue("HI")
+        
+        //messageRef.se
+        //self.messageRef.setValue("HI")
+        //print(messageRef?.key)
+                //let messageRef2 = self.ref?.child("Messages").queryEqual(toValue: "zyDkBgJKhdYka1oirEWnFZTcSIh1")
         
         //let messageRef3 = self.ref?.child("Messages").root.queryEqual(toValue: "zyDkBgJKhdYka1oirEWnFZTcSIh1")
         
@@ -88,13 +105,13 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         let newRef = messageRef?.childByAutoId()//message ID created
         let newKey = newRef?.key//key for message ID
         let messageItem = [
-            "fromID": AppDelegate.user.userID!,
+            "fromID": UserDefaults.standard.object(forKey: "userID") as? String,//AppDelegate.user.userID!,
             "toID": toID,
             "timestamp": timestamp,
             "text": messageexample,
             "messageID": newKey!,
             "channelID": channelID!,
-            "name": AppDelegate.user.username!
+            "name": UserDefaults.standard.object(forKey: "name") as? String
         ]  as [String : Any]
         
         //newRef?.setValue(messageItem)
@@ -113,6 +130,8 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         
         jobDescription.text = selectedDescription
         jobName.text = selectedName
+        
+        bidEnter.delegate = self
         
         
         ref = FIRDatabase.database().reference()
