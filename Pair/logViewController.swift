@@ -184,7 +184,7 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
                     let dict = snapshot.value as? NSDictionary
                     let username = dict?["username"] as? String!
                     
-                   // AppDelegate.user.initialize(username: self.nametextField.text, email: self.emailtextField.text, password: self.passwordtextField.text, userID: userID, profileImageUrl: profileImageUrl )
+                     // AppDelegate.user.initialize(username: self.nametextField.text, email: self.emailtextField.text, password: self.passwordtextField.text, userID: userID, profileImageUrl: profileImageUrl )
                     
                   //  UserDefaults.standard.object(forKey: "username") as String? = username
                        self.performSegue(withIdentifier: "gotoMain", sender: self)
@@ -196,7 +196,7 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
             }
         })
         
-  
+        
         
         //self.performSegue(withIdentifier: "gotoMain", sender: self)
     }
@@ -212,13 +212,17 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
                 print(err!)
                 return
             }
-            let user = User()
+           // let user = User()
+            
             //this setter crashes if keys dont match
             
             
       //  AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid)
-
-            user.setValuesForKeys(values)
+            
+            
+            AppDelegate.user.setValuesForKeys(values)
+            
+            //user.setValuesForKeys(values)
         
             self.performSegue(withIdentifier: "gotoMain", sender: self)
         })
@@ -227,7 +231,6 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
     
     
     func handleRegister(){
-        print("1")
         
         guard let email = emailtextField.text, let password = passwordtextField.text, let name = nametextField.text else{
             
@@ -236,8 +239,6 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
         }
         //firebase authtification access( if not authenticated then throw error)
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-            
-            print("2")
             
             guard let uid = user?.uid else {
                 return

@@ -21,7 +21,6 @@ class Message: NSObject {
     var name: String?
     
     
-    
     init(fromID:String?, text:String?, timestamp:String?, toID: String?, messageID: String?, channelID: String?, name: String?){
         self.fromID = fromID
         self.text = text
