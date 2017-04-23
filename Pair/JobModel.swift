@@ -16,6 +16,7 @@ public class JobModel{
     public var profileImageUrl: String?
     public var location: String?
     public var name: String?
+    //public var date: Date?
     
     init(jobName:String?, price:Int?, username:String?, description: String?, postid: String?, profileImageUrl: String?, location: String?, name: String?){
         self.jobName = jobName
@@ -26,5 +27,6 @@ public class JobModel{
         self.profileImageUrl = profileImageUrl
         self.location = location
         self.name = name
+        //self.date = date
     }
 }

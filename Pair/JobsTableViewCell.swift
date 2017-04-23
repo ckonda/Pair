@@ -21,11 +21,14 @@ public class JobsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var locationLabel: UILabel!
     
+    @IBOutlet weak var timeStamp: UILabel!
+    
     
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
+       // DateFormatter.dateFormat(fromTemplate: ", options: <#T##Int#>, locale: <#T##Locale?#>)
         
         profilePicture.layer.cornerRadius = profilePicture.frame.size.width/2
         profilePicture.clipsToBounds = true
@@ -35,8 +38,10 @@ public class JobsTableViewCell: UITableViewCell {
 
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    
      
     }
+
     
     public func configure(postLabel: String, postPrice:String, locationLabel: String, profilePicture: UIImage){
         self.postLabel.text = postLabel
@@ -44,6 +49,7 @@ public class JobsTableViewCell: UITableViewCell {
         self.postPrice.text = postPrice
         self.locationLabel.text = locationLabel
         self.profilePicture.image = profilePicture
+        //self.timeStamp!.text = timeStamp
     }
 
 }

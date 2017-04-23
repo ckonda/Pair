@@ -21,6 +21,11 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        let date = Date()
+        
+        print(date)
+        
         ref = FIRDatabase.database().reference()
         
         
@@ -78,6 +83,7 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         
         let postRef =  self.ref?.child("Jobs").childByAutoId()
         let postId = postRef?.key
+        let date = Date()
         
         let postData = [
             "title": JobType,
@@ -87,7 +93,9 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
             "postid": postId!,
             "location": "Merced, CA",
             "username": UserDefaults.standard.object(forKey: "userID")!,
-            "profileImageUrl": UserDefaults.standard.object(forKey: "profileImageUrl")!
+            "profileImageUrl": UserDefaults.standard.object(forKey: "profileImageUrl")!,
+            "date": date
+            
             ] as [String : Any]
         
         

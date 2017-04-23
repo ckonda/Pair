@@ -74,27 +74,20 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         let timestamp = "\(hour):\(minutes):\(seconds)"
         
         let messageRef = self.ref?.child("Messages").childByAutoId()//new channel created
-        //let messageRef2 = self.ref?.child("Messages").queryEqual(toValue: "zyDkBgJKhdYka1oirEWnFZTcSIh1")
-        
-        //let messageRef3 = self.ref?.child("Messages").root.queryEqual(toValue: "zyDkBgJKhdYka1oirEWnFZTcSIh1")
-        
-        //print(messageRef3)
-        
-     
-      
+  
         //print(messageRef2)
         //print(messageRef.value)
         let channelID = messageRef?.key//key for channel ID
         let newRef = messageRef?.childByAutoId()//message ID created
         let newKey = newRef?.key//key for message ID
         let messageItem = [
-            "fromID": AppDelegate.user.userID!,
+            "fromID": UserDefaults.standard.object(forKey: "userID") as? String!,
             "toID": toID,
             "timestamp": timestamp,
             "text": messageexample,
             "messageID": newKey!,
             "channelID": channelID!,
-            "name": AppDelegate.user.username!
+            "name": UserDefaults.standard.object(forKey: "username") as? String!
         ]  as [String : Any]
         
         //newRef?.setValue(messageItem)
