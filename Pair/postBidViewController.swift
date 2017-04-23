@@ -100,20 +100,6 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         }
         
         
-//        let bidRef = self.ref?.child("Bids").childByAutoId()//new channel created
-//     
-//
-//        let newKey = bidRef?.key//key for message ID
-//        let postBid = [
-//            "bidderID": toID,
-//            "ownerID": UserDefaults.standard.object(forKey: "userID")!,
-//            "postID": selectedID,
-//            "postPrice": ,
-//            "timestamp": timestamp
-//            ] as [String : Any]
-//        
-//        bidRef?.setValue(postBid)//setting val
-        
         dismiss(animated: true, completion: nil)
         
         

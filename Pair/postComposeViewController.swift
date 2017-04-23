@@ -82,11 +82,11 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
             "title": JobType,
             "price": JobPrice!,
             "description": JobDescription,
-            "name": UserDefaults.standard.object(forKey: "username"),
+            "name": AppDelegate.user.username!,
             "postid": postId!,
             "location": "Merced, CA",
-            "username": UserDefaults.standard.object(forKey: "userID")!,
-            "profileImageUrl": UserDefaults.standard.object(forKey: "profileImageUrl")!
+            "username": AppDelegate.user.userID!,
+            "profileImageUrl": AppDelegate.user.profileImageUrl!
             ] as [String : Any]
         
         
@@ -109,44 +109,6 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
     
 
     
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: { (placemarks, error) in
-            if error != nil
-            {
-                print("Error: " + "(error?.localizedDescription)")
-                return
-            }
-            if (placemarks?.count)! > 0
-            {
-                let pm = placemarks?[0]
-                self.displayLocationInfo(placemark: pm!)
-            }
-        })
-    }
-    
-
-    
-    func displayLocationInfo(placemark: CLPlacemark) -> String
-    {
-        self.locationManager.stopUpdatingLocation()
-        print(placemark.locality!)
-        print(placemark.postalCode!)
-        print(placemark.administrativeArea!)
-        print(placemark.country!)
-        
-        let location = placemark.country
-        
-        return location!
-    }
-    
-
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error: " + error.localizedDescription)
-        
-    }
-    
-    
+      
 
 }
