@@ -99,13 +99,13 @@
                                 </constraints>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="nkV-sh-1Kv">
-                                <rect key="frame" x="75" y="147.5" width="224" height="108"/>
+                                <rect key="frame" x="75" y="148" width="224" height="108"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="108" id="64v-Kp-Qfi"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pair" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oR-wX-xHN">
-                                <rect key="frame" x="138" y="49" width="99" height="90.5"/>
+                                <rect key="frame" x="138" y="49" width="99" height="91"/>
                                 <fontDescription key="fontDescription" name="Oregano-Regular" family="Oregano" pointSize="70"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -446,13 +446,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeStamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jg1-9p-vrE">
-                                                    <rect key="frame" x="270" y="8.5" width="88" height="21"/>
+                                                    <rect key="frame" x="270" y="9" width="88" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sender Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G71-f2-tnd">
-                                                    <rect key="frame" x="18" y="8" width="103.5" height="23.5"/>
+                                                    <rect key="frame" x="18" y="8" width="104" height="24"/>
                                                     <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -531,7 +531,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0A-H5-CUs">
-                                <rect key="frame" x="139.5" y="131" width="96.5" height="31"/>
+                                <rect key="frame" x="139" y="131" width="97" height="31"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -617,7 +617,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Run-gB-cSF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Posts" selectedImage="postIcon" id="IkK-kL-RB7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0cu-IT-pFU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0cu-IT-pFU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -636,7 +636,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="80H-AS-3X5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Offer" id="MPu-dD-AuP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xJw-G1-fsg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xJw-G1-fsg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
