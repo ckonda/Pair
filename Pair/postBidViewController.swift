@@ -87,7 +87,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
             
             let newKey = bidRef?.key//key for message ID
             let postBid = [
-                "bidderID": UserDefaults.standard.object(forKey: "userID")!,
+                "bidderID": AppDelegate.user.userID!,
                 "ownerID": toID,
                 "postID": selectedID,
                 "postPrice": newPrice,

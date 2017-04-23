@@ -183,8 +183,14 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
                 FBRef.child("Users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
                     let dict = snapshot.value as? NSDictionary
                     let username = dict?["username"] as? String!
+                    let profileImageUrl = dict?["profileImageUrl"] as? String!
+                    let userID = dict?["userID"] as? String!
+                    let password = dict?["password"] as? String!
+                    let email = dict?["email"] as? String!
                     
-                     // AppDelegate.user.initialize(username: self.nametextField.text, email: self.emailtextField.text, password: self.passwordtextField.text, userID: userID, profileImageUrl: profileImageUrl )
+                    
+                    
+                      AppDelegate.user.initialize(username: username, email: email, password: password, userID: userID, profileImageUrl: profileImageUrl )
                     
                   //  UserDefaults.standard.object(forKey: "username") as String? = username
                        self.performSegue(withIdentifier: "gotoMain", sender: self)
@@ -212,7 +218,7 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
                 print(err!)
                 return
             }
-           // let user = User()
+            let user = User()
             
             //this setter crashes if keys dont match
             
@@ -222,7 +228,7 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
             
             AppDelegate.user.setValuesForKeys(values)
             
-            //user.setValuesForKeys(values)
+            user.setValuesForKeys(values)
         
             self.performSegue(withIdentifier: "gotoMain", sender: self)
         })
