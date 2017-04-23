@@ -20,6 +20,7 @@ class offerComposeViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         ref = FIRDatabase.database().reference()
         

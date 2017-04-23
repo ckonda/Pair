@@ -16,14 +16,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     static var user = User()
+    
+    
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        UINavigationBar.appearance().barTintColor = UIColor(red: 84.0/255.0, green: 211.0/255.0, blue: 187.0/255.0, alpha: 1.0)
+        
+        let appearance = UINavigationBar.appearance()
+        let font = UIFont(name: "Oregano-Regular", size: 30)!
+        appearance.titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName : font
+        ]
+
+        
+                
+//        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: "Oregano-Regular"]
+
      
         FIRApp.configure()
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().enableAutoToolbar = false
+        
+        
+
 
        //  window = UIWindow(frame: UIScreen.main.bounds)
        // window?.makeKeyAndVisible()

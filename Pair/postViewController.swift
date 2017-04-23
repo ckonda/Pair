@@ -36,6 +36,7 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         tableView.delegate = self
         tableView.dataSource = self
         ref = FIRDatabase.database().reference().child("Jobs");

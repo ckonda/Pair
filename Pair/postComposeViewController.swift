@@ -17,7 +17,7 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     let locationManager = CLLocationManager()
     var LocCity:String? = nil
-  
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,9 +64,6 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
 
      return true
     }
-
-    
-   
 
     
     @IBAction func addPost(_ sender: Any) {

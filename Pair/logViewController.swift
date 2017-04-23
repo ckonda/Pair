@@ -17,6 +17,20 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        nametextField.backgroundColor = UIColor.white;
+        nametextField.alpha = 0.2;
+        nametextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        nametextField.layer.cornerRadius = 4.0
+        emailtextField.backgroundColor = UIColor.white;
+        emailtextField.alpha = 0.2;
+        emailtextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        emailtextField.layer.cornerRadius = 4.0
+        passwordtextField.backgroundColor = UIColor.white;
+        passwordtextField.alpha = 0.2;
+        passwordtextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        passwordtextField.layer.cornerRadius = 4.0
+
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         profilePicture.isUserInteractionEnabled = true
         profilePicture.addGestureRecognizer(tapGestureRecognizer)

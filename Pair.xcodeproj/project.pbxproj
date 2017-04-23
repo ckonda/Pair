@@ -32,6 +32,9 @@
 		EEC34F911E9F007E00954927 /* offerBidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F901E9F007E00954927 /* offerBidViewController.swift */; };
 		EEE3D8391EA5B360009C5DDC /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3D8381EA5B360009C5DDC /* MessagesTableViewCell.swift */; };
 		EEE3D83B1EA5CA6F009C5DDC /* messagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3D83A1EA5CA6F009C5DDC /* messagesViewController.swift */; };
+		FE605A631EAC1CC700477185 /* Oregano-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE605A601EAC1BDE00477185 /* Oregano-Regular.ttf */; };
+		FE605A641EAC1CCB00477185 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE605A611EAC1C1300477185 /* Nunito-Regular.ttf */; };
+		FE605A651EAC1CD000477185 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE605A621EAC1C2300477185 /* Nunito-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		EEC34F901E9F007E00954927 /* offerBidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = offerBidViewController.swift; sourceTree = "<group>"; };
 		EEE3D8381EA5B360009C5DDC /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		EEE3D83A1EA5CA6F009C5DDC /* messagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messagesViewController.swift; sourceTree = "<group>"; };
+		FE605A601EAC1BDE00477185 /* Oregano-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oregano-Regular.ttf"; sourceTree = "<group>"; };
+		FE605A611EAC1C1300477185 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		FE605A621EAC1C2300477185 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +160,7 @@
 		EE4EEBAB1E7614B50044FE39 /* Pair */ = {
 			isa = PBXGroup;
 			children = (
+				FE605A5F1EAC1BC700477185 /* Resources */,
 				EE213E831E9AFFBF003999FC /* View */,
 				EE213E801E9AF135003999FC /* Model */,
 				EE1445C01E8B57D4000C9E51 /* Controllers */,
@@ -195,6 +202,16 @@
 				EEC34F901E9F007E00954927 /* offerBidViewController.swift */,
 			);
 			name = BidControllers;
+			sourceTree = "<group>";
+		};
+		FE605A5F1EAC1BC700477185 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FE605A601EAC1BDE00477185 /* Oregano-Regular.ttf */,
+				FE605A611EAC1C1300477185 /* Nunito-Regular.ttf */,
+				FE605A621EAC1C2300477185 /* Nunito-SemiBold.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +278,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE605A651EAC1CD000477185 /* Nunito-SemiBold.ttf in Resources */,
+				FE605A641EAC1CCB00477185 /* Nunito-Regular.ttf in Resources */,
+				FE605A631EAC1CC700477185 /* Oregano-Regular.ttf in Resources */,
 				EE213E7F1E9837DC003999FC /* GoogleService-Info.plist in Resources */,
 				EE4EEBB71E7614B50044FE39 /* LaunchScreen.storyboard in Resources */,
 				EE4EEBB41E7614B50044FE39 /* Assets.xcassets in Resources */,
