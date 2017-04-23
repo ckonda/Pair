@@ -32,6 +32,9 @@
 		EEC34F911E9F007E00954927 /* offerBidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC34F901E9F007E00954927 /* offerBidViewController.swift */; };
 		EEE3D8391EA5B360009C5DDC /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3D8381EA5B360009C5DDC /* MessagesTableViewCell.swift */; };
 		EEE3D83B1EA5CA6F009C5DDC /* messagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3D83A1EA5CA6F009C5DDC /* messagesViewController.swift */; };
+		F1A878091EAC1D9600146EFE /* pendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A878081EAC1D9600146EFE /* pendingViewController.swift */; };
+		F1A8780B1EAC1EB200146EFE /* pendingBidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8780A1EAC1EB200146EFE /* pendingBidCell.swift */; };
+		F1A8780D1EAC1F8B00146EFE /* pastBids.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8780C1EAC1F8B00146EFE /* pastBids.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		EEC34F901E9F007E00954927 /* offerBidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = offerBidViewController.swift; sourceTree = "<group>"; };
 		EEE3D8381EA5B360009C5DDC /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		EEE3D83A1EA5CA6F009C5DDC /* messagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messagesViewController.swift; sourceTree = "<group>"; };
+		F1A878081EAC1D9600146EFE /* pendingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pendingViewController.swift; sourceTree = "<group>"; };
+		F1A8780A1EAC1EB200146EFE /* pendingBidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = pendingBidCell.swift; path = ../pendingBidCell.swift; sourceTree = "<group>"; };
+		F1A8780C1EAC1F8B00146EFE /* pastBids.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pastBids.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,7 @@
 				EEC34F801E9C763C00954927 /* logViewController.swift */,
 				EEE3D83A1EA5CA6F009C5DDC /* messagesViewController.swift */,
 				EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */,
+				F1A878081EAC1D9600146EFE /* pendingViewController.swift */,
 				EE33E6771EA6995100A63FBA /* MenuViewController.swift */,
 				EEE3D8311EA5A46B009C5DDC /* BidControllers */,
 				EEE3D82F1EA5A417009C5DDC /* ComposeControllers */,
@@ -119,6 +126,7 @@
 				EEC34F881E9D7C4000954927 /* OfferModel.swift */,
 				EE8D082E1EA41F0F00EF293E /* Message.swift */,
 				EEBAC1881EA9809D00BE22F9 /* Channel.swift */,
+				F1A8780C1EAC1F8B00146EFE /* pastBids.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -126,6 +134,7 @@
 		EE213E831E9AFFBF003999FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F1A8780A1EAC1EB200146EFE /* pendingBidCell.swift */,
 				BA4AA9821E99DD1D001B1FDB /* JobsTableViewCell.swift */,
 				EEC34F861E9D787800954927 /* OfferTableViewCell.swift */,
 				EEE3D8381EA5B360009C5DDC /* MessagesTableViewCell.swift */,
@@ -325,13 +334,16 @@
 			files = (
 				EEC338401EA16F410024FC53 /* postBidViewController.swift in Sources */,
 				EEBAC1891EA9809D00BE22F9 /* Channel.swift in Sources */,
+				F1A8780D1EAC1F8B00146EFE /* pastBids.swift in Sources */,
 				EEE3D8391EA5B360009C5DDC /* MessagesTableViewCell.swift in Sources */,
 				EE4EEBAD1E7614B50044FE39 /* AppDelegate.swift in Sources */,
 				BA4AA9831E99DD1D001B1FDB /* JobsTableViewCell.swift in Sources */,
 				EEC34F811E9C763C00954927 /* logViewController.swift in Sources */,
 				EEC34F911E9F007E00954927 /* offerBidViewController.swift in Sources */,
+				F1A8780B1EAC1EB200146EFE /* pendingBidCell.swift in Sources */,
 				EEE3D83B1EA5CA6F009C5DDC /* messagesViewController.swift in Sources */,
 				EEC34F891E9D7C4000954927 /* OfferModel.swift in Sources */,
+				F1A878091EAC1D9600146EFE /* pendingViewController.swift in Sources */,
 				EE1445BF1E8B57BB000C9E51 /* postComposeViewController.swift in Sources */,
 				EE8D082F1EA41F0F00EF293E /* Message.swift in Sources */,
 				EE213E821E9AF155003999FC /* User.swift in Sources */,

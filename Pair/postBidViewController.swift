@@ -73,7 +73,9 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         let seconds = calendar.component(.second, from: date)
         let timestamp = "\(hour):\(minutes):\(seconds)"
         
-        let messageRef = self.ref?.child("Messages").childByAutoId()//new channel created
+        //let
+        
+        let messageRef = self.ref?.child("Bids").childByAutoId()//new channel created
         //let messageRef2 = self.ref?.child("Messages").queryEqual(toValue: "zyDkBgJKhdYka1oirEWnFZTcSIh1")
         
         //let messageRef3 = self.ref?.child("Messages").root.queryEqual(toValue: "zyDkBgJKhdYka1oirEWnFZTcSIh1")
@@ -87,15 +89,41 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         let channelID = messageRef?.key//key for channel ID
         let newRef = messageRef?.childByAutoId()//message ID created
         let newKey = newRef?.key//key for message ID
-        let messageItem = [
-            "fromID": AppDelegate.user.userID!,
-            "toID": toID,
-            "timestamp": timestamp,
-            "text": messageexample,
-            "messageID": newKey!,
-            "channelID": channelID!,
-            "name": AppDelegate.user.username!
-        ]  as [String : Any]
+        
+        
+//        
+//        let messageItem = [
+//            "fromID": AppDelegate.user.userID!,
+//            "toID": toID,
+//            "timestamp": timestamp,
+//            "text": messageexample,
+//            "messageID": newKey!,
+//            "channelID": channelID!,
+//            "name": AppDelegate.user.username!
+//        ]  as [String : Any]
+        
+        
+        let postBid = [
+            "bidderID": toID,
+            "ownerID": UserDefaults.standard.object(forKey: "userID")!,
+            "postID": selectedID,
+            "postPrice": selectedPrice
+            ] as [String : Any]
+        
+         messageRef?.setValue(postBid)
+        /*
+
+        let postBid = [
+            "title": JobType,
+            "price": JobPrice!,
+            "description": JobDescription,
+            "name": UserDefaults.standard.object(forKey: "username")!,
+            "postid": postId!,
+            "location": "Merced, CA",
+            "username": UserDefaults.standard.object(forKey: "userID")!,
+            "profileImageUrl": UserDefaults.standard.object(forKey: "profileImageUrl")!
+            ] as [String : Any]
+*/
         
         //newRef?.setValue(messageItem)
             

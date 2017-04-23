@@ -151,6 +151,9 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let postbidView = segue.destination as? postBidViewController
                     
                     postbidView?.selectedName = jobData[indexPath.row].jobName!
+                    
+                    postbidView?.selectedPrice = jobData[indexPath.row].price!
+                    
                     postbidView?.selectedDescription = jobData[indexPath.row].description!
                     postbidView?.selectedID = jobData[indexPath.row].postid!
                     
