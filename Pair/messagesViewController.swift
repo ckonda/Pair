@@ -35,10 +35,6 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
     private var messageRefHandle: FIRDatabaseHandle?
     
     
-
-    
-    var messageData = [Message]()
-    
 //    func setup() {
 //        self.senderId = "1234"
 //        self.senderDisplayName = "TEST"
@@ -89,8 +85,9 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
                     }
                     
                     let currentChannel = Channel(channelID: channelName, user1ID: user1, user2ID: user2, channelDispID: displayName)
-          
-                    self.channelData.insert(currentChannel, at: 0)
+                    if AppDelegate.user.userID == user1 || AppDelegate.user.userID == user2 {
+                        self.channelData.insert(currentChannel, at: 0)
+                    }
                     //print(channels.value)
                 }
                  // self.tableView.reloadData()
@@ -123,9 +120,25 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessagesTableViewCell
         print("REACHES THIS")
         let channel = channelData[indexPath.row]
+        //let nameUser = channel.channelDispID
         
         let loggedInUser = FIRAuth.auth()?.currentUser?.uid
+        print("chanel disp id = \(channel.channelDispID!)")
+        let nameIDPath = FIRDatabase.database().reference().child("Users").child(channel.channelDispID!)
+        print("name key = \(nameIDPath)")
+       // let nameJSON = nameIDPath.value(forKey: "username")
         
+        //print("name = \(nameJSON["username"] as! String?)")
+        nameIDPath.observeSingleEvent(of: .value, with: { (snapshot) in
+            print(snapshot)
+            let nameJSON = snapshot.value as! [String: Any]
+            print("username is = \(nameJSON["username"] as! String?)")
+            cell.senderName.text = (nameJSON["username"] as! String?)!
+            
+        })
+            
+            //.value(forKey: "username") as! String
+        //cell.senderName.text = channel.channelDispID
         cell.senderName.text = channel.channelDispID
         cell.timeStamp.text = "hh:mm:ss"
         
@@ -175,43 +188,42 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
     
 
     
-    
-    private func observeMessages(){
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        //ref = FIRDatabase.database().reference().child("Messages").child("-KiCP4P4Gw8uw_3QWvGj");
-        ref = FIRDatabase.database().reference().child("Messages");
-        ref.observe(FIRDataEventType.value, with: {(snapshot)
-            in
-            if snapshot.childrenCount>0{
-                               // for jobs in snapshot.children.allObjects as![FIRDataSnapshot]{
-                
-                self.messageData.removeAll()
-                
-                for messages in snapshot.children.allObjects as! [FIRDataSnapshot]{
-
-                    let message =  messages.value as? [String: AnyObject]
-
-                        let fromID = message?["destinationID"];
-                        let toID = message?["fromID"];
-                        let text = message?["text"];
-                        let timestamp = message?["timestamp"];
-                   
-                        let newMessageData = Message(fromID: toID as? String, text: text as? String, timestamp: timestamp as? String, destinationID: fromID as? String)
-                        
-                        self.messageData.insert(newMessageData, at: 0)
-                    print("messageData size = \(self.messageData.count)")
-                }
-
-            }
-            
-            self.tableView.reloadData()
-                //self.animateTable()//animate in progress
-        })
-
-    
-    }
+//    
+//    private func observeMessages(){
+//        
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//        //ref = FIRDatabase.database().reference().child("Messages").child("-KiCP4P4Gw8uw_3QWvGj");
+//        ref = FIRDatabase.database().reference().child("Messages");
+//        ref.observe(FIRDataEventType.value, with: {(snapshot)
+//            in
+//            if snapshot.childrenCount>0{
+//                               // for jobs in snapshot.children.allObjects as![FIRDataSnapshot]{
+//                
+//                self.messageData.removeAll()
+//                
+//                for messages in snapshot.children.allObjects as! [FIRDataSnapshot]{
+//
+//                    let message =  messages.value as? [String: AnyObject]
+//
+//                        let fromID = message?["destinationID"];
+//                        let toID = message?["fromID"];
+//                        let text = message?["text"];
+//                        let timestamp = message?["timestamp"];
+//                   
+//                        let newMessageData = Message(fromID: toID as? String, text: text as? String, timestamp: timestamp as? String, destinationID: fromID as? String)
+//                        
+//                        self.messageData.insert(newMessageData, at: 0)
+//                    print("messageData size = \(self.messageData.count)")
+//                }
+//
+//            }
+//            
+//            self.tableView.reloadData()
+//                //self.animateTable()//animate in progress
+//        })
+//        
+//}
 
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -244,15 +256,32 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 let chatVC = segue.destination as? chatViewController
                 
+                //chatVC?.message = messageData[indexPath.row].text!
+
                 
-               // chatVC?.message = messageData[indexPath.row].text!
-                /*chatVC?.senderDisplayName = senderDisplayName
-                chatVC?.senderId = AppDelegate.user.userID
-                chatVC?.selectedText = messageData[indexPath.row].text!
-                chatVC?.selectedtimeStamp = messageData[indexPath.row].timestamp!
+               // chatVC?.selectedtimeStamp = messageData[indexPath.row].timestamp!
   
-                chatVC?.selectedtoID = messageData[indexPath.row].destinationID!
-                chatVC?.selectedfromID = messageData[indexPath.row].fromID!*/
+                //chatVC?.selectedID1 = channelData[indexPath.row].user1ID!
+              
+                
+                //channel id
+                
+                chatVC?.selectedchannelID = channelData[indexPath.row].channelID!
+                
+                //app delegate user -> guy who's signed in aka the sender
+                    chatVC?.senderId = AppDelegate.user.userID
+                //destinationID -> the guy who you're talking to
+                
+            if channelData[indexPath.row].user1ID == AppDelegate.user.userID {
+                chatVC?.chatUserID = channelData[indexPath.row].user2ID!
+            }
+            else{
+                chatVC?.chatUserID = channelData[indexPath.row].user1ID!
+            }
+                //sender display name
+                    chatVC?.senderDisplayName = AppDelegate.user.username!
+                
+//                chatVC?.selectedfromID = messageData[indexPath.row].fromID!*/
                 
 //                let messageD = sender as? Message
 //                chatVC?.message = messageD

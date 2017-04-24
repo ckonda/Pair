@@ -22,7 +22,7 @@ class chatViewController: JSQMessagesViewController{
         dismiss(animated: true, completion: nil)
     }
     
-    var messageRef = FIRDatabase.database().reference().child("Messages")
+    var channelRef = FIRDatabase.database().reference().child("Channels")
     var ref: FIRDatabaseReference!
     
     var messages = [JSQMessage]()
@@ -31,13 +31,20 @@ class chatViewController: JSQMessagesViewController{
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     
-    public var selectedfromID = String()
-    public var selectedtoID = String()
-    public var selectedtimeStamp = String()
-    public var selectedMessageID = String()//the ID for the current post
-    public var selectedText = String()
+    public var selectedchannelID = String()
+    public var chatUserID = String()
+    public var senderID = String()
+    //public var senderDisplayName = String()
+    /*public var selectedfromID = String()
+    public var selectedIDfrom = String()
+    public var selectedIDto = String()
+    public var chatUserID = String()
     
-    public var selectedchannelID = String()//channel ID for the post
+    public var selectedtimeStamp = String()
+    public var selectedText = String()
+
+    
+    public var selectedchannelID = String()//channel ID for the post*/
 
     
 
@@ -53,12 +60,7 @@ class chatViewController: JSQMessagesViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(selectedfromID)
-        print(selectedtimeStamp)
-        print(selectedText)
-        print(selectedMessageID)
-        print(selectedtoID)
+ 
         
         title = "Chat Now!"
         
@@ -102,9 +104,11 @@ class chatViewController: JSQMessagesViewController{
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = self.messages[indexPath.item]//message retrieved
-        if message.senderId == senderId {//return the outgoing image view to user
+        if message.senderId == AppDelegate.user.userID {//return the outgoing image view to user
+            print("Outgoing message bubble because \(message.senderId) == \(AppDelegate.user.userID)")
             return outgoingBubbleImageView
         }else {//otherwise return the incoming image view
+            print("Incoming message bubble because \(self.senderID) != \(AppDelegate.user.userID)")
             return incomingBubbleImageView
         }
     }
@@ -124,7 +128,7 @@ class chatViewController: JSQMessagesViewController{
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let message = messages[indexPath.item]
         
-        if message.senderId == senderId {
+        if message.senderId == AppDelegate.user.userID {
             cell.textView?.textColor = UIColor.white
         }else {
             cell.textView?.textColor = UIColor.black
@@ -136,17 +140,18 @@ class chatViewController: JSQMessagesViewController{
      override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
         
-        let ref = FIRDatabase.database().reference().child("Messages")
+        let ref = FIRDatabase.database().reference().child("Channels").child(selectedchannelID)
         let itemRef = ref.childByAutoId()
      //   let itemKey = itemRef.key
         
-        
+        //if selectedID1 == AppDelegate.user.userID
 
         
+     
         let messageItem = [
         "fromID": self.senderId,
-        "destinationID": selectedtoID,
-        "timestamp": selectedtimeStamp,
+        "destinationID": chatUserID,
+        "timestamp": "Timestamp",
         "text": text,//(AppDelegate.user.username! + ":" + selectedText),
         ]
         
@@ -166,23 +171,30 @@ class chatViewController: JSQMessagesViewController{
         print("entered obserev messages")
        // messageRef = messageRef.child("Messages")
         print("messageRef declared")
-        let messageQuery = messageRef.queryLimited(toLast:25)
+        let messageQuery = channelRef.child(selectedchannelID).queryLimited(toLast:25)
         
          //We can use the observe method to listen for new
         // messages being written to the Firebase DB
         newMessageRefHandle = messageQuery.observe(.childAdded, with: { (snapshot) -> Void in
         
-            let messageData = snapshot.value as! Dictionary<String, String>
+            let channelData = snapshot.value as! Dictionary<String, String>
             
             print(snapshot.value!)
             
-            if let fromid = messageData["fromID"] as String!, let name = messageData["destinationID"] as String!, let text = messageData["text"] as String!, let timestamp = messageData["timestamp"]{
+            if let fromid = channelData["fromID"] as String!, let toid = channelData["destinationID"] as String!, let text = channelData["text"] as String!, let timestamp = channelData["timestamp"]{
             
-                self.addMessage(withId: self.senderId, name: name, text: text)
+                //self.addMessage(withId: self.senderId, name: name, text: text)
+               // self.addMessage(withId: <#T##String#>, name: <#T##String#>, text: <#T##String#>)
+                let userRef = FIRDatabase.database().reference().child("Users").child(fromid)
+                userRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
+                    let userRefDat = userSnapshot.value as! [String: Any]
+                    let user = userRefDat["username"] as! String?
+                    self.addMessage(withId: fromid, name: user!, text: text)
+                    print("message was added from \(fromid) to \(toid)")
+                })
                 
-                print(self.selectedMessageID)
-                print(self.selectedText)
-                print(self.senderId)
+                self.addMessage(withId: fromid, name: user!, text: text)
+                
                 
         
                 self.finishReceivingMessage()
