@@ -15,21 +15,15 @@ class Message: NSObject {
     var fromID: String?
     var text: String?
     var timestamp: String?
-    var toID: String?
-    var messageID: String?
-    var channelID: String?
+    var destinationID: String?
     var name: String?
     
     
-    init(fromID:String?, text:String?, timestamp:String?, toID: String?, messageID: String?, channelID: String?, name: String?){
+    init(fromID:String?, text:String?, timestamp:String?, destinationID: String?){
         self.fromID = fromID
         self.text = text
         self.timestamp = timestamp
-        self.toID = toID
-        self.messageID = messageID
-        self.name = name
-        self.channelID = channelID
-        
+        self.destinationID = destinationID
     }
     
 }

@@ -156,6 +156,7 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
                     postbidView?.selectedID = jobData[indexPath.row].postid!
                     
                     postbidView?.toID = jobData[indexPath.row].username!
+                    postbidView?.name = jobData[indexPath.row].name!
                 }
             }
     }

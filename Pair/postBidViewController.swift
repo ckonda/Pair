@@ -27,25 +27,17 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     public var selectedPrice = Int()
     public var selectedID = String()//the ID for the current post
 
+    public var name = String()
     
     public var toID = String()
     
     
     
-  
-    
     @IBOutlet weak var cancelPost: UIBarButtonItem!
-    
     
     @IBOutlet weak var jobName: UILabel!
     
     @IBOutlet weak var jobDescription: UILabel!
-    
-
-    
-    
-    
-    
     
     
 //    @IBOutlet weak var offerName: UILabel!
@@ -54,6 +46,20 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var bidEnter: UITextField!
+    
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        bidEnter.resignFirstResponder()
+      
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        bidEnter.resignFirstResponder()
+
+        return true
+        
+    }
     
 
     @IBAction func cancelView(_ sender: Any) {
@@ -84,7 +90,6 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
             
             let bidRef = self.ref?.child("Bids").childByAutoId()//new channel created
             
-            
             let newKey = bidRef?.key//key for message ID
             let postBid = [
                 "bidderID": AppDelegate.user.userID!,
@@ -94,8 +99,27 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
                 "timestamp": timestamp
                 ] as [String : Any]
             
-            bidRef?.setValue(postBid)//setting val
+          //  bidRef?.setValue(postBid)//setting val
             
+            //starting messaging procedure
+            
+            let textMessage = [
+                "text": "greetings" as! String?!,
+                "destinationID" : toID,
+                "fromID" : AppDelegate.user.userID!,
+                "timestamp": timestamp
+            ] as [String:Any]
+            
+            let toUser = name
+            let fromUser = AppDelegate.user.username!
+            
+            
+            
+            let messageRef = self.ref.child("Messages").childByAutoId()
+            
+            messageRef.setValue(textMessage)
+            
+            print("\(fromUser) -> \(name) : \(textMessage["text"])")
         
         }
         
@@ -114,7 +138,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         
         jobDescription.text = selectedDescription
         jobName.text = selectedName
-        
+        bidEnter.delegate = self
         
         ref = FIRDatabase.database().reference()
         
