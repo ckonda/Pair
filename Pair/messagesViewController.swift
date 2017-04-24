@@ -65,7 +65,7 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         ref.observe(FIRDataEventType.value, with: {(snapshot) in
             if snapshot.childrenCount>0{
                 //print(snapshot.)
-                //self.messageData.removeAll()
+                self.channelData.removeAll()
                 //print("messages in snapshot")
                 for channels in snapshot.children.allObjects as! [FIRDataSnapshot]{
                     //print(channels.key)

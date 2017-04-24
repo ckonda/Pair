@@ -60,6 +60,8 @@ class chatViewController: JSQMessagesViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addNavBar()
  
         
         title = "Chat Now!"
@@ -118,7 +120,7 @@ class chatViewController: JSQMessagesViewController{
     }
     
     private func addMessage(withId id: String, name: String, text: String){
-        if let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text){
+        if let message = JSQMessage(senderId: id, displayName: name, text: text){
             messages.append(message)//creates new JSQ message and adds it to the data source
         }
     }
@@ -185,15 +187,15 @@ class chatViewController: JSQMessagesViewController{
             
                 //self.addMessage(withId: self.senderId, name: name, text: text)
                // self.addMessage(withId: <#T##String#>, name: <#T##String#>, text: <#T##String#>)
-                let userRef = FIRDatabase.database().reference().child("Users").child(fromid)
+                /*let userRef = FIRDatabase.database().reference().child("Users").child(fromid)
                 userRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
                     let userRefDat = userSnapshot.value as! [String: Any]
                     let user = userRefDat["username"] as! String?
                     self.addMessage(withId: fromid, name: user!, text: text)
                     print("message was added from \(fromid) to \(toid)")
-                })
+                })*/
                 
-                self.addMessage(withId: fromid, name: user!, text: text)
+               self.addMessage(withId: fromid, name: AppDelegate.user.username!, text: text)
                 
                 
         
@@ -204,15 +206,46 @@ class chatViewController: JSQMessagesViewController{
         })
     }
     
-//    
-//    senderId
-//    The unique identifier for the user who sent the message. This value must not be `nil`.
-//    displayName
-//    The display name for the user who sent the message. This value must not be `nil`.
-//    text
-//    The body text of the message. This value must not be `nil`.
+    
+    
+    
 
     
+    func addNavBar() {
+        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height:54)) // Offset by 20 pixels vertically to take the status bar into account
+        
+        navigationBar.barTintColor = UIColor.blue
+        navigationBar.tintColor = UIColor.white
+        
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        
+        // Create a navigation item with a title
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "NavBarAppears!"
+        
+        // Create left and right button for navigation item
+        let leftButton =  UIBarButtonItem(title: "Back", style:   .plain, target: self, action: #selector(btn_clicked(_:)))
+        
+        //let rightButton = UIBarButtonItem(title: "Right", style: .plain, target: self, action: nil)
+        
+        // Create two buttons for the navigation item
+        navigationItem.leftBarButtonItem = leftButton
+        //navigationItem.rightBarButtonItem = rightButton
+        
+        // Assign the navigation item to the navigation bar
+        navigationBar.items = [navigationItem]
+        
+        // Make the navigation bar a subview of the current view controller
+        self.view.addSubview(navigationBar)
+    }
+
+    
+    func btn_clicked(_ sender: UIBarButtonItem) {
+        // Do something
+        dismiss(animated: true, completion: nil)
+    }
+    
+
     
     
     
