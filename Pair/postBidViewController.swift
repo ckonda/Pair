@@ -103,23 +103,48 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
             
             //starting messaging procedure
             
+            //create a new channel
+            
+           // let channelRef = self.ref.child("Channels").childByAutoId()
+            ///let thing = "HELLO"
+            
+            var user1 = postBid["bidderID"] as! String
+            var user2 = postBid["ownerID"] as! String
+            var concat: String?
+            if(user1 > user2){
+                concat = user1+"*"+user2
+            }
+            else{
+                concat = user2+"*"+user1
+            }
+            
+            print("our new channel id for \(user1) and \(user2) shall be \(concat)")
+            
+            //self.ref.child("Channels").child(thing)
+            let channelRef = self.ref.child("Channels").child(concat!)
+            let newChannel = channelRef.key
+            //let messageRef = channelRef.child(channelRef.key).childByAutoId()
+            
+            
             let textMessage = [
-                "text": "greetings" as! String?!,
+                "text": "hello" as! String?!,
                 "destinationID" : toID,
                 "fromID" : AppDelegate.user.userID!,
                 "timestamp": timestamp
             ] as [String:Any]
             
-            let toUser = name
-            let fromUser = AppDelegate.user.username!
+            //let toUser = name
+            //let fromUser = AppDelegate.user.username!
             
             
+            messageRef = channelRef.childByAutoId()
+            //let messageRef = self.ref.child(concat).childByAutoId()
             
-            let messageRef = self.ref.child("Messages").childByAutoId()
-            
+           // channelRef.setValue(textMessage)
             messageRef.setValue(textMessage)
+            //print("\(newChannel) -> \(channelInfo["user1ID"]) & \(channelRef["user2ID"])")
             
-            print("\(fromUser) -> \(name) : \(textMessage["text"])")
+            
         
         }
         

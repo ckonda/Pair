@@ -99,13 +99,13 @@
                                 </constraints>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="nkV-sh-1Kv">
-                                <rect key="frame" x="75" y="148" width="224" height="108"/>
+                                <rect key="frame" x="75" y="147.5" width="224" height="108"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="108" id="64v-Kp-Qfi"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pair" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oR-wX-xHN">
-                                <rect key="frame" x="138" y="49" width="99" height="91"/>
+                                <rect key="frame" x="138" y="49" width="99" height="90.5"/>
                                 <fontDescription key="fontDescription" name="Oregano-Regular" family="Oregano" pointSize="70"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -514,7 +514,7 @@
                                 <rect key="frame" x="0.0" y="69" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageCell" rowHeight="91" id="aGg-PM-6is" customClass="MessagesTableViewCell" customModule="Pair" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="messageCell" rowHeight="91" id="aGg-PM-6is" customClass="MessagesTableViewCell" customModule="Pair" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aGg-PM-6is" id="BCi-Bf-fIW">
@@ -695,7 +695,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Run-gB-cSF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Posts" selectedImage="postIcon" id="IkK-kL-RB7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0cu-IT-pFU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0cu-IT-pFU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -714,7 +714,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="80H-AS-3X5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Offer" id="MPu-dD-AuP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xJw-G1-fsg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xJw-G1-fsg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

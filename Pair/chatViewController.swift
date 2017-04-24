@@ -11,7 +11,7 @@ import JSQMessagesViewController
 import Firebase
 import FirebaseDatabase
 
-class chatViewController: JSQMessagesViewController {
+class chatViewController: JSQMessagesViewController{
     
     var newMessageRefHandle: FIRDatabaseHandle?
     
@@ -19,7 +19,6 @@ class chatViewController: JSQMessagesViewController {
    
     
     @IBAction func backButton(_ sender: Any) {
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -55,11 +54,11 @@ class chatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        print(selectedfromID)
-//        print(selectedtimeStamp)
-//        print(selectedText)
-//        print(selectedMessageID)
-//        print(selectedtoID)
+        print(selectedfromID)
+        print(selectedtimeStamp)
+        print(selectedText)
+        print(selectedMessageID)
+        print(selectedtoID)
         
         title = "Chat Now!"
         
@@ -71,8 +70,7 @@ class chatViewController: JSQMessagesViewController {
         self.senderId = FIRAuth.auth()?.currentUser?.uid
        
     }
-    
-    
+ 
     
     
     
@@ -103,7 +101,7 @@ class chatViewController: JSQMessagesViewController {
     
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
-        let message = messages[indexPath.item]//message retrieved
+        let message = self.messages[indexPath.item]//message retrieved
         if message.senderId == senderId {//return the outgoing image view to user
             return outgoingBubbleImageView
         }else {//otherwise return the incoming image view
@@ -135,23 +133,26 @@ class chatViewController: JSQMessagesViewController {
     }
     
     
-    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
         
         let ref = FIRDatabase.database().reference().child("Messages")
         let itemRef = ref.childByAutoId()
      //   let itemKey = itemRef.key
         
+        
+
+        
         let messageItem = [
-        "fromID": selectedfromID,
+        "fromID": self.senderId,
         "destinationID": selectedtoID,
         "timestamp": selectedtimeStamp,
-        "text": (AppDelegate.user.username! + ":" + selectedText),
+        "text": text,//(AppDelegate.user.username! + ":" + selectedText),
         ]
         
         itemRef.setValue(messageItem)
         
-        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        //JSQSystemSoundPlayer.jsq_playMessageSentSound()
         
         
         finishSendingMessage()
@@ -177,10 +178,11 @@ class chatViewController: JSQMessagesViewController {
             
             if let fromid = messageData["fromID"] as String!, let name = messageData["destinationID"] as String!, let text = messageData["text"] as String!, let timestamp = messageData["timestamp"]{
             
-                self.addMessage(withId: fromid, name: name, text: text)
+                self.addMessage(withId: self.senderId, name: name, text: text)
                 
                 print(self.selectedMessageID)
                 print(self.selectedText)
+                print(self.senderId)
                 
         
                 self.finishReceivingMessage()
@@ -202,7 +204,7 @@ class chatViewController: JSQMessagesViewController {
     
     
     
-    
+ 
     
     
 }

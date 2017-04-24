@@ -109,17 +109,9 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
                 DispatchQueue.main.async(execute: {
                     cell.profilePicture.image = UIImage(data: data!)
-                    
-                    
                 })
-                
-                
             }).resume()
         }
-        
-        
-
-        
 
        // cell.descriptionLabel.text = job.username
         return cell
