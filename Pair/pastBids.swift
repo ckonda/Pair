@@ -11,21 +11,21 @@ import Foundation
 
 public class pastBids{
     
-    var postPrice: String?
+    var postPrice: Int?
     var postID: String?
     var bidderID: String?
     var ownerID: String?
-    var timestamp: String?
+    var timeStamp: String?
     
     
     
     
-    init(postPrice: String?, postID: String?, bidderID: String?, ownerID: String, timestamp: String){
+    init(postPrice: Int?, postID: String?, bidderID: String?, ownerID: String, timeStamp: String){
         self.postPrice = postPrice
         self.postID = postID
         self.bidderID = bidderID
         self.ownerID = ownerID
-        self.timestamp = timestamp
+        self.timeStamp = timeStamp
         
     }
     

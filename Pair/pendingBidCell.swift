@@ -13,6 +13,7 @@ import Foundation
 public class pendingBidCell: UITableViewCell {
     
     
+    @IBOutlet weak var timeStamp: UILabel!
     
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,8 +28,8 @@ public class pendingBidCell: UITableViewCell {
         
     }
     
-    public func configure(){
-        
+    public func configure(timeStamp: String){
+        self.timeStamp.text = timeStamp
     }
     
 }
