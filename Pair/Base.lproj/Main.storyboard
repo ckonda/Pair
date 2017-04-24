@@ -424,27 +424,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="147" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zJ0-JW-2x6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zJ0-JW-2x6">
                                 <rect key="frame" x="0.0" y="67" width="375" height="600"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="pastbidCell" rowHeight="147" id="Rw9-y6-ZY7" customClass="pendingBidCell" customModule="Pair" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="147"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="pastbidCell" rowHeight="90" id="Rw9-y6-ZY7" customClass="pendingBidCell" customModule="Pair" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rw9-y6-ZY7" id="WlO-r7-5gw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="146"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqU-Mh-urV">
-                                                    <rect key="frame" x="31" y="8" width="81" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlb-9Y-2Jg">
-                                                    <rect key="frame" x="31" y="73" width="37" height="21"/>
+                                                    <rect key="frame" x="276" y="8" width="81" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -527,21 +520,26 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aTF-CW-LPR">
+                                                    <rect key="frame" x="22" y="9" width="61" height="61"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sender Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G71-f2-tnd">
-                                                    <rect key="frame" x="18" y="8" width="104" height="24"/>
+                                                    <rect key="frame" x="105" y="6" width="104" height="24"/>
                                                     <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="G71-f2-tnd" firstAttribute="baseline" secondItem="Jg1-9p-vrE" secondAttribute="baseline" id="CIJ-Rj-TjE"/>
-                                                <constraint firstItem="G71-f2-tnd" firstAttribute="top" secondItem="BCi-Bf-fIW" secondAttribute="topMargin" id="S1O-Sr-uYk"/>
+                                                <constraint firstItem="G71-f2-tnd" firstAttribute="baseline" secondItem="Jg1-9p-vrE" secondAttribute="baseline" constant="-2" id="CIJ-Rj-TjE"/>
+                                                <constraint firstItem="G71-f2-tnd" firstAttribute="top" secondItem="BCi-Bf-fIW" secondAttribute="topMargin" constant="-2" id="S1O-Sr-uYk"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Jg1-9p-vrE" secondAttribute="trailing" constant="9" id="dYk-Kc-6pT"/>
-                                                <constraint firstItem="G71-f2-tnd" firstAttribute="leading" secondItem="BCi-Bf-fIW" secondAttribute="leadingMargin" constant="10" id="oJd-Sz-Ltw"/>
+                                                <constraint firstItem="G71-f2-tnd" firstAttribute="leading" secondItem="BCi-Bf-fIW" secondAttribute="leadingMargin" constant="97" id="oJd-Sz-Ltw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="messagePicture" destination="aTF-CW-LPR" id="ZUn-xs-B9H"/>
                                             <outlet property="senderName" destination="G71-f2-tnd" id="V4m-B0-HHc"/>
                                             <outlet property="timeStamp" destination="Jg1-9p-vrE" id="qRl-0X-rFI"/>
                                             <segue destination="lRo-cP-1us" kind="show" identifier="gotoMessage" id="Wnj-1c-7m5"/>

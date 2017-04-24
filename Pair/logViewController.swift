@@ -17,6 +17,8 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        profilePicture.isHidden = true
+        
         nametextField.backgroundColor = UIColor.white;
         nametextField.alpha = 0.2;
         nametextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
@@ -97,6 +99,8 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
        var postController: postViewController?
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    
 
     @IBAction func segmentedSelect(_ sender: UISegmentedControl) {
         
@@ -104,12 +108,16 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
             signinButton.setTitle("Sign in", for: .normal)
             nametextField.isHidden = true
             
+            profilePicture.isHidden = true
+            
             handleLoginRegister()
 
         }else {
             
             nametextField.isHidden = false
             signinButton.setTitle("Join", for: .normal)
+            profilePicture.isHidden = false
+            
             handleLoginRegister()
 
         }

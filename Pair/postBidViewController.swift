@@ -77,8 +77,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         let minutes = calendar.component(.minute, from: date)
-        let seconds = calendar.component(.second, from: date)
-        let timestamp = "\(hour):\(minutes):\(seconds)"
+        let timestamp = "\(hour):\(minutes)"
         
         if let text = bidEnter.text {//String to variable
             guard let bid = Int(text) else {//variable to integers to BID
@@ -86,7 +85,6 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             let newPrice = bid
-            
             
             let bidRef = self.ref?.child("Bids").childByAutoId()//new channel created
             
@@ -98,18 +96,10 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
                 "postPrice": newPrice,
                 "timestamp": timestamp
                 ] as [String : Any]
+     
             
-          //  bidRef?.setValue(postBid)//setting val
-            
-            //starting messaging procedure
-            
-            //create a new channel
-            
-           // let channelRef = self.ref.child("Channels").childByAutoId()
-            ///let thing = "HELLO"
-            
-            var user1 = postBid["bidderID"] as! String
-            var user2 = postBid["ownerID"] as! String
+            let user1 = postBid["bidderID"] as! String
+            let user2 = postBid["ownerID"] as! String
             var concat: String?
             if(user1 > user2){
                 concat = user1+"*"+user2
@@ -127,25 +117,17 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
             
             
             let textMessage = [
-                "text": "hello" as! String?!,
+                "text": "hello" as String?!,
                 "destinationID" : toID,
                 "fromID" : AppDelegate.user.userID!,
                 "timestamp": timestamp
             ] as [String:Any]
             
-            //let toUser = name
-            //let fromUser = AppDelegate.user.username!
-            
             
             messageRef = channelRef.childByAutoId()
-            //let messageRef = self.ref.child(concat).childByAutoId()
             
            // channelRef.setValue(textMessage)
             messageRef.setValue(textMessage)
-            //print("\(newChannel) -> \(channelInfo["user1ID"]) & \(channelRef["user2ID"])")
-            
-            
-        
         }
         
         

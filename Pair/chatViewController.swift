@@ -212,25 +212,25 @@ class chatViewController: JSQMessagesViewController{
 
     
     func addNavBar() {
-        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height:54)) // Offset by 20 pixels vertically to take the status bar into account
+        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height:65)) // Offset by 20 pixels vertically to take the status bar into account
         
-        navigationBar.barTintColor = UIColor.blue
+        navigationBar.barTintColor = UIColor.cyan
         navigationBar.tintColor = UIColor.white
         
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
         
         // Create a navigation item with a title
         let navigationItem = UINavigationItem()
-        navigationItem.title = "NavBarAppears!"
+        navigationItem.title = "Chat Box"
+        
         
         // Create left and right button for navigation item
-        let leftButton =  UIBarButtonItem(title: "Back", style:   .plain, target: self, action: #selector(btn_clicked(_:)))
+        let leftButton =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(btn_clicked(_:)))
         
-        //let rightButton = UIBarButtonItem(title: "Right", style: .plain, target: self, action: nil)
+        let rightButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(done_button(_:)))
         
-        // Create two buttons for the navigation item
         navigationItem.leftBarButtonItem = leftButton
-        //navigationItem.rightBarButtonItem = rightButton
+        navigationItem.rightBarButtonItem = rightButton
         
         // Assign the navigation item to the navigation bar
         navigationBar.items = [navigationItem]
@@ -243,6 +243,12 @@ class chatViewController: JSQMessagesViewController{
     func btn_clicked(_ sender: UIBarButtonItem) {
         // Do something
         dismiss(animated: true, completion: nil)
+    }
+    
+    func done_button(_ sender: UIBarButtonItem){
+        print("JOB HAS FINISHED")
+        
+        
     }
     
 

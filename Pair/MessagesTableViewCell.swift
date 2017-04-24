@@ -18,24 +18,32 @@ public class MessagesTableViewCell: UITableViewCell {
     @IBOutlet weak var timeStamp: UILabel!
 
     
+    @IBOutlet weak var messagePicture: UIImageView!
+    
+    
+    
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        messagePicture.layer.cornerRadius = messagePicture.frame.size.width/2
+        messagePicture.clipsToBounds = true
+        messagePicture.layer.borderColor = UIColor.white.cgColor
+        messagePicture.layer.borderWidth = 1
+        
+        
     }
-    
-    
     
     
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        
     }
     
-    public func configure(senderName: String, timeStamp: String){
+    public func configure(senderName: String, timeStamp: String, messagePicture: UIImage){
         
         self.senderName.text = senderName
         self.timeStamp.text = timeStamp
+        self.messagePicture.image = messagePicture
 
     }
     
