@@ -116,10 +116,10 @@
 				EEE3D83A1EA5CA6F009C5DDC /* messagesViewController.swift */,
 				EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */,
 				EE33E6771EA6995100A63FBA /* MenuViewController.swift */,
+				EE58D7901EAC8EB100D6B9B1 /* pendingViewController.swift */,
 				EEE3D8311EA5A46B009C5DDC /* BidControllers */,
 				EEE3D82F1EA5A417009C5DDC /* ComposeControllers */,
 				EEE3D8301EA5A434009C5DDC /* MainControllers */,
-				EE58D7901EAC8EB100D6B9B1 /* pendingViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

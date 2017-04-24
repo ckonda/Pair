@@ -18,11 +18,14 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
     
     var ref: FIRDatabaseReference!
     
+    @IBAction func cancel(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+    }
    
 
     
 
-    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -57,19 +60,20 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
                     //self.bidderID = bidderID
                     //self.ownerID = ownerID
                     
-                    
+                
                     let bidObject = pastBids(postPrice: postPrice , postID: postID , bidderID: biderID , ownerID: ownerID! , timeStamp: timeStamp!)
                     //append data
-                    // self.jobData.append(jobObject)
-                    
-                    self.bidData.insert(bidObject, at: 0)
+                     self.bidData.append(bidObject)
+                    print(snapshot)
+                
+                    //self.bidData.insert(bidObject, at: 0)
                 }
             }
+            print(self.bidData.count)
+            self.tableView.reloadData()
         })
-        
-        self.tableView.reloadData()
 
-        
+
         
     }
     
@@ -81,17 +85,23 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         
         let bid = bidData[indexPath.row]
         
-        
         cell.timeStamp.text = bid.timeStamp
+        print("timestamp = \(cell.timeStamp.text)")
         
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        print("dkljfosdjf: \(bidData.count)")
+        
+        
         return bidData.count
     }
     
+    
+   
     
     
     

@@ -35,7 +35,7 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
     private var messageRefHandle: FIRDatabaseHandle?
     
     
-   // let json = JSON(data: <#T##Data#>)
+
     
     var messageData = [Message]()
     
@@ -81,6 +81,7 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
                     let timestamp = message?["timestamp"];
                     
                     let newMessageData = Message(fromID: toID as? String, text: text as? String, timestamp: timestamp as? String, destinationID: fromID as? String)
+                    
                     if let toID = newMessageData.fromID{
                         self.messagesDictionary[toID] = newMessageData
                         self.messageData = Array(self.messagesDictionary.values)
@@ -270,13 +271,13 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
                // chatVC?.message = messageData[indexPath.row].text!
                 chatVC?.senderDisplayName = AppDelegate.user.username
                 chatVC?.senderId = AppDelegate.user.userID
-//                chatVC?.selectedText = messageData[indexPath.row].text!
-//                chatVC?.selectedtimeStamp = messageData[indexPath.row].timestamp!
-//                chatVC?.selectedMessageID = messageData[indexPath.row].messageID!
-//                chatVC?.selectedtoID = messageData[indexPath.row].toID!
-//                chatVC?.selectedfromID = messageData[indexPath.row].fromID!
-//                
-//                chatVC?.selectedchannelID = messageData[indexPath.row].channelID!
+                chatVC?.selectedText = messageData[indexPath.row].text!
+                chatVC?.selectedtimeStamp = messageData[indexPath.row].timestamp!
+  
+                chatVC?.selectedtoID = messageData[indexPath.row].destinationID!
+                chatVC?.selectedfromID = messageData[indexPath.row].fromID!
+                
+              
                 
                 
                 
