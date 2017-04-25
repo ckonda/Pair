@@ -54,19 +54,14 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
                     //let jobSkill = job?["skill"]
                     let postPrice = bid?["postPrice"] as! Int?
                     let timeStamp = bid?["timestamp"] as! String?// job description
-                    
-                    //self.postPrice = postPrice
-                    //self.postID = postID
-                    //self.bidderID = bidderID
-                    //self.ownerID = ownerID
+                    let name = bid?["name"] as!  String?
+                    let Description = bid?["description"] as! String?
                     
                 
-                    let bidObject = pastBids(postPrice: postPrice , postID: postID , bidderID: biderID , ownerID: ownerID! , timeStamp: timeStamp!)
+                    let bidObject = pastBids(postPrice: postPrice , postID: postID , bidderID: biderID , ownerID: ownerID! , timeStamp: timeStamp!, Description: Description, name: name)
                     //append data
-                     self.bidData.append(bidObject)
-                    print(snapshot)
                 
-                    //self.bidData.insert(bidObject, at: 0)
+                    self.bidData.insert(bidObject, at: 0)
                 }
             }
             print(self.bidData.count)
@@ -86,7 +81,11 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         let bid = bidData[indexPath.row]
         
         cell.timeStamp.text = bid.timeStamp
-        print("timestamp = \(cell.timeStamp.text)")
+        cell.price.text = String(describing: bid.postPrice!)
+        cell.bidder.text = bid.name
+        cell.Description.text = bid.Description
+        
+
         
         return cell
     }
@@ -101,9 +100,14 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
     }
     
     
-   
-    
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == UITableViewCellEditingStyle.delete
+        {
+            bidData.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
     
     
     

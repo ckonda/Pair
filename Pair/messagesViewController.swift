@@ -20,7 +20,6 @@ enum Section: Int {
 
 
 
-
 class messagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -121,7 +120,6 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
             print(snapshot)
             let nameJSON = snapshot.value as! [String: Any]
             cell.senderName.text = (nameJSON["username"] as! String?)!
-            
             
             if let profileImage = nameJSON["profileImageUrl"] as! String? {
                 

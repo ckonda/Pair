@@ -113,23 +113,22 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
             print("our new channel id for \(user1) and \(user2) shall be \(concat)")
             
             //self.ref.child("Channels").child(thing)
-            let channelRef = self.ref.child("Channels").child(concat!)
-            let newChannel = channelRef.key
-            //let messageRef = channelRef.child(channelRef.key).childByAutoId()
+//            let channelRef = self.ref.child("Channels").child(concat!)
+//            let newChannel = channelRef.key
             
             
-            let textMessage = [
-                "text": "hello",
-                "destinationID" : toID,
-                "fromID" : AppDelegate.user.userID!,
-                "timestamp": timestamp
-            ] as [String:Any]
+//            let textMessage = [
+//                "text": "hello",
+//                "destinationID" : toID,
+//                "fromID" : AppDelegate.user.userID!,
+//                "timestamp": timestamp
+//            ] as [String:Any]
+//            
             
-            
-            messageRef = channelRef.childByAutoId()
+          //  messageRef = channelRef.childByAutoId()
             
            // channelRef.setValue(textMessage)
-            messageRef.setValue(textMessage)
+           // messageRef.setValue(textMessage)
         }
         
         

@@ -16,17 +16,20 @@ public class pastBids{
     var bidderID: String?
     var ownerID: String?
     var timeStamp: String?
+    var name: String?
+    var Description: String?
     
     
     
     
-    init(postPrice: Int?, postID: String?, bidderID: String?, ownerID: String, timeStamp: String){
+    init(postPrice: Int?, postID: String?, bidderID: String?, ownerID: String, timeStamp: String,Description: String?, name: String?){
         self.postPrice = postPrice
         self.postID = postID
         self.bidderID = bidderID
         self.ownerID = ownerID
         self.timeStamp = timeStamp
-        
+        self.Description = Description
+        self.name = name
     }
     
     
