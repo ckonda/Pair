@@ -156,11 +156,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    
-    
-    
-    
-    
+
     
     
     

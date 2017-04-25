@@ -79,26 +79,16 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         let postRef =  self.ref?.child("Jobs").childByAutoId()
         let postId = postRef?.key
         
+        
+        
+        
         let date = Date()
-        let calendar = Calendar.current
-        
-        
-        let hour = calendar.component(.hour, from: date)
-        let minute = calendar.component(.minute, from: date)
-        let day = calendar.component(.day, from: date)
-     // let second = calendar.component(.second, from: <#T##Date#>)
-        
-        
-        let test = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date as Date)
-        print(test)
-        
         let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
         let stringDate = dateFormatter.string(from: date)
-
         
         print(stringDate)
+
     
         let postData = [
             "title": JobType,
@@ -109,7 +99,7 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
             "location": "Merced, CA",
             "username": AppDelegate.user.userID!,
             "profileImageUrl": AppDelegate.user.profileImageUrl!,
-            "timestamp": stringDate
+            "timestamp": stringDate//stringDate
             ] as [String : Any]
         
         
@@ -124,30 +114,10 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-      
 
 }
+
+
+
+
+

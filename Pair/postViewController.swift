@@ -100,15 +100,23 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let time = job.timestamp
         
+        print(time!)
+//        
         let dateString = time
         let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "dd/MM/yyyy"
-        
+//        dateformatter.dateFormat = "dd-MM-yyyy"// HH:mm:ss"
+        dateformatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
         dateformatter.timeZone = NSTimeZone(abbreviation: "PT+0:00") as TimeZone!
         let dateFromString = dateformatter.date(from: dateString!)
         
-        let timeAgo:String = timeAgoSinceDate((dateFromString as Date?)!, numericDates: true)
+        print(dateFromString!)
+//        
+        let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
+        
+        print(timeAgo)
+        
         cell.timestamp.text = timeAgo
+  
         
         
         
