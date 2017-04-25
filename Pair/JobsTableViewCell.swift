@@ -21,6 +21,7 @@ public class JobsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var locationLabel: UILabel!
     
+    @IBOutlet weak var timestamp: UILabel!
     
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,12 +39,13 @@ public class JobsTableViewCell: UITableViewCell {
      
     }
     
-    public func configure(postLabel: String, postPrice:String, locationLabel: String, profilePicture: UIImage){
+    public func configure(postLabel: String, postPrice:String, locationLabel: String, profilePicture: UIImage, timestamp: String){
         self.postLabel.text = postLabel
 //        self.descriptionLabel.text = descriptionLabel
         self.postPrice.text = postPrice
         self.locationLabel.text = locationLabel
         self.profilePicture.image = profilePicture
+        self.timestamp.text = timestamp
     }
 
 }

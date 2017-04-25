@@ -286,6 +286,13 @@
                                                     <rect key="frame" x="21" y="67" width="38" height="8"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTe-ff-CUf">
+                                                    <rect key="frame" x="184" y="61" width="86" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -293,6 +300,7 @@
                                             <outlet property="postLabel" destination="Ghh-Jl-drR" id="8W1-Aq-hWO"/>
                                             <outlet property="postPrice" destination="u6q-QN-bjv" id="Tmf-ki-Voy"/>
                                             <outlet property="profilePicture" destination="6Oi-OE-iyh" id="FlA-LK-ELz"/>
+                                            <outlet property="timestamp" destination="JTe-ff-CUf" id="jhI-N6-ifw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

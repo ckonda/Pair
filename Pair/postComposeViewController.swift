@@ -10,6 +10,7 @@ import UIKit
 import FirebaseDatabase
 import WebKit
 import CoreLocation
+import Firebase
 
 class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
@@ -20,6 +21,8 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         ref = FIRDatabase.database().reference()
         
@@ -76,8 +79,27 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         let postRef =  self.ref?.child("Jobs").childByAutoId()
         let postId = postRef?.key
         
-       // UserDefaults.standard.object(forKey: "username")!
+        let date = Date()
+        let calendar = Calendar.current
         
+        
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
+        let day = calendar.component(.day, from: date)
+     // let second = calendar.component(.second, from: <#T##Date#>)
+        
+        
+        let test = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date as Date)
+        print(test)
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let stringDate = dateFormatter.string(from: date)
+
+        
+        print(stringDate)
+    
         let postData = [
             "title": JobType,
             "price": JobPrice!,
@@ -86,7 +108,8 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
             "postid": postId!,
             "location": "Merced, CA",
             "username": AppDelegate.user.userID!,
-            "profileImageUrl": AppDelegate.user.profileImageUrl!
+            "profileImageUrl": AppDelegate.user.profileImageUrl!,
+            "timestamp": stringDate
             ] as [String : Any]
         
         
@@ -95,14 +118,30 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    
+
     
     @IBAction func cancelPost(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

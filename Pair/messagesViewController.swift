@@ -139,7 +139,9 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
             
         })//end of UserObserve completion block
    
-        let timepathID = 
+//        let timepathID = FIRDatabase.database().reference().child("Channels").child(channel.channelDispID!)
+        
+        
         
         
         

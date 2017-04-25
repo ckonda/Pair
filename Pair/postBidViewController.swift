@@ -79,6 +79,8 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         let minutes = calendar.component(.minute, from: date)
         let timestamp = "\(hour):\(minutes)"
         
+        print(timestamp)
+        
         if let text = bidEnter.text {//String to variable
             guard let bid = Int(text) else {//variable to integers to BID
                 // return bid
@@ -117,7 +119,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
             
             
             let textMessage = [
-                "text": "hello" as String?!,
+                "text": "hello",
                 "destinationID" : toID,
                 "fromID" : AppDelegate.user.userID!,
                 "timestamp": timestamp
