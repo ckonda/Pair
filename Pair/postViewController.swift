@@ -109,17 +109,11 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         dateformatter.timeZone = NSTimeZone(abbreviation: "PT+0:00") as TimeZone!
         let dateFromString = dateformatter.date(from: dateString!)
         
-        print(dateFromString!)
-//        
+        
         let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
-        
-        print(timeAgo)
-        
         cell.timestamp.text = timeAgo
   
-        
-        
-        
+    
         if let profileImage = job.profileImageUrl {
             
             let url = URL(string: profileImage)
@@ -134,7 +128,6 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
             }).resume()
         }
 
-       // cell.descriptionLabel.text = job.username
         return cell
     }
     
@@ -189,10 +182,6 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
             delayNum += 1
         }
     }
-    
-    
-    
-    
     
     
     
@@ -262,11 +251,6 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
 
-    
-    
-    
-  
-    
 
 
 
