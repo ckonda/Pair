@@ -13,6 +13,7 @@ import FirebaseDatabase
 
 public class pendingBidCell: UITableViewCell {
     
+    @IBOutlet weak var pendingPicture: UIImageView!
     
     var ref: FIRDatabaseReference!
     
@@ -83,6 +84,11 @@ public class pendingBidCell: UITableViewCell {
         // Initialization code
         
         
+        pendingPicture.layer.cornerRadius = pendingPicture.frame.size.width/2
+        pendingPicture.clipsToBounds = true
+        pendingPicture.layer.borderColor = UIColor.white.cgColor
+        pendingPicture.layer.borderWidth = 1
+        
         
     }
     
@@ -91,11 +97,13 @@ public class pendingBidCell: UITableViewCell {
         
     }
     
-    public func configure(timeStamp: String, price: String, bidder: String, Description: String){
+    public func configure(timeStamp: String, price: String, bidder: String, Description: String, pendingPicture: UIImage){
         self.timeStamp.text = timeStamp
         self.price.text = price
         self.bidder.text = bidder
         self.Description.text = Description
+        
+        self.pendingPicture.image = pendingPicture
     }
     
 }

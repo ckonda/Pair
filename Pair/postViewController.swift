@@ -98,9 +98,9 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.postPrice.text = String(describing: job.price!)
         cell.locationLabel.text = job.location
         
-        let time = job.timestamp
         
-        print(time!)
+        
+        let time = job.timestamp
 //        
         let dateString = time
         let dateformatter = DateFormatter()

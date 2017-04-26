@@ -18,10 +18,7 @@ enum Section: Int {
     case currentChannelSection//listen for new data to save to firebase
 }
 
-
-
 class messagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     
     var senderDisplayName = AppDelegate.user.username
     @IBOutlet weak var tableView: UITableView!
@@ -129,15 +126,28 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         cell.senderName.text = channel.channelDispID
         
         
-        
-        let timePath = FIRDatabase.database().reference().child("Channels").child(channel.channelDispID!)
+        let timeQuery = FIRDatabase.database().reference().child("Channels").child(channel.channelID!).queryLimited(toLast: 1)
+ 
         //print("name = \(nameJSON["username"] as! String?)")
-        timePath.observeSingleEvent(of: .childAdded, with: { (snapshot) in
+        let timeRef = timeQuery.observeSingleEvent(of: FIRDataEventType.childAdded, with: { (snapshot) in
             print(snapshot)
             let time = snapshot.value as! [String: Any]
             
-            cell.timeStamp.text = time["timestamp"] as! String
             
+            
+            let messageTime = time["timestamp"] as? String
+            //
+            let dateString = messageTime
+            let dateformatter = DateFormatter()
+            //        dateformatter.dateFormat = "dd-MM-yyyy"// HH:mm:ss"
+            dateformatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+            dateformatter.timeZone = NSTimeZone(abbreviation: "PT+0:00") as TimeZone!
+            let dateFromString = dateformatter.date(from: dateString!)
+            
+            
+            let timeAgo:String = self.timeAgoSinceDate((dateFromString)!, numericDates: true)
+            cell.timeStamp.text = timeAgo
+    
             
         })
         
@@ -201,6 +211,77 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
+    
+    
+    
+    
+    
+    
+    func timeAgoSinceDate(_ date:Date, numericDates:Bool = false) -> String {
+        let calendar = Calendar.current
+        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+        let now = Date()
+        let earliest = now < date ? now : date
+        let latest = (earliest == now) ? date : now
+        let components = calendar.dateComponents(unitFlags, from: earliest,  to: latest)
+        
+        if (components.year! >= 2) {
+            return "\(components.year!) years ago"
+        } else if (components.year! >= 1){
+            if (numericDates){
+                return "1 year ago"
+            } else {
+                return "Last year"
+            }
+        } else if (components.month! >= 2) {
+            return "\(components.month!) months ago"
+        } else if (components.month! >= 1){
+            if (numericDates){
+                return "1 month ago"
+            } else {
+                return "Last month"
+            }
+        } else if (components.weekOfYear! >= 2) {
+            return "\(components.weekOfYear!) weeks ago"
+        } else if (components.weekOfYear! >= 1){
+            if (numericDates){
+                return "1 week ago"
+            } else {
+                return "Last week"
+            }
+        } else if (components.day! >= 2) {
+            return "\(components.day!) days ago"
+        } else if (components.day! >= 1){
+            if (numericDates){
+                return "1 day ago"
+            } else {
+                return "Yesterday"
+            }
+        } else if (components.hour! >= 2) {
+            return "\(components.hour!) hours ago"
+        } else if (components.hour! >= 1){
+            if (numericDates){
+                return "1 hour ago"
+            } else {
+                return "An hour ago"
+            }
+        } else if (components.minute! >= 2) {
+            return "\(components.minute!) minutes ago"
+        } else if (components.minute! >= 1){
+            if (numericDates){
+                return "1 minute ago"
+            } else {
+                return "A minute ago"
+            }
+        } else if (components.second! >= 3) {
+            return "\(components.second!) seconds ago"
+        } else {
+            return "Just now"
+        }
+        
+    }
+    
+
 
 }
 

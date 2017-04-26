@@ -105,7 +105,9 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
                 "ownerID": toID,
                 "postID": selectedID,
                 "postPrice": newPrice,
-                "timestamp": stringDate
+                "timestamp": stringDate,
+                "name": name,
+                "description": selectedName,
                 ] as [String : Any]
      
             bidCreate?.setValue(postBid)

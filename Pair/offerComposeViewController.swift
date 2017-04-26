@@ -76,14 +76,22 @@ class offerComposeViewController: UIViewController, UITextFieldDelegate {
         let postRef =  self.ref?.child("Offers").childByAutoId()
         let offerId = postRef?.key
 
-        let offerData = [
-        "title": OfferType,
-        "price": OfferPrice!,
-        "skill":OfferSkill,
-        "username": AppDelegate.user.userID!,
-         "offerID": offerId!
-        ] as [String : Any]
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let stringDate = dateFormatter.string(from: date)
         
+        let offerData = [
+            "title": OfferType,
+            "price": OfferPrice!,
+            "description": OfferSkill,
+            "name": AppDelegate.user.username!,
+            "postid": offerId!,
+            "location": "Merced, CA",
+            "username": AppDelegate.user.userID!,
+            "profileImageUrl": AppDelegate.user.profileImageUrl!,
+            "timestamp": stringDate
+            ] as [String : Any]
         
         postRef?.setValue(offerData)
         

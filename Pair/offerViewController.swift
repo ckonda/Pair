@@ -31,12 +31,19 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
                 for offer in snapshot.children.allObjects as![FIRDataSnapshot]{
                     //create object and initialize the values of it
                     let offer = offer.value as? [String: AnyObject]
-                    let offerType = offer?["offer"] as! String?
+                    
+                    let offerTitle = offer?["offer"] as! String?
                     let offerPrice = offer?["price"] as! Int?
                     let offerUsername = offer?["username"]as! String?
                     let offerSkill = offer?["skill"]as! String?
                     let offerId = offer?["offerid"] as! String?
-                    let offerObject = OfferModel(offer: offerType, price: offerPrice,username: offerUsername, skill: offerSkill, offerid: offerId)
+                    let offerImage = offer?["profileImageUrl"] as! String?
+                    let name = offer?["name"] as! String?
+                    let location = offer?["location"] as! String?
+                    let timestamp = offer?["timestamp"] as! String?
+                    
+                    let offerObject = OfferModel(offerName: offerTitle, price: offerPrice, username: offerUsername, skill: offerSkill, offerid: offerId, profileImageUrl: offerImage, location: location, name: name, timestamp: timestamp)
+                    
                     //append data
          
                   //  self.offerData.append(offerObject)
@@ -70,8 +77,9 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "offerCell", for: indexPath) as! OfferTableViewCell
         let offer = offerData[indexPath.row]
-        cell.offerLabel.text = offer.offer
-        cell.offerPrice.text = String(describing: offer.price!)
+        
+//        cell.offerLabel.text = offer.offer
+//        cell.offerPrice.text = String(describing: offer.price!)
         
       
         
