@@ -62,7 +62,7 @@ class chatViewController: JSQMessagesViewController{
         super.viewDidLoad()
         
         addNavBar()
- 
+        print("USER you're chatting with = \(chatUserID)")
         
         title = "Chat Now!"
         
