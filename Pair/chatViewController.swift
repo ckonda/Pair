@@ -245,7 +245,8 @@ class chatViewController: JSQMessagesViewController{
     
     func done_button(_ sender: UIBarButtonItem){
         
-        performSegue(withIdentifier: "gotoRating", sender: self)
+        
+            performSegue(withIdentifier: "gotoRating", sender: self)
         
         
         print("JOB HAS FINISHED")
@@ -253,6 +254,16 @@ class chatViewController: JSQMessagesViewController{
         
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "gotoRatings"){
+            
+            let destination = segue.destination as! rateViewController
+            destination.userID = chatUserID
+            
+        }
+        
+    }
 
     
     

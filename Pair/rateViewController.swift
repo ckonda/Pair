@@ -7,17 +7,26 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class rateViewController: UIViewController {
+    
+    let ref = FIRDatabase.database().reference().child("Ratings")
 
     @IBOutlet weak var rating: UITextField!
     
     @IBOutlet weak var comments: UITextField!
     
+    var userID: String?
+    
     @IBAction func submitRating(_ sender: Any) {
+        print("user youre rating = \(userID)")
         var ratingData: String
         var commentsData: String
         if rating.text != nil && comments.text != nil {
+            
+            
             
         }
     }
