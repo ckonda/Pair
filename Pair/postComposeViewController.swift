@@ -99,7 +99,7 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
             "location": "Merced, CA",
             "username": AppDelegate.user.userID!,
             "profileImageUrl": AppDelegate.user.profileImageUrl!,
-            "timestamp": stringDate//stringDate
+            "timestamp": stringDate
             ] as [String : Any]
         
         

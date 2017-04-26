@@ -1,8 +1,8 @@
 //
-//  Ratings.swift
+//  bidderRatings.swift
 //  Pair
 //
-//  Created by Chatan Konda on 4/25/17.
+//  Created by Chatan Konda on 4/26/17.
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 
 
 
-public class Ratings{
+public class bidderRatings{
     
     var comments: String?
     var rater: String?
@@ -18,11 +18,12 @@ public class Ratings{
     var raterID: String?
     
     
-    init(comments: String? , rater: String?, ratingValue: Int?, raterID:String?){
+    init(comments: String? , rater: String?, ratingValue: Int?, raterID: String?){
         self.comments = comments
         self.rater = rater
         self.ratingValue = ratingValue
         self.raterID = raterID
+        
     }
     
 }

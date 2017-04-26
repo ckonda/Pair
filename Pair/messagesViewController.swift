@@ -28,22 +28,9 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
     var ref: FIRDatabaseReference!
     
     private lazy var messageRef: FIRDatabaseReference = FIRDatabase.database().reference().child("Messages")
-    
 
     
     private var messageRefHandle: FIRDatabaseHandle?
-    
-    
-//    func setup() {
-//        self.senderId = "1234"
-//        self.senderDisplayName = "TEST"
-//    }
-
-    
-    
-    //     cell.senderName.text = message.name
-    //cell.timeStamp.text = String(describing: message.timestamp!)
-    //var channelDictionary = [String: Message]()
     var channelData = [Channel]()
     
     
@@ -58,7 +45,7 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         //observeMessages()
         tableView.delegate = self
         tableView.dataSource = self
-        //ref = FIRDatabase.database().reference().child("Messages").child("-KiCP4P4Gw8uw_3QWvGj");
+
         ref = FIRDatabase.database().reference().child("Channels");
         print(ref)
         ref.observe(FIRDataEventType.value, with: {(snapshot) in
@@ -117,7 +104,6 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         let nameIDPath = FIRDatabase.database().reference().child("Users").child(channel.channelDispID!)
         //print("name = \(nameJSON["username"] as! String?)")
         nameIDPath.observeSingleEvent(of: .value, with: { (snapshot) in
-            print(snapshot)
             let nameJSON = snapshot.value as! [String: Any]
             cell.senderName.text = (nameJSON["username"] as! String?)!
             
@@ -139,13 +125,22 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
    
 //        let timepathID = FIRDatabase.database().reference().child("Channels").child(channel.channelDispID!)
         
-        
-        
-        
-        
 
         cell.senderName.text = channel.channelDispID
-        cell.timeStamp.text = "hh:mm:ss"
+        
+        
+        
+        let timePath = FIRDatabase.database().reference().child("Channels").child(channel.channelDispID!)
+        //print("name = \(nameJSON["username"] as! String?)")
+        timePath.observeSingleEvent(of: .childAdded, with: { (snapshot) in
+            print(snapshot)
+            let time = snapshot.value as! [String: Any]
+            
+            cell.timeStamp.text = time["timestamp"] as! String
+            
+            
+        })
+        
         
        
         return cell

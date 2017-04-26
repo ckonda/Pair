@@ -11,20 +11,17 @@ import Firebase
 
 
 public class OfferTableViewCell: UITableViewCell {
-    
 
-    
-    
     @IBOutlet weak var offerLabel: UILabel!
-    
-    
     @IBOutlet weak var offerPrice: UILabel!
     
     
     
     public override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        
+        
     }
     
    

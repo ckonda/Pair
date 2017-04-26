@@ -61,6 +61,16 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
+    @IBAction func ratingsButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: "toPosterRating", sender: self)
+        
+    }
+    
+    
+    
+    
 
     @IBAction func cancelView(_ sender: Any) {
         
@@ -74,12 +84,9 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     @IBAction func bidButton(_ sender: Any) {
         
         let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minutes = calendar.component(.minute, from: date)
-        let timestamp = "\(hour):\(minutes)"
-        
-        print(timestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let stringDate = dateFormatter.string(from: date)
         
         if let text = bidEnter.text {//String to variable
             guard let bid = Int(text) else {//variable to integers to BID
@@ -88,47 +95,22 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
             }
             let newPrice = bid
             
-            let bidRef = self.ref?.child("Bids").childByAutoId()//new channel created
+            let bidRef = self.ref?.child("Bids")//new channel created
+            let bidCreate = bidRef?.childByAutoId()
+            let newKey = bidCreate?.key//key for message ID
             
-            let newKey = bidRef?.key//key for message ID
+            
             let postBid = [
                 "bidderID": AppDelegate.user.userID!,
                 "ownerID": toID,
                 "postID": selectedID,
                 "postPrice": newPrice,
-                "timestamp": timestamp
+                "timestamp": stringDate
                 ] as [String : Any]
      
+            bidCreate?.setValue(postBid)
             
-            let user1 = postBid["bidderID"] as! String
-            let user2 = postBid["ownerID"] as! String
-            var concat: String?
-            if(user1 > user2){
-                concat = user1+"*"+user2
-            }
-            else{
-                concat = user2+"*"+user1
-            }
-            
-            print("our new channel id for \(user1) and \(user2) shall be \(concat)")
-            
-            //self.ref.child("Channels").child(thing)
-//            let channelRef = self.ref.child("Channels").child(concat!)
-//            let newChannel = channelRef.key
-            
-            
-//            let textMessage = [
-//                "text": "hello",
-//                "destinationID" : toID,
-//                "fromID" : AppDelegate.user.userID!,
-//                "timestamp": timestamp
-//            ] as [String:Any]
-//            
-            
-          //  messageRef = channelRef.childByAutoId()
-            
-           // channelRef.setValue(textMessage)
-           // messageRef.setValue(textMessage)
+
         }
         
         
@@ -153,6 +135,22 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
   
         
     }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toPosterRating"){
+            
+            let destination = segue.destination as! bidRatingViewController
+            destination.postuserID = toID
+            
+
+        }
+        
+    }
+
+    
+    
     
     
 

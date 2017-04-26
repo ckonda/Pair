@@ -1,40 +1,38 @@
 //
-//  RatingTableViewCell.swift
+//  bidRatingTableViewCell.swift
 //  Pair
 //
-//  Created by Chatan Konda on 4/25/17.
+//  Created by Chatan Konda on 4/26/17.
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
 import Foundation
-import Firebase
 
 
 
-public class RatingTableViewCell: UITableViewCell {
-    @IBOutlet weak var raterPicture: UIImageView!
+public class bidRatingTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var rater: UILabel!
-
+    
+    @IBOutlet weak var comments: UITextView!
+    
     @IBOutlet weak var raterValue: UILabel!
     
-
-    @IBOutlet weak var comments: UITextView!
+    @IBOutlet weak var rater: UILabel!
+    
+    @IBOutlet weak var raterPicture: UIImageView!
+    
     
     
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-
+        
+        
         raterPicture.layer.cornerRadius = raterPicture.frame.size.width/2
         raterPicture.clipsToBounds = true
         raterPicture.layer.borderColor = UIColor.white.cgColor
         raterPicture.layer.borderWidth = 1
- 
-        
-        
-        comments.layer.borderColor = UIColor.gray.cgColor
 
     }
     
@@ -48,9 +46,7 @@ public class RatingTableViewCell: UITableViewCell {
         self.raterPicture.image = raterPicture
         self.comments.text = comments
         self.rater.text = rater
-    
+        
     }
     
 }
-
-

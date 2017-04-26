@@ -212,7 +212,9 @@ class chatViewController: JSQMessagesViewController{
     func addNavBar() {
         let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height:65)) // Offset by 20 pixels vertically to take the status bar into account
         
-        navigationBar.barTintColor = UIColor.clear
+        navigationBar.barTintColor = UIColor.init(red: 84.0/255.0, green: 211.0/255.0, blue: 187.0/255.0, alpha: 1.0)
+
+        
         navigationBar.tintColor = UIColor.white
         
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
@@ -256,10 +258,12 @@ class chatViewController: JSQMessagesViewController{
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "gotoRatings"){
+        if (segue.identifier == "gotoRating"){
             
             let destination = segue.destination as! rateViewController
             destination.userID = chatUserID
+            
+            
             
         }
         

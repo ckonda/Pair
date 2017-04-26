@@ -1,5 +1,5 @@
 //
-//  ratingViewController.swift
+//  bidRatingViewController.swift
 //  Pair
 //
 //  Created by Chatan Konda on 4/25/17.
@@ -10,31 +10,34 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
+class bidRatingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-class ratingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
-    @IBAction func cancelButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     var ratingRef = FIRDatabase.database().reference().child("Ratings")
-
+    
     
     var ref: FIRDatabaseReference!
-    var ratingData = [Ratings]()
+    
+    var bidRatingData = [bidderRatings]()
+    
+    
+    
+    var postuserID:String? //person you're rating
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         
-        let messageQuery = ratingRef.child(AppDelegate.user.userID!).queryLimited(toLast:25)
+        let messageQuery = ratingRef.child(postuserID!).queryLimited(toLast:25)
         let ratingQuery = messageQuery.observe(.value, with: { (snapshot) in
             
             if snapshot.childrenCount>0{
                 //print(snapshot.)
-                self.ratingData.removeAll()
+                self.bidRatingData.removeAll()
                 //print("messages in snapshot")
                 for ratings in snapshot.children.allObjects as! [FIRDataSnapshot]{
                     print(ratings)
@@ -44,37 +47,45 @@ class ratingViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let rate = rating["ratingValue"]
                     let raterID = rating["raterid"]
                     
-                    let ratingValues = Ratings(comments: comment as! String?, rater: rater as! String?, ratingValue: rate as! Int?, raterID: raterID as! String!)
-                    self.ratingData.insert(ratingValues, at: 0)
-
+                    let ratingValues = bidderRatings(comments: comment as! String?, rater: rater as! String?, ratingValue: rate as! Int?, raterID: raterID as! String?)
+                    self.bidRatingData.insert(ratingValues, at: 0)
+                    
                 }
                 // self.tableView.reloadData()
             }
-             self.tableView.reloadData()
+            self.tableView.reloadData()
             
         })
         
-        
+
         
         
     }
 
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ratingCell", for: indexPath) as! RatingTableViewCell
-        let rating = ratingData[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "bidRateCell", for: indexPath) as! bidRatingTableViewCell
         
+        let rating = bidRatingData[indexPath.row]
+   
         
         let nameIDPath = FIRDatabase.database().reference().child("Users").child(rating.raterID!)
         nameIDPath.observeSingleEvent(of: .value, with: { (snapshot) in
             print("here")
             print(snapshot)
             print("here2")
-
+            
             let userInfo = snapshot.value as! [String: Any]
-          //  cell.senderName.text = (nameJSON["username"] as! String?)!
+            //  cell.senderName.text = (nameJSON["username"] as! String?)!
             
             print(userInfo)
             
@@ -96,11 +107,7 @@ class ratingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         
-        
 
-        
-        
-        
         cell.rater.text = rating.rater
         cell.comments.text = rating.comments
         cell.raterValue.text = String(describing: rating.ratingValue!)
@@ -110,10 +117,19 @@ class ratingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ratingData.count
+        return bidRatingData.count
     }
- 
+    
+    
+
+    
+    
+    
+    
+    
+    
     
 
 

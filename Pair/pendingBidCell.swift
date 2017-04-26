@@ -30,6 +30,11 @@ public class pendingBidCell: UITableViewCell {
         print(bidder)
         let bidderRef = FIRDatabase.database().reference().child("Users")
         
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let stringDate = dateFormatter.string(from: date)
+        
         bidderRef.observe(.value, with: { (snapshot) in
             //print(snapshot.value)
             for users in snapshot.children.allObjects as! [FIRDataSnapshot]{
@@ -53,7 +58,7 @@ public class pendingBidCell: UITableViewCell {
                         "fromID" : AppDelegate.user.userID!,
                         "destinationID" : userid,
                         "text" : "Hey! You have bid for my post! Let's discuss the bid",
-                        "timestamp" : "timestamp"
+                        "timestamp" : stringDate
                     ]
                     
                     let messageRef = FIRDatabase.database().reference().child("Channels").child(chatRoomID!).childByAutoId()

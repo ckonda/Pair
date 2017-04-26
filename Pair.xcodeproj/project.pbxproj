@@ -26,6 +26,9 @@
 		EE58D7951EAFF3C500D6B9B1 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D7941EAFF3C500D6B9B1 /* RatingTableViewCell.swift */; };
 		EE58D7971EAFF72400D6B9B1 /* ratingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D7961EAFF72400D6B9B1 /* ratingViewController.swift */; };
 		EE58D7991EB0226D00D6B9B1 /* rateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D7981EB0226D00D6B9B1 /* rateViewController.swift */; };
+		EE58D79B1EB070CB00D6B9B1 /* bidRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D79A1EB070CB00D6B9B1 /* bidRatingViewController.swift */; };
+		EE58D79D1EB0811C00D6B9B1 /* bidderRatings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D79C1EB0811C00D6B9B1 /* bidderRatings.swift */; };
+		EE58D79F1EB0826000D6B9B1 /* bidRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D79E1EB0826000D6B9B1 /* bidRatingTableViewCell.swift */; };
 		EE8D082F1EA41F0F00EF293E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8D082E1EA41F0F00EF293E /* Message.swift */; };
 		EEBAC1871EA7DAAF00BE22F9 /* chatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */; };
 		EEBAC1891EA9809D00BE22F9 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAC1881EA9809D00BE22F9 /* Channel.swift */; };
@@ -70,6 +73,9 @@
 		EE58D7941EAFF3C500D6B9B1 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		EE58D7961EAFF72400D6B9B1 /* ratingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ratingViewController.swift; sourceTree = "<group>"; };
 		EE58D7981EB0226D00D6B9B1 /* rateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rateViewController.swift; sourceTree = "<group>"; };
+		EE58D79A1EB070CB00D6B9B1 /* bidRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bidRatingViewController.swift; sourceTree = "<group>"; };
+		EE58D79C1EB0811C00D6B9B1 /* bidderRatings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bidderRatings.swift; sourceTree = "<group>"; };
+		EE58D79E1EB0826000D6B9B1 /* bidRatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bidRatingTableViewCell.swift; sourceTree = "<group>"; };
 		EE8D082E1EA41F0F00EF293E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatViewController.swift; sourceTree = "<group>"; };
 		EEBAC1881EA9809D00BE22F9 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
@@ -120,6 +126,7 @@
 		EE1445C01E8B57D4000C9E51 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EE58D79A1EB070CB00D6B9B1 /* bidRatingViewController.swift */,
 				EE58D7961EAFF72400D6B9B1 /* ratingViewController.swift */,
 				EE58D7981EB0226D00D6B9B1 /* rateViewController.swift */,
 				EEC34F801E9C763C00954927 /* logViewController.swift */,
@@ -144,6 +151,7 @@
 				EEBAC1881EA9809D00BE22F9 /* Channel.swift */,
 				EE58D78E1EAC8E9000D6B9B1 /* pastBids.swift */,
 				EE58D7921EAFF39F00D6B9B1 /* Ratings.swift */,
+				EE58D79C1EB0811C00D6B9B1 /* bidderRatings.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -156,6 +164,7 @@
 				EEC34F861E9D787800954927 /* OfferTableViewCell.swift */,
 				EEE3D8381EA5B360009C5DDC /* MessagesTableViewCell.swift */,
 				EE58D7941EAFF3C500D6B9B1 /* RatingTableViewCell.swift */,
+				EE58D79E1EB0826000D6B9B1 /* bidRatingTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -368,6 +377,7 @@
 				EEC338401EA16F410024FC53 /* postBidViewController.swift in Sources */,
 				EE58D7951EAFF3C500D6B9B1 /* RatingTableViewCell.swift in Sources */,
 				EEBAC1891EA9809D00BE22F9 /* Channel.swift in Sources */,
+				EE58D79F1EB0826000D6B9B1 /* bidRatingTableViewCell.swift in Sources */,
 				EEE3D8391EA5B360009C5DDC /* MessagesTableViewCell.swift in Sources */,
 				EE4EEBAD1E7614B50044FE39 /* AppDelegate.swift in Sources */,
 				BA4AA9831E99DD1D001B1FDB /* JobsTableViewCell.swift in Sources */,
@@ -377,12 +387,14 @@
 				EEE3D83B1EA5CA6F009C5DDC /* messagesViewController.swift in Sources */,
 				EE58D7971EAFF72400D6B9B1 /* ratingViewController.swift in Sources */,
 				EEC34F891E9D7C4000954927 /* OfferModel.swift in Sources */,
+				EE58D79D1EB0811C00D6B9B1 /* bidderRatings.swift in Sources */,
 				EE1445BF1E8B57BB000C9E51 /* postComposeViewController.swift in Sources */,
 				EE58D7991EB0226D00D6B9B1 /* rateViewController.swift in Sources */,
 				EE8D082F1EA41F0F00EF293E /* Message.swift in Sources */,
 				EE213E821E9AF155003999FC /* User.swift in Sources */,
 				EE58D78D1EAC8E7D00D6B9B1 /* pendingBidCell.swift in Sources */,
 				EEC34F851E9D67E400954927 /* postViewController.swift in Sources */,
+				EE58D79B1EB070CB00D6B9B1 /* bidRatingViewController.swift in Sources */,
 				EE58D7931EAFF39F00D6B9B1 /* Ratings.swift in Sources */,
 				EEC34F8B1E9EAFBC00954927 /* offerComposeViewController.swift in Sources */,
 				EE33E6781EA6995100A63FBA /* MenuViewController.swift in Sources */,
