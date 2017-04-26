@@ -22,7 +22,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(emailLabel.text!)
+//        print(emailLabel.text!)
         print("\n")
         
         if let email = UserDefaults.standard.object(forKey: "email") as? String
@@ -30,7 +30,7 @@ class MenuViewController: UIViewController {
             uName.text?.append(email)
         }
         
-        print(emailLabel.text!)
+//        print(emailLabel.text!)
         // Do any additional setup after loading the view.
     }
     

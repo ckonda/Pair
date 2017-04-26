@@ -12,7 +12,10 @@ import FirebaseDatabase
 
 
 
+
 class offerBidViewController: UIViewController, UITextFieldDelegate {
+    
+    
     
     
     var ref: FIRDatabaseReference!
@@ -122,10 +125,10 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
 
         
     }
-
-    
-    
     
 
 
 }
+
+
+

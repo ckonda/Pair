@@ -13,13 +13,31 @@ import FirebaseAuth
 
 
 
-class offerComposeViewController: UIViewController, UITextFieldDelegate {
+class offerComposeViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     
     var ref: FIRDatabaseReference?
+    
+    @IBOutlet weak var offerType: UITextField!
+    @IBOutlet weak var offerPrice: UITextField!
+    @IBOutlet weak var offerSkill: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        offerType.backgroundColor = UIColor.white;
+        offerType.alpha = 0.8;
+        offerType.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        offerType.layer.cornerRadius = 4.0
+        offerSkill.backgroundColor = UIColor.white;
+        offerSkill.alpha = 0.2;
+        offerSkill.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        offerSkill.layer.cornerRadius = 4.0
+        offerPrice.backgroundColor = UIColor.white;
+        offerPrice.alpha = 0.2;
+        offerPrice.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        offerPrice.layer.cornerRadius = 4.0
+
 
         
         ref = FIRDatabase.database().reference()
@@ -40,9 +58,6 @@ class offerComposeViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    @IBOutlet weak var offerType: UITextField!
-    @IBOutlet weak var offerSkill: UITextField!
-    @IBOutlet weak var offerPrice: UITextField!
 
  
     

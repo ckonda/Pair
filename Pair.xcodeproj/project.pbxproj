@@ -160,6 +160,7 @@
 		EE4EEBAB1E7614B50044FE39 /* Pair */ = {
 			isa = PBXGroup;
 			children = (
+				FE974C621EB154AC00EEB608 /* Animations */,
 				FE605A5F1EAC1BC700477185 /* Resources */,
 				EE213E831E9AFFBF003999FC /* View */,
 				EE213E801E9AF135003999FC /* Model */,
@@ -212,6 +213,13 @@
 				FE605A621EAC1C2300477185 /* Nunito-SemiBold.ttf */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		FE974C621EB154AC00EEB608 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Animations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

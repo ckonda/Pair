@@ -11,15 +11,50 @@ import FirebaseDatabase
 import WebKit
 import CoreLocation
 
-class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate, UITextViewDelegate {
     
     var ref: FIRDatabaseReference?
     
     let locationManager = CLLocationManager()
     var LocCity:String? = nil
+    
+    //    @IBOutlet weak var jobType: UITextField!//box1
+    //    @IBOutlet weak var jobDescription: UITextField!//box2
+    //    @IBOutlet weak var jobPrice: UITextField!//box3
+    
+    @IBOutlet weak var jobType: UITextField!
+    
+    @IBOutlet weak var jobPrice: UITextField!
+    
+    @IBOutlet weak var jobDescription: UITextView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       //background for jobType
+        jobType.backgroundColor = UIColor.white;
+        jobType.alpha = 0.4;
+        jobType.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        jobType.layer.cornerRadius = 4.0
+        
+        //background for jobDescription
+        jobDescription.backgroundColor = UIColor.white;
+        jobDescription.alpha = 0.4;
+        jobDescription.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0)
+        jobDescription.layer.cornerRadius = 4.0
+        
+        //background for jobPrice
+        jobPrice.backgroundColor = UIColor.white;
+        jobPrice.alpha = 0.4;
+        jobPrice.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        jobPrice.layer.cornerRadius = 4.0
+
+        jobDescription.placeholderText = "Job description"
+        
+        jobDescription.textColor = UIColor(red: 214.0/255, green: 219.0/255, blue: 223.0/255, alpha: 1.0)
+        
+
         
         ref = FIRDatabase.database().reference()
         
@@ -37,22 +72,11 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         jobPrice.delegate = self
     }
     
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         jobType.resignFirstResponder()
         jobDescription.resignFirstResponder()
         jobPrice.resignFirstResponder()
     }
-
-//    @IBOutlet weak var jobType: UITextField!//box1
-//    @IBOutlet weak var jobDescription: UITextField!//box2
-//    @IBOutlet weak var jobPrice: UITextField!//box3
-    
-    @IBOutlet weak var jobType: UITextField!
-    
-    @IBOutlet weak var jobDescription: UITextField!
-    
-    @IBOutlet weak var jobPrice: UITextField!
     
     
     

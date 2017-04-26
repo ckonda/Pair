@@ -54,7 +54,8 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         
-        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+
         title = "Messages"
         observeMessages()
        // print(messageData[0].name!)
