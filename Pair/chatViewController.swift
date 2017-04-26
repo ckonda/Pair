@@ -170,9 +170,7 @@ class chatViewController: JSQMessagesViewController{
     
     
     private func observeMessages() {
-        print("entered obserev messages")
        // messageRef = messageRef.child("Messages")
-        print("messageRef declared")
         let messageQuery = channelRef.child(selectedchannelID).queryLimited(toLast:25)
         
          //We can use the observe method to listen for new
@@ -214,7 +212,7 @@ class chatViewController: JSQMessagesViewController{
     func addNavBar() {
         let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height:65)) // Offset by 20 pixels vertically to take the status bar into account
         
-        navigationBar.barTintColor = UIColor.cyan
+        navigationBar.barTintColor = UIColor.clear
         navigationBar.tintColor = UIColor.white
         
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
@@ -246,6 +244,10 @@ class chatViewController: JSQMessagesViewController{
     }
     
     func done_button(_ sender: UIBarButtonItem){
+        
+        performSegue(withIdentifier: "gotoRating", sender: self)
+        
+        
         print("JOB HAS FINISHED")
         
         

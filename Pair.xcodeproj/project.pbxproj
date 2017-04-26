@@ -25,6 +25,7 @@
 		EE58D7931EAFF39F00D6B9B1 /* Ratings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D7921EAFF39F00D6B9B1 /* Ratings.swift */; };
 		EE58D7951EAFF3C500D6B9B1 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D7941EAFF3C500D6B9B1 /* RatingTableViewCell.swift */; };
 		EE58D7971EAFF72400D6B9B1 /* ratingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D7961EAFF72400D6B9B1 /* ratingViewController.swift */; };
+		EE58D7991EB0226D00D6B9B1 /* rateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D7981EB0226D00D6B9B1 /* rateViewController.swift */; };
 		EE8D082F1EA41F0F00EF293E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8D082E1EA41F0F00EF293E /* Message.swift */; };
 		EEBAC1871EA7DAAF00BE22F9 /* chatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */; };
 		EEBAC1891EA9809D00BE22F9 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAC1881EA9809D00BE22F9 /* Channel.swift */; };
@@ -68,6 +69,7 @@
 		EE58D7921EAFF39F00D6B9B1 /* Ratings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ratings.swift; sourceTree = "<group>"; };
 		EE58D7941EAFF3C500D6B9B1 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		EE58D7961EAFF72400D6B9B1 /* ratingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ratingViewController.swift; sourceTree = "<group>"; };
+		EE58D7981EB0226D00D6B9B1 /* rateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rateViewController.swift; sourceTree = "<group>"; };
 		EE8D082E1EA41F0F00EF293E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatViewController.swift; sourceTree = "<group>"; };
 		EEBAC1881EA9809D00BE22F9 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				EE58D7961EAFF72400D6B9B1 /* ratingViewController.swift */,
+				EE58D7981EB0226D00D6B9B1 /* rateViewController.swift */,
 				EEC34F801E9C763C00954927 /* logViewController.swift */,
 				EEE3D83A1EA5CA6F009C5DDC /* messagesViewController.swift */,
 				EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */,
@@ -375,6 +378,7 @@
 				EE58D7971EAFF72400D6B9B1 /* ratingViewController.swift in Sources */,
 				EEC34F891E9D7C4000954927 /* OfferModel.swift in Sources */,
 				EE1445BF1E8B57BB000C9E51 /* postComposeViewController.swift in Sources */,
+				EE58D7991EB0226D00D6B9B1 /* rateViewController.swift in Sources */,
 				EE8D082F1EA41F0F00EF293E /* Message.swift in Sources */,
 				EE213E821E9AF155003999FC /* User.swift in Sources */,
 				EE58D78D1EAC8E7D00D6B9B1 /* pendingBidCell.swift in Sources */,
