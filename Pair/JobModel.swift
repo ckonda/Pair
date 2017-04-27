@@ -6,6 +6,7 @@
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
+
 public class JobModel{
     
     public var jobName: String?
@@ -16,8 +17,9 @@ public class JobModel{
     public var profileImageUrl: String?
     public var location: String?
     public var name: String?
+    public var timestamp: String?
     
-    init(jobName:String?, price:Int?, username:String?, description: String?, postid: String?, profileImageUrl: String?, location: String?, name: String?){
+    init(jobName:String?, price:Int?, username:String?, description: String?, postid: String?, profileImageUrl: String?, location: String?, name: String?,timestamp: String?){
         self.jobName = jobName
         self.price = price
         self.username = username
@@ -26,5 +28,6 @@ public class JobModel{
         self.profileImageUrl = profileImageUrl
         self.location = location
         self.name = name
+        self.timestamp = timestamp
     }
 }

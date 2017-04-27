@@ -13,8 +13,8 @@ import FirebaseAuth
 class postViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     /*if revealViewController() != nil {
-        openMenu.target
-    }*/
+     openMenu.target
+     }*/
     //openMenu.target = revealViewController()
     @IBOutlet weak var openMenu: UIBarButtonItem!
     
@@ -55,21 +55,22 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let jobImage = job?["profileImageUrl"] as! String?
                     let name = job?["name"] as! String?
                     let location = job?["location"] as! String
+                    let timestamp = job?["timestamp"] as! String?
                     
-                    let jobObject = JobModel(jobName: jobTitle , price: jobPrice , username: jobUsername , description: jobDescription , postid: jobId, profileImageUrl: jobImage, location: location, name: name )
+                    let jobObject = JobModel(jobName: jobTitle , price: jobPrice , username: jobUsername , description: jobDescription , postid: jobId, profileImageUrl: jobImage, location: location, name: name, timestamp: timestamp )
                     //append data
-                   // self.jobData.append(jobObject)
+                    // self.jobData.append(jobObject)
                     
-                           self.jobData.insert(jobObject, at: 0)
+                    self.jobData.insert(jobObject, at: 0)
                 }
-              // self.tableView.reloadData()
-      
-             self.animateTable()//animate in progress
+                // self.tableView.reloadData()
+                
+                self.animateTable()//animate in progress
                 
                 
                 
                 
-
+                
             }
         })
         
@@ -99,35 +100,34 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         
+        let time = job.timestamp
+        //
+        let dateString = time
+        let dateformatter = DateFormatter()
+        //        dateformatter.dateFormat = "dd-MM-yyyy"// HH:mm:ss"
+        dateformatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        dateformatter.timeZone = NSTimeZone(abbreviation: "PT+0:00") as TimeZone!
+        let dateFromString = dateformatter.date(from: dateString!)
+        
+        
+        let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
+        cell.timestamp.text = timeAgo
+        
+        
         if let profileImage = job.profileImageUrl {
             
             let url = URL(string: profileImage)
             print("before")
-            
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
                 if error != nil{
                     print(error!)//download hit error so return out
                 }
-                
                 DispatchQueue.main.async(execute: {
-                    
-                    
-                    
-                    
                     cell.profilePicture.image = UIImage(data: data!)
-                    
-                    
                 })
-                
-                
             }).resume()
         }
         
-        
-
-        
-
-       // cell.descriptionLabel.text = job.username
         return cell
     }
     
@@ -146,20 +146,22 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-            if (segue.identifier == "gotoBid") {
-                // initialize new view controller and cast it as your view controller
-                if let indexPath = self.tableView.indexPathForSelectedRow{
-                    let postbidView = segue.destination as? postBidViewController
-                    
-                    postbidView?.selectedName = jobData[indexPath.row].jobName!
-                    postbidView?.selectedDescription = jobData[indexPath.row].description!
-                    postbidView?.selectedID = jobData[indexPath.row].postid!
-                    
-                    postbidView?.toID = jobData[indexPath.row].username!
-                }
+        if (segue.identifier == "gotoBid") {
+            // initialize new view controller and cast it as your view controller
+            if let indexPath = self.tableView.indexPathForSelectedRow{
+                let postbidView = segue.destination as? postBidViewController
+                
+                postbidView?.selectedName = jobData[indexPath.row].jobName!
+                postbidView?.selectedDescription = jobData[indexPath.row].description!
+                postbidView?.selectedID = jobData[indexPath.row].postid!
+                
+                postbidView?.toID = jobData[indexPath.row].username!
+                postbidView?.name = jobData[indexPath.row].name!
+                
             }
+        }
     }
-  
+    
     
     
     func animateTable(){
@@ -183,25 +185,73 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     
-//    func handleLogout(){
-//        
-//        do {
-//            try FIRAuth.auth()?.signOut() //handles registration screen if user is not logged
-//        }catch let logoutError {//keeps them logged in
-//            print(logoutError)
-//        }
-//        
-////        let loginController = logViewController()
-////        loginController.postController = self
-////        
-////        present(loginController, animated: true, completion: nil)//logout controller animation
-////        
-//    }
+    
+    
+    func timeAgoSinceDate(_ date:Date, numericDates:Bool = false) -> String {
+        let calendar = Calendar.current
+        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+        let now = Date()
+        let earliest = now < date ? now : date
+        let latest = (earliest == now) ? date : now
+        let components = calendar.dateComponents(unitFlags, from: earliest,  to: latest)
+        
+        if (components.year! >= 2) {
+            return "\(components.year!) years ago"
+        } else if (components.year! >= 1){
+            if (numericDates){
+                return "1 year ago"
+            } else {
+                return "Last year"
+            }
+        } else if (components.month! >= 2) {
+            return "\(components.month!) months ago"
+        } else if (components.month! >= 1){
+            if (numericDates){
+                return "1 month ago"
+            } else {
+                return "Last month"
+            }
+        } else if (components.weekOfYear! >= 2) {
+            return "\(components.weekOfYear!) weeks ago"
+        } else if (components.weekOfYear! >= 1){
+            if (numericDates){
+                return "1 week ago"
+            } else {
+                return "Last week"
+            }
+        } else if (components.day! >= 2) {
+            return "\(components.day!) days ago"
+        } else if (components.day! >= 1){
+            if (numericDates){
+                return "1 day ago"
+            } else {
+                return "Yesterday"
+            }
+        } else if (components.hour! >= 2) {
+            return "\(components.hour!) hours ago"
+        } else if (components.hour! >= 1){
+            if (numericDates){
+                return "1 hour ago"
+            } else {
+                return "An hour ago"
+            }
+        } else if (components.minute! >= 2) {
+            return "\(components.minute!) minutes ago"
+        } else if (components.minute! >= 1){
+            if (numericDates){
+                return "1 minute ago"
+            } else {
+                return "A minute ago"
+            }
+        } else if (components.second! >= 3) {
+            return "\(components.second!) seconds ago"
+        } else {
+            return "Just now"
+        }
+        
+    }
     
     
     
     
-
-
-
 }

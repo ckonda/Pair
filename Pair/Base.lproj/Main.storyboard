@@ -206,6 +206,13 @@
                                                         <constraint firstAttribute="height" constant="8" id="Jtr-hr-tp1"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSa-p3-Egf">
+                                                    <rect key="frame" x="250" y="56" width="86" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="eUM-VR-Nb9" firstAttribute="top" secondItem="tKg-1F-3C2" secondAttribute="top" id="0vc-tx-zpk"/>
@@ -326,6 +333,13 @@
                                                     <rect key="frame" x="21" y="67" width="38" height="8"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m94-wE-7XQ">
+                                                    <rect key="frame" x="243" y="60" width="86" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -333,6 +347,7 @@
                                             <outlet property="postLabel" destination="Ghh-Jl-drR" id="8W1-Aq-hWO"/>
                                             <outlet property="postPrice" destination="u6q-QN-bjv" id="Tmf-ki-Voy"/>
                                             <outlet property="profilePicture" destination="6Oi-OE-iyh" id="FlA-LK-ELz"/>
+                                            <outlet property="timestamp" destination="m94-wE-7XQ" id="dAQ-5M-bCz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

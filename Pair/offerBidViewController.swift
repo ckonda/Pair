@@ -12,10 +12,7 @@ import FirebaseDatabase
 
 
 
-
 class offerBidViewController: UIViewController, UITextFieldDelegate {
-    
-    
     
     
     var ref: FIRDatabaseReference!
@@ -31,12 +28,12 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
     
     
     
-
+    
     @IBOutlet weak var userDescription: UILabel!//user Skill
     
     @IBOutlet weak var username: UILabel!
     
-   
+    
     @IBOutlet weak var offerPrice: UILabel!
     
     @IBOutlet weak var bidEnter: UITextField!
@@ -49,24 +46,24 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-  
+    
     @IBAction func cancelButton(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
     }
-//     var input:Int = sender.titleLabel as Int
+    //     var input:Int = sender.titleLabel as Int
     
     
-
+    
     
     @IBAction func bidButton(_ sender: Any) {
         
         
         ref = dbRef.child("Offer").child("tutor")
- 
+        
         if let text = bidEnter.text {//String to variable
             guard let bid = Int(text) else {//variable to integers to BID
-               // return bid
+                // return bid
                 return
             }
             let selectedPrice = bid
@@ -87,12 +84,12 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
             })
             
             let biddey = Int(oldBid)
-              print(biddey)
-
-        
+            print(biddey)
+            
+            
             if selectedPrice > biddey {
-                 // ref.updateChildValues(["price": selectedPrice])
-                   ref.setValue(selectedPrice, forKey: "price")
+                // ref.updateChildValues(["price": selectedPrice])
+                ref.setValue(selectedPrice, forKey: "price")
             }
             else{
                 print("Bid Higher Please!")
@@ -101,7 +98,7 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
             }
             return
         }
-       
+        
     }
     
     
@@ -115,20 +112,20 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
         
         bidInvalid.isHidden = true
         
-    
+        
         bidEnter.delegate = self
         
         
-         username.text = selecteduserName
+        username.text = selecteduserName
         userDescription.text = selectedSkill
-    //  offerPrice.text = selectedPrice as String
-
+        //  offerPrice.text = selectedPrice as String
+        
         
     }
     
-
-
+    
+    
+    
+    
+    
 }
-
-
-

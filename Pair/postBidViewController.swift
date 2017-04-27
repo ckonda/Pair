@@ -26,35 +26,52 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     public var selectedDescription = String()
     public var selectedPrice = Int()
     public var selectedID = String()//the ID for the current post
-
+    
+    public var name = String()
     
     public var toID = String()
     
     
     
-  
-    
     @IBOutlet weak var cancelPost: UIBarButtonItem!
-    
     
     @IBOutlet weak var jobName: UILabel!
     
     @IBOutlet weak var jobDescription: UILabel!
     
-
+    
+    //    @IBOutlet weak var offerName: UILabel!
+    //
+    //    @IBOutlet weak var jobDescription: UILabel!
+    
+    
+    @IBOutlet weak var bidEnter: UITextField!
+    
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        bidEnter.resignFirstResponder()
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        bidEnter.resignFirstResponder()
+        
+        return true
+        
+    }
+    
+    
+    @IBAction func ratingsButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: "toPosterRating", sender: self)
+        
+    }
     
     
     
     
     
-    
-//    @IBOutlet weak var offerName: UILabel!
-//    
-//    @IBOutlet weak var jobDescription: UILabel!
-    
-    
-    
-
     @IBAction func cancelView(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
@@ -67,57 +84,70 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     @IBAction func bidButton(_ sender: Any) {
         
         let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minutes = calendar.component(.minute, from: date)
-        let seconds = calendar.component(.second, from: date)
-        let timestamp = "\(hour):\(minutes):\(seconds)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let stringDate = dateFormatter.string(from: date)
         
-        let messageRef = self.ref?.child("Messages").childByAutoId()//new channel created
-        //let messageRef2 = self.ref?.child("Messages").queryEqual(toValue: "zyDkBgJKhdYka1oirEWnFZTcSIh1")
-        
-        //let messageRef3 = self.ref?.child("Messages").root.queryEqual(toValue: "zyDkBgJKhdYka1oirEWnFZTcSIh1")
-        
-        //print(messageRef3)
-        
-     
-      
-        //print(messageRef2)
-        //print(messageRef.value)
-        let channelID = messageRef?.key//key for channel ID
-        let newRef = messageRef?.childByAutoId()//message ID created
-        let newKey = newRef?.key//key for message ID
-        let messageItem = [
-            "fromID": AppDelegate.user.userID!,
-            "toID": toID,
-            "timestamp": timestamp,
-            "text": messageexample,
-            "messageID": newKey!,
-            "channelID": channelID!,
-            "name": AppDelegate.user.username!
-        ]  as [String : Any]
-        
-        //newRef?.setValue(messageItem)
+        if let text = bidEnter.text {//String to variable
+            guard let bid = Int(text) else {//variable to integers to BID
+                // return bid
+                return
+            }
+            let newPrice = bid
             
+            let bidRef = self.ref?.child("Bids")//new channel created
+            let bidCreate = bidRef?.childByAutoId()
+            let newKey = bidCreate?.key//key for message ID
+            
+            
+            let postBid = [
+                "bidderID": AppDelegate.user.userID!,
+                "ownerID": toID,
+                "postID": selectedID,
+                "postPrice": newPrice,
+                "timestamp": stringDate,
+                "name": name,
+                "description": selectedName,
+                ] as [String : Any]
+            
+            bidCreate?.setValue(postBid)
+            
+            
+        }
+        
+        
         dismiss(animated: true, completion: nil)
         
         
     }
     
-   
-
-
-
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         jobDescription.text = selectedDescription
         jobName.text = selectedName
-        
+        bidEnter.delegate = self
         
         ref = FIRDatabase.database().reference()
         
-  
+        
+        
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toPosterRating"){
+            
+            let destination = segue.destination as! bidRatingViewController
+            destination.postuserID = toID
+            
+            
+        }
         
     }
     
@@ -130,7 +160,6 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     
     
     
-
-
-
+    
+    
 }
