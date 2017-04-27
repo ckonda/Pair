@@ -18,7 +18,6 @@ class MenuViewController: UIViewController {
 
     @IBOutlet weak var profilePicture: UIImageView!
     
-    @IBOutlet weak var emailLabel: UILabel!
     
     
     @IBOutlet weak var uName: UILabel!
@@ -36,7 +35,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(emailLabel.text!)
+       // print(emailLabel.text!)
         print("\n")
        
         uName.text?.append(AppDelegate.user.username!)
