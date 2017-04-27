@@ -11,15 +11,18 @@ import JSQMessagesViewController
 import Firebase
 import FirebaseDatabase
 
-class chatViewController: JSQMessagesViewController {
+class chatViewController: JSQMessagesViewController{
     
     var newMessageRefHandle: FIRDatabaseHandle?
     
     
-   // var messageRef: FIRDatabaseReference = self.messageRef.child("Messages")
     
     
-    var messageRef = FIRDatabase.database().reference().child("Messages")
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    var channelRef = FIRDatabase.database().reference().child("Channels")
     var ref: FIRDatabaseReference!
     
     var messages = [JSQMessage]()
@@ -28,49 +31,49 @@ class chatViewController: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     
-    public var selectedfromID = String()
-    public var selectedtoID = String()
-    public var selectedtimeStamp = String()
-    public var selectedMessageID = String()//the ID for the current post
-    public var selectedText = String()
+    public var selectedchannelID = String()
+    public var chatUserID = String()
+    public var senderID = String()
+    //public var senderDisplayName = String()
+    /*public var selectedfromID = String()
+     public var selectedIDfrom = String()
+     public var selectedIDto = String()
+     public var chatUserID = String()
+     
+     public var selectedtimeStamp = String()
+     public var selectedText = String()
+     
+     
+     public var selectedchannelID = String()//channel ID for the post*/
     
-    public var selectedchannelID = String()//channel ID for the post
-
     
-//    "fromID": message?.fromID,
-//    "toID": message?.toID,
-//    "timestamp": message?.timestamp,
-//    "text": message?.text,
-//    "messageID": message?.messageID
     
-
+    
     
     
     var message: Message?{
         didSet{
-            title = "greetings"//message?.fromID
+            title = message?.text
         }
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(selectedfromID)
-        print(selectedtimeStamp)
-        print(selectedText)
-        print(selectedMessageID)
-        print(selectedtoID)
+        addNavBar()
+        print("USER you're chatting with = \(chatUserID)")
+        
+        title = "Chat Now!"
         
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
         observeMessages()
         
-        //self.senderId = FIRAuth.auth()?.currentUser?.uid
-       
+        self.senderId = FIRAuth.auth()?.currentUser?.uid
+        
     }
-    
     
     
     
@@ -102,10 +105,12 @@ class chatViewController: JSQMessagesViewController {
     
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
-        let message = messages[indexPath.item]//message retrieved
-        if message.senderId == senderId {//return the outgoing image view to user
+        let message = self.messages[indexPath.item]//message retrieved
+        if message.senderId == AppDelegate.user.userID {//return the outgoing image view to user
+            print("Outgoing message bubble because \(message.senderId) == \(AppDelegate.user.userID)")
             return outgoingBubbleImageView
         }else {//otherwise return the incoming image view
+            print("Incoming message bubble because \(self.senderID) != \(AppDelegate.user.userID)")
             return incomingBubbleImageView
         }
     }
@@ -115,7 +120,7 @@ class chatViewController: JSQMessagesViewController {
     }
     
     private func addMessage(withId id: String, name: String, text: String){
-        if let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text){
+        if let message = JSQMessage(senderId: id, displayName: name, text: text){
             messages.append(message)//creates new JSQ message and adds it to the data source
         }
     }
@@ -125,7 +130,7 @@ class chatViewController: JSQMessagesViewController {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let message = messages[indexPath.item]
         
-        if message.senderId == senderId {
+        if message.senderId == AppDelegate.user.userID {
             cell.textView?.textColor = UIColor.white
         }else {
             cell.textView?.textColor = UIColor.black
@@ -137,51 +142,61 @@ class chatViewController: JSQMessagesViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
         
-        let ref = FIRDatabase.database().reference().child("Messages").child(selectedchannelID)
+        let ref = FIRDatabase.database().reference().child("Channels").child(selectedchannelID)
         let itemRef = ref.childByAutoId()
-     //   let itemKey = itemRef.key
+        //   let itemKey = itemRef.key
+        
+        //if selectedID1 == AppDelegate.user.userID
+        
+        
         
         let messageItem = [
-        "fromID": selectedfromID,
-        "toID": selectedtoID,
-        "timestamp": selectedtimeStamp,
-        "text": (AppDelegate.user.username! + ":" + selectedText),
-        "messageID": selectedMessageID,
-        "channelID": selectedchannelID
+            "fromID": self.senderId,
+            "destinationID": chatUserID,
+            "timestamp": "Timestamp",
+            "text": text,//(AppDelegate.user.username! + ":" + selectedText),
         ]
         
         itemRef.setValue(messageItem)
         
-        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        //JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        
+        
         finishSendingMessage()
-
+        
     }
     
     
     
     
     private func observeMessages() {
-        print("entered obserev messages")
-       // messageRef = messageRef.child("Messages")
-        print("messageRef declared")
-        let messageQuery = messageRef.queryLimited(toLast:25)
+        // messageRef = messageRef.child("Messages")
+        let messageQuery = channelRef.child(selectedchannelID).queryLimited(toLast:25)
         
-         //We can use the observe method to listen for new
+        //We can use the observe method to listen for new
         // messages being written to the Firebase DB
         newMessageRefHandle = messageQuery.observe(.childAdded, with: { (snapshot) -> Void in
-        
-            let messageData = snapshot.value as! Dictionary<String, String>
+            
+            let channelData = snapshot.value as! Dictionary<String, String>
             
             print(snapshot.value!)
             
-            if let fromid = messageData["fromID"] as String!, let name = messageData["toID"] as String!, let text = messageData["text"] as String!, let timestamp = messageData["timestamp"], let messageid = messageData["messageID"] {
-            
-                self.addMessage(withId: self.selectedMessageID, name: "Chatan", text: self.selectedText)
+            if let fromid = channelData["fromID"] as String!, let toid = channelData["destinationID"] as String!, let text = channelData["text"] as String!, let timestamp = channelData["timestamp"]{
                 
-                print(self.selectedMessageID)
-                print(self.selectedText)
+                //self.addMessage(withId: self.senderId, name: name, text: text)
+                // self.addMessage(withId: <#T##String#>, name: <#T##String#>, text: <#T##String#>)
+                /*let userRef = FIRDatabase.database().reference().child("Users").child(fromid)
+                 userRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
+                 let userRefDat = userSnapshot.value as! [String: Any]
+                 let user = userRefDat["username"] as! String?
+                 self.addMessage(withId: fromid, name: user!, text: text)
+                 print("message was added from \(fromid) to \(toid)")
+                 })*/
                 
-        
+                self.addMessage(withId: fromid, name: AppDelegate.user.username!, text: text)
+                
+                
+                
                 self.finishReceivingMessage()
             } else {
                 print("Error! Could not decode message data")
@@ -189,14 +204,72 @@ class chatViewController: JSQMessagesViewController {
         })
     }
     
-//    
-//    senderId
-//    The unique identifier for the user who sent the message. This value must not be `nil`.
-//    displayName
-//    The display name for the user who sent the message. This value must not be `nil`.
-//    text
-//    The body text of the message. This value must not be `nil`.
-
+    
+    
+    
+    
+    
+    func addNavBar() {
+        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height:65)) // Offset by 20 pixels vertically to take the status bar into account
+        
+        navigationBar.barTintColor = UIColor.init(red: 84.0/255.0, green: 211.0/255.0, blue: 187.0/255.0, alpha: 1.0)
+        
+        
+        navigationBar.tintColor = UIColor.white
+        
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        
+        // Create a navigation item with a title
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "Chat Box"
+        
+        
+        // Create left and right button for navigation item
+        let leftButton =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(btn_clicked(_:)))
+        
+        let rightButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(done_button(_:)))
+        
+        navigationItem.leftBarButtonItem = leftButton
+        navigationItem.rightBarButtonItem = rightButton
+        
+        // Assign the navigation item to the navigation bar
+        navigationBar.items = [navigationItem]
+        
+        // Make the navigation bar a subview of the current view controller
+        self.view.addSubview(navigationBar)
+    }
+    
+    
+    func btn_clicked(_ sender: UIBarButtonItem) {
+        // Do something
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func done_button(_ sender: UIBarButtonItem){
+        
+        
+        performSegue(withIdentifier: "gotoRating", sender: self)
+        
+        
+        print("JOB HAS FINISHED")
+        
+        
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "gotoRating"){
+            
+            let destination = segue.destination as! rateViewController
+            destination.userID = chatUserID
+            
+            
+            
+        }
+    }
+    
+    
+    
     
     
     

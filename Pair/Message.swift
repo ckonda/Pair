@@ -30,7 +30,9 @@ class Message: NSObject {
         self.messageID = messageID
         self.name = name
         self.channelID = channelID
-        
     }
+    
+    
+    
     
 }

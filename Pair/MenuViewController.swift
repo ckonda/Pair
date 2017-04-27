@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import FirebaseStorage
+import Firebase
 
 import UIKit
 
@@ -15,29 +16,47 @@ class MenuViewController: UIViewController {
     
 
     
+    @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
     
     
     @IBOutlet weak var uName: UILabel!
     
+    
+    
+    
+    let url = AppDelegate.user.profileImageUrl!
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(emailLabel.text!)
-        print("\n")
+         uName.text?.append(AppDelegate.user.username!)
         
-        if let email = UserDefaults.standard.object(forKey: "email") as? String
-        {
-            uName.text?.append(email)
+        
+        FIRStorage.storage().reference(forURL: url).data(withMaxSize: 25 * 1024 * 1024) { (data, error) in
+            self.profilePicture.image = UIImage(data: data!)
+            
         }
         
-//        print(emailLabel.text!)
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        profilePicture.layer.cornerRadius = profilePicture.frame.size.width/2
+        profilePicture.clipsToBounds = true
+        profilePicture.layer.borderColor = UIColor.white.cgColor
+        profilePicture.layer.borderWidth = 1
+        
+        
+
     }
     
 
+    
+    
+    
+    
+    
+    
+    
+    
 }
