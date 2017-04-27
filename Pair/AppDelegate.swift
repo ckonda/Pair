@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         UINavigationBar.appearance().barTintColor = UIColor(red: 84.0/255.0, green: 211.0/255.0, blue: 187.0/255.0, alpha: 1.0)
+        UITabBar.appearance().tintColor = UIColor(red: 84.0/255.0, green: 211.0/255.0, blue: 187/255.0, alpha: 1.0)
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         
         let appearance = UINavigationBar.appearance()
         let font = UIFont(name: "Oregano-Regular", size: 30)!
@@ -31,25 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSForegroundColorAttributeName: UIColor.white,
             NSFontAttributeName : font
         ]
-
         
-                
-//        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: "Oregano-Regular"]
-
-     
+        
+        
+        //        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: "Oregano-Regular"]
+        
+        
         FIRApp.configure()
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().enableAutoToolbar = false
         
-        
-
-
-       //  window = UIWindow(frame: UIScreen.main.bounds)
-       // window?.makeKeyAndVisible()
-        
-       // window?.rootViewController =
-         //   UINavigationController(rootViewController: loginViewController())
-
         
         return true
     }

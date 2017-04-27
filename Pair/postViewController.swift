@@ -12,26 +12,13 @@ import FirebaseAuth
 
 class postViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    /*if revealViewController() != nil {
-        openMenu.target
-    }*/
-    //openMenu.target = revealViewController()
     @IBOutlet weak var openMenu: UIBarButtonItem!
-    
     
     var ref: FIRDatabaseReference!
     var dbHandle: FIRDatabaseHandle?
     var jobData = [JobModel]()
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-        //handleLogout()
-        //self.tableView.reloadData()
-        //animateTable()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,10 +45,8 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let timestamp = job?["timestamp"] as! String?
                     
                     let jobObject = JobModel(jobName: jobTitle , price: jobPrice , username: jobUsername , description: jobDescription , postid: jobId, profileImageUrl: jobImage, location: location, name: name, timestamp: timestamp )
-                    //append data
-                   // self.jobData.append(jobObject)
-                    
-                           self.jobData.insert(jobObject, at: 0)
+  
+                    self.jobData.insert(jobObject, at: 0)
                 }
               // self.tableView.reloadData()
       

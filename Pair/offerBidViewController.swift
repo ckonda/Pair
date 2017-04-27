@@ -19,14 +19,15 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
     let dbRef = FIRDatabase.database().reference()
     
     
-    
-    
-    public var selecteduserName = String()
+    public var postID = String()
+
+    public var selectedName = String()
     public var selectedSkill = String()
     public var selectedPrice = Int()
+    public var selectedID = String()//the ID for the current post
     //public var selectedLocation = String()
-    
-    
+    public var name = String()
+    public var toID = String()
     
 
     @IBOutlet weak var userDescription: UILabel!//user Skill
@@ -40,7 +41,6 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
     
     
     func textFieldShouldReturn(_ bidEnter: UITextField) -> Bool {
-        //self.view.endEditing()
         
         bidEnter.resignFirstResponder()
         return true
@@ -51,7 +51,7 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
         
         dismiss(animated: true, completion: nil)
     }
-//     var input:Int = sender.titleLabel as Int
+
     
     
 
@@ -59,50 +59,45 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
     @IBAction func bidButton(_ sender: Any) {
         
         
-        ref = dbRef.child("Offer").child("tutor")
- 
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let stringDate = dateFormatter.string(from: date)
+        
         if let text = bidEnter.text {//String to variable
             guard let bid = Int(text) else {//variable to integers to BID
-               // return bid
+                // return bid
                 return
             }
-            let selectedPrice = bid
+            let newPrice = bid
             
-            //ref = dbRef.child("Offer")
-            //child("tutor")
+            let bidRef = self.ref?.child("Bids")//new channel created
+            let bidCreate = bidRef?.childByAutoId()
+            let newKey = bidCreate?.key//key for message ID
             
-            let oldBid = ref.observe(FIRDataEventType.value, with: { (snapshot) in
-                
-                if let dict = snapshot.value as? NSDictionary  {
-                    if let oldPrice = dict.value(forKey: "price"){
-                        print(oldPrice)
-                    }
-                }
-                else {
-                    print("Bid is nil")
-                }
-            })
             
-            let biddey = Int(oldBid)
-              print(biddey)
-
-        
-            if selectedPrice > biddey {
-                 // ref.updateChildValues(["price": selectedPrice])
-                   ref.setValue(selectedPrice, forKey: "price")
-            }
-            else{
-                print("Bid Higher Please!")
-                bidInvalid.isHidden = false
-                bidInvalid.setNeedsDisplay()
-            }
-            return
+            let offerBid = [
+                "bidderID": AppDelegate.user.userID!,
+                "ownerID": toID,
+                "postID": selectedID,
+                "postPrice": newPrice,
+                "timestamp": stringDate,
+                "name": name,
+                "description": selectedName,
+                ] as [String : Any]
+            
+            bidCreate?.setValue(offerBid)
+            
+            
         }
+        
+        
+        dismiss(animated: true, completion: nil)
+        
+
        
     }
     
-    
-    @IBOutlet weak var bidInvalid: UILabel!
     
     
     
@@ -110,13 +105,9 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bidInvalid.isHidden = true
-        
     
         bidEnter.delegate = self
         
-        
-         username.text = selecteduserName
         userDescription.text = selectedSkill
     //  offerPrice.text = selectedPrice as String
 

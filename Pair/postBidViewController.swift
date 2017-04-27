@@ -19,7 +19,6 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     
     public var postID = String()
     
-    private lazy var messageRef:FIRDatabaseReference = FIRDatabase.database().reference().child("Messages")
     
     
     public var selectedName = String()
@@ -28,7 +27,6 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     public var selectedID = String()//the ID for the current post
 
     public var name = String()
-    
     public var toID = String()
     
     
@@ -66,7 +64,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         
         performSegue(withIdentifier: "toPosterRating", sender: self)
         
-    }
+    }//segue to ratings
     
     
     

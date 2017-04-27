@@ -8,31 +8,17 @@
 
 import UIKit
 import FirebaseDatabase
-import WebKit
-import CoreLocation
 import Firebase
 
-class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+class postComposeViewController: UIViewController, UITextFieldDelegate{
     
     var ref: FIRDatabaseReference?
-    
-    let locationManager = CLLocationManager()
-    var LocCity:String? = nil
+  
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         ref = FIRDatabase.database().reference()
-        
-        
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
-        
-       // let newPlace = self.displayLocationInfo(placemark: CLPlacemark)
         
         
         jobType.delegate = self
@@ -47,9 +33,6 @@ class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocati
         jobPrice.resignFirstResponder()
     }
 
-//    @IBOutlet weak var jobType: UITextField!//box1
-//    @IBOutlet weak var jobDescription: UITextField!//box2
-//    @IBOutlet weak var jobPrice: UITextField!//box3
     
     @IBOutlet weak var jobType: UITextField!
     
