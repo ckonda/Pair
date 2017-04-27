@@ -34,11 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSForegroundColorAttributeName: UIColor.white,
             NSFontAttributeName : font
         ]
-        
-        
-        
-        //        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: "Oregano-Regular"]
-        
+        UIApplication.shared.statusBarStyle = .lightContent
         
         FIRApp.configure()
         IQKeyboardManager.sharedManager().enable = true

@@ -15,6 +15,9 @@ import FirebaseDatabase
 class postBidViewController: UIViewController, UITextFieldDelegate {
     
     
+    
+    
+    
     var ref: FIRDatabaseReference!
     
     public var postID = String()
@@ -119,23 +122,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-   
 
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        jobDescription.text = selectedDescription
-        jobName.text = selectedName
-        bidEnter.delegate = self
-        
-        ref = FIRDatabase.database().reference()
-        
-  
-        
-    }
-    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -28,9 +28,24 @@ class offerComposeViewController: UIViewController, UITextFieldDelegate {
         offerSkill.delegate = self
         offerPrice.delegate = self
         
+        offerType.backgroundColor = UIColor.white;
+        offerType.alpha = 0.2;
+        offerType.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        offerType.layer.cornerRadius = 4.0
+        offerSkill.backgroundColor = UIColor.white;
+        offerSkill.alpha = 0.2;
+        offerSkill.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        offerSkill.layer.cornerRadius = 4.0
+        offerPrice.backgroundColor = UIColor.white;
+        offerPrice.alpha = 0.2;
+        offerPrice.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        offerPrice.layer.cornerRadius = 4.0
+        
 
 
     }
+    
+    
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

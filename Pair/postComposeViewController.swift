@@ -24,6 +24,25 @@ class postComposeViewController: UIViewController, UITextFieldDelegate{
         jobType.delegate = self
         jobDescription.delegate = self
         jobPrice.delegate = self
+        
+        
+            
+        jobType.backgroundColor = UIColor.white;
+        jobType.alpha = 0.2;
+        jobType.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        jobType.layer.cornerRadius = 4.0
+        jobDescription.backgroundColor = UIColor.white;
+        jobDescription.alpha = 0.2;
+        jobDescription.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        jobDescription.layer.cornerRadius = 4.0
+        jobPrice.backgroundColor = UIColor.white;
+        jobPrice.alpha = 0.2;
+        jobPrice.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        jobPrice.layer.cornerRadius = 4.0
+        
+        
+    
+
     }
     
     
