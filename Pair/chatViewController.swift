@@ -66,6 +66,9 @@ class chatViewController: JSQMessagesViewController{
         
         title = "Chat Now!"
         
+        
+        self.topContentAdditionalInset = CGFloat(66)//lowering the bar height
+        
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
@@ -147,13 +150,18 @@ class chatViewController: JSQMessagesViewController{
      //   let itemKey = itemRef.key
         
         //if selectedID1 == AppDelegate.user.userID
-
+        
+        
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let stringDate = dateFormatter.string(from: date)
         
      
         let messageItem = [
         "fromID": self.senderId,
         "destinationID": chatUserID,
-        "timestamp": "Timestamp",
+        "timestamp": stringDate,
         "text": text,//(AppDelegate.user.username! + ":" + selectedText),
         ]
         
