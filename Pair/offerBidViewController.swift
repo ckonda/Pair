@@ -35,7 +35,7 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var username: UILabel!
     
    
-    @IBOutlet weak var offerPrice: UILabel!
+
     
     @IBOutlet weak var bidEnter: UITextField!
     
@@ -110,9 +110,19 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
         
         userDescription.text = selectedSkill
     //  offerPrice.text = selectedPrice as String
+        
+        username.text = selectedName
+        
+        
 
         
     }
+    
+//    
+//    offerbidView?.selectedName = offerData[indexPath.row].offerName!
+//    offerbidView?.selectedSkill = offerData[indexPath.row].skill!
+//    offerbidView?.selectedID = offerData[indexPath.row].offerid!
+//    offerbidView?.selectedSkill = offerData[indexPath.row].skill!
 
     
     

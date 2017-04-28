@@ -15,6 +15,26 @@ import FirebaseDatabase
 class postBidViewController: UIViewController, UITextFieldDelegate {
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        jobName.text = selectedName
+        jobDescription.text = selectedDescription
+        bidEnter.delegate = self
+        
+        
+    }
+    
+    
+//    
+//    postbidView?.selectedName = jobData[indexPath.row].jobName!
+//    postbidView?.selectedDescription = jobData[indexPath.row].description!
+//    postbidView?.selectedID = jobData[indexPath.row].postid!
+//    
+//    postbidView?.toID = jobData[indexPath.row].username!
+//    postbidView?.name = jobData[indexPath.row].name!
+//    
+//    
     
     
     

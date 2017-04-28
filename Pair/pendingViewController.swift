@@ -117,37 +117,37 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         
         let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
         cell.timeStamp.text = timeAgo
-        cell.chatButton.tag = indexPath.row
-        cell.chatButton.addTarget(self, action: #selector(pendingViewController.sendMessageView), for: UIControlEvents.touchUpInside)
+//        cell.chatButton.tag = indexPath.row
+//        cell.chatButton.addTarget(self, action: #selector(pendingViewController.sendMessageView), for: UIControlEvents.touchUpInside)
         
         //self.performSegue(withIdentifier: "toInitMessage", sender: indexPath)
         
         return cell
     }
     
-    func sendMessageView(){
-        print("TARGET ADDED")
-        performSegue(withIdentifier: "toInitMessage", sender: self)
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("PREPARING FOR SEGUE")
-        print("BID DATA SIZE  = \(bidData.count)")
-        if segue.identifier == "toInitMessage" {
-            
-            //ref.child(<#T##pathString: String##String#>)
-            for bids in bidData {
-                if(bids.name == )
-            }
-            //print("tag = \((sender).tag)")
-            //let initialMessagePage = segue.destination as! initialMessageViewController, index = tableView.indexPathForSelectedRow?.row{
-                    //initialMessagePage.user2ID = bidData[index].
-            //}
-            //initialMessagePage.user1ID = AppDelegate.user.userID!
-            //segue.destinationViewController.retain = self.detailForIndexPath(path)
-        }
-    }
+//    func sendMessageView(){
+//        print("TARGET ADDED")
+//        performSegue(withIdentifier: "toInitMessage", sender: self)
+//    }
+//    
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        print("PREPARING FOR SEGUE")
+//        print("BID DATA SIZE  = \(bidData.count)")
+//        if segue.identifier == "toInitMessage" {
+//            
+//            //ref.child(<#T##pathString: String##String#>)
+//            for bids in bidData {
+//                if(bids.name == )
+//            }
+//            //print("tag = \((sender).tag)")
+//            //let initialMessagePage = segue.destination as! initialMessageViewController, index = tableView.indexPathForSelectedRow?.row{
+//                    //initialMessagePage.user2ID = bidData[index].
+//            //}
+//            //initialMessagePage.user1ID = AppDelegate.user.userID!
+//            //segue.destinationViewController.retain = self.detailForIndexPath(path)
+//        }
+//    }
 
         
     

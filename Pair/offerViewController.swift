@@ -133,7 +133,7 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
                     offerbidView?.selectedName = offerData[indexPath.row].offerName!
                     offerbidView?.selectedSkill = offerData[indexPath.row].skill!
                     offerbidView?.selectedID = offerData[indexPath.row].offerid!
-                    offerbidView?.selectedSkill = offerData[indexPath.row].skill!
+           
                     
                     
                 }
