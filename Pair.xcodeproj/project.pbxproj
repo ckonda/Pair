@@ -29,6 +29,7 @@
 		EE58D79B1EB070CB00D6B9B1 /* bidRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D79A1EB070CB00D6B9B1 /* bidRatingViewController.swift */; };
 		EE58D79D1EB0811C00D6B9B1 /* bidderRatings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D79C1EB0811C00D6B9B1 /* bidderRatings.swift */; };
 		EE58D79F1EB0826000D6B9B1 /* bidRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D79E1EB0826000D6B9B1 /* bidRatingTableViewCell.swift */; };
+		EE58D7A11EB3000700D6B9B1 /* initialMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D7A01EB3000700D6B9B1 /* initialMessageViewController.swift */; };
 		EE8D082F1EA41F0F00EF293E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8D082E1EA41F0F00EF293E /* Message.swift */; };
 		EEBAC1871EA7DAAF00BE22F9 /* chatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */; };
 		EEBAC1891EA9809D00BE22F9 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAC1881EA9809D00BE22F9 /* Channel.swift */; };
@@ -76,6 +77,7 @@
 		EE58D79A1EB070CB00D6B9B1 /* bidRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bidRatingViewController.swift; sourceTree = "<group>"; };
 		EE58D79C1EB0811C00D6B9B1 /* bidderRatings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bidderRatings.swift; sourceTree = "<group>"; };
 		EE58D79E1EB0826000D6B9B1 /* bidRatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bidRatingTableViewCell.swift; sourceTree = "<group>"; };
+		EE58D7A01EB3000700D6B9B1 /* initialMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = initialMessageViewController.swift; sourceTree = "<group>"; };
 		EE8D082E1EA41F0F00EF293E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatViewController.swift; sourceTree = "<group>"; };
 		EEBAC1881EA9809D00BE22F9 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		EE1445C01E8B57D4000C9E51 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EE58D7A01EB3000700D6B9B1 /* initialMessageViewController.swift */,
 				EE58D79A1EB070CB00D6B9B1 /* bidRatingViewController.swift */,
 				EE58D7961EAFF72400D6B9B1 /* ratingViewController.swift */,
 				EE58D7981EB0226D00D6B9B1 /* rateViewController.swift */,
@@ -401,6 +404,7 @@
 				EEC34F871E9D787800954927 /* OfferTableViewCell.swift in Sources */,
 				BA66DB461E9EB2120048253A /* SWRevealViewController.m in Sources */,
 				EEC34F831E9D67D500954927 /* offerViewController.swift in Sources */,
+				EE58D7A11EB3000700D6B9B1 /* initialMessageViewController.swift in Sources */,
 				EEBAC1871EA7DAAF00BE22F9 /* chatViewController.swift in Sources */,
 				BA4AA9851E9AED55001B1FDB /* JobModel.swift in Sources */,
 			);

@@ -14,6 +14,8 @@ import FirebaseDatabase
 class pendingViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource {
     
     var bidData = [pastBids]()
+    
+    
 
     
     var ref: FIRDatabaseReference!
@@ -26,6 +28,9 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func chatButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "toInitMessage", sender: IndexPath.self)
+    }
     
     
     override func viewDidLoad() {
@@ -72,7 +77,8 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "pastbidCell", for: indexPath) as! pendingBidCell
         
         let bid = bidData[indexPath.row]
-        
+        cell.chatButton.tag = indexPath.row
+        cell.chatButton.addTarget(self, action: "sendMessageView", for: .touchUpInside)
         cell.timeStamp.text = bid.timeStamp
         cell.price.text = String(describing: bid.postPrice!)
         cell.bidder.text = bid.name
@@ -111,16 +117,39 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         
         let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
         cell.timeStamp.text = timeAgo
+        cell.chatButton.tag = indexPath.row
+        cell.chatButton.addTarget(self, action: #selector(pendingViewController.sendMessageView), for: UIControlEvents.touchUpInside)
         
-        
-
-        
-        
-    
+        //self.performSegue(withIdentifier: "toInitMessage", sender: indexPath)
         
         return cell
     }
     
+    func sendMessageView(){
+        print("TARGET ADDED")
+        performSegue(withIdentifier: "toInitMessage", sender: self)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("PREPARING FOR SEGUE")
+        print("BID DATA SIZE  = \(bidData.count)")
+        if segue.identifier == "toInitMessage" {
+            
+            //ref.child(<#T##pathString: String##String#>)
+            for bids in bidData {
+                if(bids.name == )
+            }
+            //print("tag = \((sender).tag)")
+            //let initialMessagePage = segue.destination as! initialMessageViewController, index = tableView.indexPathForSelectedRow?.row{
+                    //initialMessagePage.user2ID = bidData[index].
+            //}
+            //initialMessagePage.user1ID = AppDelegate.user.userID!
+            //segue.destinationViewController.retain = self.detailForIndexPath(path)
+        }
+    }
+
+        
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -139,6 +168,8 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
             tableView.reloadData()
         }
     }
+    
+    
     
     
     

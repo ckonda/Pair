@@ -24,9 +24,10 @@ public class pendingBidCell: UITableViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var Description: UILabel!
 
+    @IBOutlet weak var chatButton: UIButton!
     
     @IBAction func chatButton(_ sender: Any) {
-        
+        //chatButton.tag
         
         print(bidder)
         let bidderRef = FIRDatabase.database().reference().child("Users")
@@ -62,20 +63,29 @@ public class pendingBidCell: UITableViewCell {
                         "timestamp" : stringDate
                     ]
                     
+
                     let messageRef = FIRDatabase.database().reference().child("Channels").child(chatRoomID!).childByAutoId()
-                    messageRef.setValue(initialMessage)
+                    //messageRef.setValue(initialMessage)
                     
                     
                 }
             }
             
         })
+        //chatButton.add
         //observe
-        
-        
-        
     }
     
+    
+    
+    /*func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toInitMessage" {
+            let initialMessagePage = segue.destination as! initialMessageViewController
+            print("bidder = \(bidder.text)")
+            //pr
+            //initialMessagePage.user1ID =
+        }
+    }*/
     
     
     

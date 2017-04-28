@@ -102,13 +102,13 @@
                                 </constraints>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="nkV-sh-1Kv">
-                                <rect key="frame" x="75" y="148" width="224" height="108"/>
+                                <rect key="frame" x="75" y="147.5" width="224" height="108"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="108" id="64v-Kp-Qfi"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pair" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oR-wX-xHN">
-                                <rect key="frame" x="138" y="49" width="99" height="91"/>
+                                <rect key="frame" x="138" y="49" width="99" height="90.5"/>
                                 <fontDescription key="fontDescription" name="Oregano-Regular" family="Oregano" pointSize="70"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -159,7 +159,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gc7-tF-eh8">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="offerCell" rowHeight="90" id="dNT-sq-Oyw" customClass="OfferTableViewCell" customModule="Pair">
@@ -415,13 +415,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YAMI" translatesAutoresizingMaskIntoConstraints="NO" id="d9S-5R-z23">
-                                                    <rect key="frame" x="8" y="8" width="60" height="63"/>
+                                                    <rect key="frame" x="8" y="8" width="60" height="62.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="xZp-Lr-L6k"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gBk-HJ-nOO">
-                                                    <rect key="frame" x="12" y="97" width="350" height="49"/>
+                                                    <rect key="frame" x="12" y="96.5" width="350" height="49.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -547,6 +547,8 @@
                                                     <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="chatButton:" destination="Rw9-y6-ZY7" eventType="touchUpInside" id="5nD-YC-9S1"/>
+                                                        <action selector="chatButton:" destination="pHq-lC-NaQ" eventType="touchUpInside" id="z7L-Bb-M1i"/>
+                                                        <segue destination="t8m-TH-add" kind="show" identifier="toInitMessage" id="Xtq-2g-yqe"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Twi-Z6-lqh">
@@ -581,6 +583,7 @@
                                         <connections>
                                             <outlet property="Description" destination="vc0-A0-Ths" id="IGt-Oj-Ewh"/>
                                             <outlet property="bidder" destination="PxV-jg-dkn" id="668-qM-LT3"/>
+                                            <outlet property="chatButton" destination="Y4Z-xU-aYz" id="YdX-TW-k4R"/>
                                             <outlet property="pendingPicture" destination="ee1-9m-FqV" id="RiO-BJ-Z2m"/>
                                             <outlet property="price" destination="Twi-Z6-lqh" id="mtY-0H-ehZ"/>
                                             <outlet property="timeStamp" destination="lqU-Mh-urV" id="cX3-xj-5GB"/>
@@ -1013,6 +1016,61 @@
             </objects>
             <point key="canvasLocation" x="8212" y="-938.68065967016503"/>
         </scene>
+        <!--Initial Message View Controller-->
+        <scene sceneID="LCn-VF-JPP">
+            <objects>
+                <viewController id="t8m-TH-add" customClass="initialMessageViewController" customModule="Pair" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mzx-ji-zle"/>
+                        <viewControllerLayoutGuide type="bottom" id="YHd-tH-cfz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="g8u-mR-XRN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4aT-Nt-7Fe">
+                                <rect key="frame" x="21" y="204" width="332" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pmo-QQ-45j">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="MFD-gf-dU8">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="sml-x2-WZP"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type a message to..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVq-kb-iT0">
+                                <rect key="frame" x="21" y="144" width="324" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You have accepted xyz's service! " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLv-0R-B7b">
+                                <rect key="frame" x="21" y="103" width="324" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkn-Dw-iJG">
+                                <rect key="frame" x="21" y="472" width="332" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Send Message"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="alg-nP-1kn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5097" y="-2151"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ear-do-4P2">
             <objects>
@@ -1038,7 +1096,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Run-gB-cSF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Posts" image="post" id="IkK-kL-RB7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0cu-IT-pFU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0cu-IT-pFU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1057,7 +1115,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="80H-AS-3X5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Offer" image="offer" id="MPu-dD-AuP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xJw-G1-fsg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xJw-G1-fsg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
