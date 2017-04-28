@@ -22,6 +22,8 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         jobDescription.text = selectedDescription
         bidEnter.delegate = self
         
+        bidEnter.keyboardType = UIKeyboardType.numberPad
+        
         
     }
     

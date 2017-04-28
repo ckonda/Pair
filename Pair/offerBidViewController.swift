@@ -113,7 +113,7 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
         
         username.text = selectedName
         
-        
+        bidEnter.keyboardType = UIKeyboardType.numberPad
 
         
     }

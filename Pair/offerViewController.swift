@@ -47,7 +47,9 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
                     self.offerData.insert(offerObject, at: 0)
                 }
                 
-                self.tableView.reloadData()
+                //self.tableView.reloadData()
+                
+                self.animateTable()
             }
         })
         
@@ -87,6 +89,10 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
         dateformatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
         dateformatter.timeZone = NSTimeZone(abbreviation: "PT+0:00") as TimeZone!
         let dateFromString = dateformatter.date(from: dateString!)
+        
+        
+        let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
+        cell.timestamp.text = timeAgo
         
         
         if let profileImage = offer.profileImageUrl {
@@ -162,6 +168,8 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
     }
     
     
+
+
     
     
     

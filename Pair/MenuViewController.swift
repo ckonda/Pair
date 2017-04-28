@@ -38,7 +38,9 @@ class MenuViewController: UIViewController {
        // print(emailLabel.text!)
         print("\n")
        
-        uName.text?.append(AppDelegate.user.username!)
+//        uName.text?.append(AppDelegate.user.username!)
+        
+        uName.text = AppDelegate.user.username
         
     
         FIRStorage.storage().reference(forURL: url).data(withMaxSize: 25 * 1024 * 1024) { (data, error) in
