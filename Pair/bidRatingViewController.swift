@@ -106,6 +106,41 @@ class bidRatingViewController: UIViewController, UITableViewDelegate, UITableVie
         })
         
         
+        let testVar = rating.ratingValue
+        let fulldot: UIImage = UIImage(named: "oneDot")!
+        
+        if let ratingControl = testVar{
+            if ratingControl == 1{
+                cell.dot1.image = fulldot
+            }
+            if ratingControl == 2{
+                cell.dot1.image = fulldot
+                cell.dot2.image = fulldot
+            }
+            if ratingControl == 3{
+                cell.dot1.image = fulldot
+                cell.dot2.image = fulldot
+                cell.dot3.image = fulldot
+                
+            }
+            if ratingControl == 4{
+                cell.dot1.image = fulldot
+                cell.dot2.image = fulldot
+                cell.dot3.image = fulldot
+                cell.dot4.image = fulldot
+                
+            }
+            if ratingControl == 5 {
+                cell.dot1.image = fulldot
+                cell.dot2.image = fulldot
+                cell.dot3.image = fulldot
+                cell.dot4.image = fulldot
+                cell.dot5.image = fulldot
+            }
+            
+        }
+        
+        
         
 
         cell.rater.text = rating.rater

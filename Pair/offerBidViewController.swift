@@ -23,7 +23,7 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
 
     public var selectedName = String()
     public var selectedSkill = String()
-    public var selectedPrice = Int()
+  //  public var selectedPrice = Int()
     public var selectedID = String()//the ID for the current post
     //public var selectedLocation = String()
     public var name = String()
@@ -40,10 +40,16 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bidEnter: UITextField!
     
     
-    func textFieldShouldReturn(_ bidEnter: UITextField) -> Bool {
-        
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         bidEnter.resignFirstResponder()
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        bidEnter.resignFirstResponder()
+        
         return true
+        
     }
     
   
@@ -118,13 +124,7 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-//    
-//    offerbidView?.selectedName = offerData[indexPath.row].offerName!
-//    offerbidView?.selectedSkill = offerData[indexPath.row].skill!
-//    offerbidView?.selectedID = offerData[indexPath.row].offerid!
-//    offerbidView?.selectedSkill = offerData[indexPath.row].skill!
 
-    
     
     
 

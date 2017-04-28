@@ -100,8 +100,6 @@ class ratingViewController: UIViewController, UITableViewDelegate, UITableViewDa
        // cell.raterValue.text = String(describing: rating.ratingValue!)
         
         let testVar = rating.ratingValue
-        
-        print(testVar!)
         let fulldot: UIImage = UIImage(named: "oneDot")!
         
         if let ratingControl = testVar{
