@@ -43,8 +43,16 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
         
         nametextField.isHidden = true
         
+        
+
+        pairTitle.textAlignment = .center
+        
    
     }
+    
+    
+    
+    
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
@@ -100,6 +108,7 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var pairTitle: UILabel!
     
 
     @IBAction func segmentedSelect(_ sender: UISegmentedControl) {
