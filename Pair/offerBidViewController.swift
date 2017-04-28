@@ -16,7 +16,7 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
     
     
     var ref: FIRDatabaseReference!
-    let dbRef = FIRDatabase.database().reference()
+  //  let dbRef = FIRDatabase.database().reference()
     
     
     public var postID = String()
@@ -77,9 +77,10 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
             }
             let newPrice = bid
             
-            let bidRef = self.ref?.child("Bids")//new channel created
-            let bidCreate = bidRef?.childByAutoId()
-            let newKey = bidCreate?.key//key for message ID
+            let bidRef = FIRDatabase.database().reference().child("Bids")
+            
+            let bidCreate = bidRef.childByAutoId()
+            let newKey = bidCreate.key//key for message ID
             
             
             let offerBid = [
@@ -88,11 +89,11 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
                 "postID": selectedID,
                 "postPrice": newPrice,
                 "timestamp": stringDate,
-                "name": name,
+                "name": AppDelegate.user.username,
                 "description": selectedName,
                 ] as [String : Any]
             
-            bidCreate?.setValue(offerBid)
+            bidCreate.setValue(offerBid)
             
             
         }

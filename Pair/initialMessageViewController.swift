@@ -24,6 +24,9 @@ class initialMessageViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
+//        comments.layer.borderColor = UIColor(red: 84.0/255.0, green: 211.0/255.0, blue: 187.0/255.0, alpha: 1.0).cgColor
+//        comments.layer.borderWidth = 1.0
+//        comments.layer.cornerRadius = 5
     }
     
 

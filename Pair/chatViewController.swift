@@ -162,7 +162,7 @@ class chatViewController: JSQMessagesViewController{
         "fromID": self.senderId,
         "destinationID": chatUserID,
         "timestamp": stringDate,
-        "text": text,//(AppDelegate.user.username! + ":" + selectedText),
+        "text": text,//(AppDelegate.user.uFsername! + ":" + selectedText),
         ]
         
         itemRef.setValue(messageItem)
@@ -235,7 +235,7 @@ class chatViewController: JSQMessagesViewController{
         // Create left and right button for navigation item
         let leftButton =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(btn_clicked(_:)))
         
-        let rightButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(done_button(_:)))
+        let rightButton = UIBarButtonItem(title: "Rate", style: .plain, target: self, action: #selector(done_button(_:)))
         
         navigationItem.leftBarButtonItem = leftButton
         navigationItem.rightBarButtonItem = rightButton
