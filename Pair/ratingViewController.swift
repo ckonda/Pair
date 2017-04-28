@@ -97,7 +97,44 @@ class ratingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.rater.text = rating.rater
         cell.comments.text = rating.comments
-        cell.raterValue.text = String(describing: rating.ratingValue!)
+       // cell.raterValue.text = String(describing: rating.ratingValue!)
+        
+        let testVar = rating.ratingValue
+        
+        print(testVar!)
+        let fulldot: UIImage = UIImage(named: "oneDot")!
+        
+        if let ratingControl = testVar{
+            if ratingControl == 1{
+                cell.dot1.image = fulldot
+            }
+            if ratingControl == 2{
+                cell.dot1.image = fulldot
+                cell.dot2.image = fulldot
+            }
+            if ratingControl == 3{
+                cell.dot1.image = fulldot
+                cell.dot2.image = fulldot
+                cell.dot3.image = fulldot
+                
+            }
+            if ratingControl == 4{
+                cell.dot1.image = fulldot
+                cell.dot2.image = fulldot
+                cell.dot3.image = fulldot
+                cell.dot4.image = fulldot
+                
+            }
+            if ratingControl == 5 {
+                cell.dot1.image = fulldot
+                cell.dot2.image = fulldot
+                cell.dot3.image = fulldot
+                cell.dot4.image = fulldot
+                cell.dot5.image = fulldot
+            }
+            
+        }
+        
         
         return cell
         
