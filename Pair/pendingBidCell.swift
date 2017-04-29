@@ -25,10 +25,10 @@ public class pendingBidCell: UITableViewCell {
     @IBOutlet weak var Description: UILabel!
 
     @IBOutlet weak var chatButton: UIButton!
-    
+    var chatRoomDat: String?
     @IBAction func chatButton(_ sender: Any) {
         //chatButton.tag
-        
+        //alert();
         print(bidder)
         let bidderRef = FIRDatabase.database().reference().child("Users")
         
@@ -56,7 +56,10 @@ public class pendingBidCell: UITableViewCell {
                         chatRoomID = userid + "*" + AppDelegate.user.userID!
                         print("username <= userID -> \(chatRoomID!)")
                     }
-                    let initialMessage = [
+                    //chatRoomDat = chatRoomID
+                    
+                    
+                    /*let initialMessage = [
                         "fromID" : AppDelegate.user.userID!,
                         "destinationID" : userid,
                         "text" : "Hey! You have bid for my post! Let's discuss the bid",
@@ -65,7 +68,7 @@ public class pendingBidCell: UITableViewCell {
                     
 
                     let messageRef = FIRDatabase.database().reference().child("Channels").child(chatRoomID!).childByAutoId()
-                    //messageRef.setValue(initialMessage)
+                    //messageRef.setValue(initialMessage)*/
                     
                     
                 }
@@ -75,17 +78,6 @@ public class pendingBidCell: UITableViewCell {
         //chatButton.add
         //observe
     }
-    
-    
-    
-    /*func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toInitMessage" {
-            let initialMessagePage = segue.destination as! initialMessageViewController
-            print("bidder = \(bidder.text)")
-            //pr
-            //initialMessagePage.user1ID =
-        }
-    }*/
     
     
     

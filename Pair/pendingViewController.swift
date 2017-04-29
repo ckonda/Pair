@@ -21,7 +21,6 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
     var ref: FIRDatabaseReference!
     
     @IBAction func cancel(_ sender: Any) {
-        
         dismiss(animated: true, completion: nil)
     }
    
@@ -71,17 +70,20 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
     }
     
     
-    
+    var bidder: String?
+    var index: Int?
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "pastbidCell", for: indexPath) as! pendingBidCell
         
         let bid = bidData[indexPath.row]
-        cell.chatButton.tag = indexPath.row
-        cell.chatButton.addTarget(self, action: "sendMessageView", for: .touchUpInside)
+        //index = indexPath.row
+        //cell.chatButton.tag = indexPath.row
+        //cell.chatButton.addTarget(self, action: "sendMessageView", for: .touchUpInside)
         cell.timeStamp.text = bid.timeStamp
         cell.price.text = String(describing: bid.postPrice!)
         cell.bidder.text = bid.name
+        bidder = cell.bidder.text
         cell.Description.text = bid.Description
         
         let nameIDPath = FIRDatabase.database().reference().child("Users").child(bid.bidderID!)
@@ -118,34 +120,28 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
         cell.timeStamp.text = timeAgo
         cell.chatButton.tag = indexPath.row
-        cell.chatButton.addTarget(self, action: #selector(pendingViewController.sendMessageView), for: UIControlEvents.touchUpInside)
+        //cell.chatButton.addTarget(self, action: #selector(pendingViewController.sendMessageView), for: UIControlEvents.touchUpInside)
         
         //self.performSegue(withIdentifier: "toInitMessage", sender: indexPath)
         
         return cell
     }
     
-    func sendMessageView(){
-        print("TARGET ADDED")
-        performSegue(withIdentifier: "toInitMessage", sender: self)
-    }
+    /*func sendMessageView(sender: UIButton){
+        print("TARGET ADDED and the row is at = \(sender.tag)")
+        performSegue(withIdentifier: "toInitMessage", sender: UIButton.self)
+    }*/
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("PREPARING FOR SEGUE")
         print("BID DATA SIZE  = \(bidData.count)")
+        print("bidder = \(bidder)")
         if segue.identifier == "toInitMessage" {
-            
-            //ref.child(<#T##pathString: String##String#>)
-            for bids in bidData {
-                if(bids.name == )
-            }
-            //print("tag = \((sender).tag)")
-            //let initialMessagePage = segue.destination as! initialMessageViewController, index = tableView.indexPathForSelectedRow?.row{
-                    //initialMessagePage.user2ID = bidData[index].
-            //}
-            //initialMessagePage.user1ID = AppDelegate.user.userID!
-            //segue.destinationViewController.retain = self.detailForIndexPath(path)
+            print("YOU ARE ACCESSING INDEX PATH AT \(index)")
+            let destination = segue.destination as! initialMessageViewController
+            destination.loc = index
+            destination.currentBid = bidData[index!]
         }
     }
 
@@ -160,14 +156,38 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
     }
     
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
-    {
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexPath) in
+            //TODO: edit the row at indexPath here
+            self.index = indexPath.row
+            self.performSegue(withIdentifier: "toInitMessage", sender: indexPath)
+            
+        }
+        editAction.backgroundColor = .blue
+        
+        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexPath) in
+            //TODO: Delete the row at indexPath here
+            self.bidData.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+        deleteAction.backgroundColor = .red
+        
+        return [editAction,deleteAction]
+    }
+    
+   /* func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
         if editingStyle == UITableViewCellEditingStyle.delete
         {
             bidData.remove(at: indexPath.row)
             tableView.reloadData()
         }
-    }
+        if editingStyle == UITableViewCellEditingStyle.insert{
+            print("Youre about to reply!")
+            
+        }
+    }*/
     
     
     
