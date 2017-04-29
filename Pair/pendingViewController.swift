@@ -160,18 +160,38 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
     }
     
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
         if editingStyle == UITableViewCellEditingStyle.delete
         {
             bidData.remove(at: indexPath.row)
             tableView.reloadData()
         }
+    }*/
+    
+    var index: Int?
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath)->[UITableViewRowAction]?{
+        let messageAction = UITableViewRowAction(style: .normal, title: "Message"){
+            (rowAction, indexPath) in
+            self.index = indexPath.row
+            self.performSegue(withIdentifier: "toInitMessage", sender: indexPath)
+        }
+        messageAction.backgroundColor = .blue
+        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete"){
+            (rowAction, indexPath) in
+            self.bidData.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+        return [messageAction, deleteAction]
     }
     
-    
-    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toInitMessage" {
+            let destination = segue.destination as! initialMessageViewController
+            destination.loc = index
+            destination.currentBid = bidData[index!]
+        }
+    }
     
     
     
