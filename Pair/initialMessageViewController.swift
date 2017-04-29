@@ -24,6 +24,17 @@ class initialMessageViewController: UIViewController {
     }
     
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        messageBoxLabel.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        messageBoxLabel.resignFirstResponder()
+        return true
+        
+    }
+    
+    
     
     @IBAction func sendButton(_ sender: Any) {
         if(messageBoxLabel.text != nil){

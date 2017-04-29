@@ -21,8 +21,9 @@ public class OfferTableViewCell: UITableViewCell {
     
     @IBOutlet weak var locationLabel: UILabel!
     
-    @IBOutlet weak var offerLabel: UILabel!
+   // @IBOutlet weak var offerLabel: UILabel!
     
+    @IBOutlet weak var offerLabel: UILabel!
     
     public override func awakeFromNib() {
         super.awakeFromNib()

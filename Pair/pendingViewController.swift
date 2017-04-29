@@ -77,8 +77,7 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "pastbidCell", for: indexPath) as! pendingBidCell
         
         let bid = bidData[indexPath.row]
-        cell.chatButton.tag = indexPath.row
-        cell.chatButton.addTarget(self, action: "sendMessageView", for: .touchUpInside)
+
         cell.timeStamp.text = bid.timeStamp
         cell.price.text = String(describing: bid.postPrice!)
         cell.bidder.text = bid.name
@@ -117,6 +116,10 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         
         let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
         cell.timeStamp.text = timeAgo
+        
+
+        
+        
 //        cell.chatButton.tag = indexPath.row
 //        cell.chatButton.addTarget(self, action: #selector(pendingViewController.sendMessageView), for: UIControlEvents.touchUpInside)
         

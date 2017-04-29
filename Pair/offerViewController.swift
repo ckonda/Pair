@@ -32,11 +32,11 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
                     //create object and initialize the values of it
                     let offer = offer.value as? [String: AnyObject]
                     
-                    let offerTitle = offer?["offer"] as! String?
+                    let offerTitle = offer?["title"] as! String?
                     let offerPrice = offer?["price"] as! Int?
                     let offerUsername = offer?["username"]as! String?
-                    let offerSkill = offer?["skill"]as! String?
-                    let offerId = offer?["offerid"] as! String?
+                    let offerSkill = offer?["description"]as! String?
+                    let offerId = offer?["postid"] as! String?
                     let offerImage = offer?["profileImageUrl"] as! String?
                     let name = offer?["name"] as! String?
                     let location = offer?["location"] as! String?
@@ -78,6 +78,7 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
         let offer = offerData[indexPath.row]
         
         cell.offerLabel.text = offer.offerName
+        //cell.offerLabel.text = "offer"
         cell.offerPrice.text = String(describing: offer.price!)
         cell.locationLabel.text = offer.location
         
@@ -135,10 +136,18 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
                 
                 if let indexPath = self.tableView.indexPathForSelectedRow{
                     let offerbidView = segue.destination as? offerBidViewController
-                    
+            
+                     print(offerData[indexPath.row].skill!)
+                     print(offerData[indexPath.row].offerid!)
+                 
                     offerbidView?.selectedName = offerData[indexPath.row].offerName!
                     offerbidView?.selectedSkill = offerData[indexPath.row].skill!
                     offerbidView?.selectedID = offerData[indexPath.row].offerid!
+                    offerbidView?.toID = offerData[indexPath.row].username!
+                    
+                 //   offerbidV
+                    
+                 
            
                     
                     

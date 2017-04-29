@@ -30,11 +30,12 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
     public var toID = String()
     
 
-    @IBOutlet weak var userDescription: UILabel!//user Skill
+   // @IBOutlet weak var userDescription: UILabel!//user Skill
     
     @IBOutlet weak var username: UILabel!
     
    
+    @IBOutlet weak var userDescription: UITextView!
 
     
     @IBOutlet weak var bidEnter: UITextField!

@@ -24,7 +24,9 @@ public class pendingBidCell: UITableViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var Description: UILabel!
 
-    @IBOutlet weak var chatButton: UIButton!
+
+//    @IBOutlet weak var messagePicture: UIImageView!
+    
     
     @IBAction func chatButton(_ sender: Any) {
         //chatButton.tag
