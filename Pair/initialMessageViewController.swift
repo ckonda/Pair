@@ -15,8 +15,7 @@ class initialMessageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(user1ID)
-        print(user2ID)
+
         // Do any additional setup after loading the view.
     }
 

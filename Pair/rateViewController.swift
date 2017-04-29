@@ -15,11 +15,8 @@ class rateViewController: UIViewController , UITextFieldDelegate{
     let ref = FIRDatabase.database().reference().child("Ratings")
 
     @IBOutlet weak var rating: UITextField!
+    var userID:String?
     
-
-    
-    
-    var userID:String? //person you're rating
     
     @IBOutlet weak var comments: UITextView!
     
@@ -79,6 +76,10 @@ class rateViewController: UIViewController , UITextFieldDelegate{
         comments.layer.borderColor = UIColor(red: 84.0/255.0, green: 211.0/255.0, blue: 187.0/255.0, alpha: 1.0).cgColor
         comments.layer.borderWidth = 1.0
         comments.layer.cornerRadius = 5
+        
+         rating.keyboardType = UIKeyboardType.numberPad
+        
+        
     }
 
 
