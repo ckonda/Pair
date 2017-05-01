@@ -43,11 +43,7 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
         
         nametextField.isHidden = true
         
-        
-
         pairTitle.textAlignment = .center
-        
-   
     }
     
     

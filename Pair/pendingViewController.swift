@@ -42,9 +42,6 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         
         ref = FIRDatabase.database().reference().child("Bids");
         
-        //tableView.delegate = self
-        //tableView.dataSource = self
-        //ref = FIRDatabase.database().reference().child("Jobs");
         ref.observe(FIRDataEventType.value, with: {(snapshot) in
             if snapshot.childrenCount>0{
                 self.bidData.removeAll()
@@ -108,7 +105,6 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         //
         let dateString = time
         let dateformatter = DateFormatter()
-        //        dateformatter.dateFormat = "dd-MM-yyyy"// HH:mm:ss"
         dateformatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
         dateformatter.timeZone = NSTimeZone(abbreviation: "PT+0:00") as TimeZone!
         let dateFromString = dateformatter.date(from: dateString!)
@@ -117,40 +113,9 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
         cell.timeStamp.text = timeAgo
         
-
-        
-        
-//        cell.chatButton.tag = indexPath.row
-//        cell.chatButton.addTarget(self, action: #selector(pendingViewController.sendMessageView), for: UIControlEvents.touchUpInside)
-        
-        //self.performSegue(withIdentifier: "toInitMessage", sender: indexPath)
-        
         return cell
     }
     
-//    func sendMessageView(){
-//        print("TARGET ADDED")
-//        performSegue(withIdentifier: "toInitMessage", sender: self)
-//    }
-//    
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        print("PREPARING FOR SEGUE")
-//        print("BID DATA SIZE  = \(bidData.count)")
-//        if segue.identifier == "toInitMessage" {
-//            
-//            //ref.child(<#T##pathString: String##String#>)
-//            for bids in bidData {
-//                if(bids.name == )
-//            }
-//            //print("tag = \((sender).tag)")
-//            //let initialMessagePage = segue.destination as! initialMessageViewController, index = tableView.indexPathForSelectedRow?.row{
-//                    //initialMessagePage.user2ID = bidData[index].
-//            //}
-//            //initialMessagePage.user1ID = AppDelegate.user.userID!
-//            //segue.destinationViewController.retain = self.detailForIndexPath(path)
-//        }
-//    }
 
         
     
@@ -162,15 +127,6 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         return bidData.count
     }
     
-    
-    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
-    {
-        if editingStyle == UITableViewCellEditingStyle.delete
-        {
-            bidData.remove(at: indexPath.row)
-            tableView.reloadData()
-        }
-    }*/
     
     var index: Int?
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath)->[UITableViewRowAction]?{
