@@ -179,7 +179,9 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
             self.index = indexPath.row
             self.performSegue(withIdentifier: "toInitMessage", sender: indexPath)
         }
-        messageAction.backgroundColor = .blue
+        messageAction.backgroundColor = UIColor.init(red: 84.0/255.0, green: 211.0/255.0, blue: 187.0/255.0, alpha: 1.0)
+        
+
         let deleteAction = UITableViewRowAction(style: .normal, title: "Delete"){
             (rowAction, indexPath) in
             self.bidData.remove(at: indexPath.row)
