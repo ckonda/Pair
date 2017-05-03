@@ -34,7 +34,7 @@ public class JobsTableViewCell: UITableViewCell {
 
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-     
+
     }
     
     public func configure(postLabel: String, postPrice:String, locationLabel: String, profilePicture: UIImage, timestamp: String){

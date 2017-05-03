@@ -97,7 +97,7 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         let channel = channelData[indexPath.row]
 
         let loggedInUser = FIRAuth.auth()?.currentUser?.uid
-        print("chanel disp id = \(channel.channelDispID!)")
+   
         let nameIDPath = FIRDatabase.database().reference().child("Users").child(channel.channelDispID!)
         //print("name = \(nameJSON["username"] as! String?)")
         nameIDPath.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -132,7 +132,7 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
  
         //print("name = \(nameJSON["username"] as! String?)")
         let timeRef = timeQuery.observeSingleEvent(of: FIRDataEventType.childAdded, with: { (snapshot) in
-            print(snapshot)
+
             let time = snapshot.value as! [String: Any]
             
             
