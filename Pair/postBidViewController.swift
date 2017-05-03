@@ -28,18 +28,6 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-//    
-//    postbidView?.selectedName = jobData[indexPath.row].jobName!
-//    postbidView?.selectedDescription = jobData[indexPath.row].description!
-//    postbidView?.selectedID = jobData[indexPath.row].postid!
-//    
-//    postbidView?.toID = jobData[indexPath.row].username!
-//    postbidView?.name = jobData[indexPath.row].name!
-//    
-//    
-    
-    
-    
     var ref: FIRDatabaseReference!
     
     public var postID = String()
@@ -61,12 +49,6 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var jobName: UILabel!
     
     @IBOutlet weak var jobDescription: UILabel!
-    
-    
-//    @IBOutlet weak var offerName: UILabel!
-//    
-//    @IBOutlet weak var jobDescription: UILabel!
-    
     
     @IBOutlet weak var bidEnter: UITextField!
     
@@ -117,8 +99,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             let newPrice = bid
-            
-            //let bidRef = self.ref?.child("Bids")//new channel created
+  
             
             let bidRef = FIRDatabase.database().reference().child("Bids")
             let bidCreate = bidRef.childByAutoId()

@@ -90,7 +90,7 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
                 "postID": selectedID,
                 "postPrice": newPrice,
                 "timestamp": stringDate,
-                "name": AppDelegate.user.username,
+                "name": AppDelegate.user.username!,
                 "description": selectedName,
                 ] as [String : Any]
             

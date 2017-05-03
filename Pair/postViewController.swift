@@ -101,16 +101,20 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
     
         if let profileImage = job.profileImageUrl {
             
-            let url = URL(string: profileImage)
-            print("before")
-            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                if error != nil{
-                    print(error!)//download hit error so return out
-                }
-                DispatchQueue.main.async(execute: {
-                    cell.profilePicture.image = UIImage(data: data!)
-                })
-            }).resume()
+            
+            cell.profilePicture.loadImageUsingCacheWithUrlString(urlString: profileImage)
+            
+//            let url = URL(string: profileImage)
+//            print("before")
+//            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+//                if error != nil{
+//                    print(error!)//download hit error so return out
+//                }
+//                DispatchQueue.main.async(execute: {
+//                    cell.profilePicture.image = UIImage(data: data!)
+//                })
+//            }).resume()
+            
         }
 
         return cell

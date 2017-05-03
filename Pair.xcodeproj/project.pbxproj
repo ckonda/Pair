@@ -31,6 +31,7 @@
 		EE58D79F1EB0826000D6B9B1 /* bidRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D79E1EB0826000D6B9B1 /* bidRatingTableViewCell.swift */; };
 		EE58D7A11EB3000700D6B9B1 /* initialMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D7A01EB3000700D6B9B1 /* initialMessageViewController.swift */; };
 		EE8D082F1EA41F0F00EF293E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8D082E1EA41F0F00EF293E /* Message.swift */; };
+		EEAC65F91EB9938700769DE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAC65F81EB9938700769DE3 /* Extensions.swift */; };
 		EEBAC1871EA7DAAF00BE22F9 /* chatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */; };
 		EEBAC1891EA9809D00BE22F9 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAC1881EA9809D00BE22F9 /* Channel.swift */; };
 		EEC338401EA16F410024FC53 /* postBidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC3383F1EA16F410024FC53 /* postBidViewController.swift */; };
@@ -79,6 +80,7 @@
 		EE58D79E1EB0826000D6B9B1 /* bidRatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bidRatingTableViewCell.swift; sourceTree = "<group>"; };
 		EE58D7A01EB3000700D6B9B1 /* initialMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = initialMessageViewController.swift; sourceTree = "<group>"; };
 		EE8D082E1EA41F0F00EF293E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		EEAC65F81EB9938700769DE3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatViewController.swift; sourceTree = "<group>"; };
 		EEBAC1881EA9809D00BE22F9 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		EEC3383F1EA16F410024FC53 /* postBidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postBidViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 		EE4EEBAB1E7614B50044FE39 /* Pair */ = {
 			isa = PBXGroup;
 			children = (
+				EEAC65F71EB9936500769DE3 /* Helpers */,
 				FE605A5F1EAC1BC700477185 /* Resources */,
 				EE213E831E9AFFBF003999FC /* View */,
 				EE213E801E9AF135003999FC /* Model */,
@@ -203,6 +206,14 @@
 				BA66DB431E9EB2100048253A /* Pair-Bridging-Header.h */,
 			);
 			path = Pair;
+			sourceTree = "<group>";
+		};
+		EEAC65F71EB9936500769DE3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				EEAC65F81EB9938700769DE3 /* Extensions.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		EED46D4C1EB6FB94007C959A /* RateControllers */ = {
@@ -419,6 +430,7 @@
 				EE33E6781EA6995100A63FBA /* MenuViewController.swift in Sources */,
 				EEC34F871E9D787800954927 /* OfferTableViewCell.swift in Sources */,
 				BA66DB461E9EB2120048253A /* SWRevealViewController.m in Sources */,
+				EEAC65F91EB9938700769DE3 /* Extensions.swift in Sources */,
 				EEC34F831E9D67D500954927 /* offerViewController.swift in Sources */,
 				EE58D7A11EB3000700D6B9B1 /* initialMessageViewController.swift in Sources */,
 				EEBAC1871EA7DAAF00BE22F9 /* chatViewController.swift in Sources */,

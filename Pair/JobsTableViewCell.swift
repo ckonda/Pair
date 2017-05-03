@@ -12,9 +12,7 @@ import FirebaseAuth
 
 public class JobsTableViewCell: UITableViewCell {
     @IBOutlet weak var postLabel: UILabel!
-    
 
-    
     @IBOutlet weak var postPrice: UILabel!
     
     @IBOutlet weak var profilePicture: UIImageView!

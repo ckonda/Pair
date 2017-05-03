@@ -24,7 +24,7 @@ class MenuViewController: UIViewController {
     
     
     
-  let url = AppDelegate.user.profileImageUrl!
+  let urlString = AppDelegate.user.profileImageUrl!
     
     
     
@@ -43,12 +43,19 @@ class MenuViewController: UIViewController {
         uName.text = AppDelegate.user.username
         
     
-        FIRStorage.storage().reference(forURL: url).data(withMaxSize: 25 * 1024 * 1024) { (data, error) in
-            self.profilePicture.image = UIImage(data: data!)
+        FIRStorage.storage().reference(forURL: urlString).data(withMaxSize: 25 * 1024 * 1024) { (data, error) in
+            //self.profilePicture.image = UIImage(data: data!)
             
-            
+            self.profilePicture.loadImageUsingCacheWithUrlString(urlString: self.urlString)
             
         }
+        
+
+ 
+        
+
+        
+        
         
         profilePicture.layer.cornerRadius = profilePicture.frame.size.width/2
         profilePicture.clipsToBounds = true

@@ -91,16 +91,19 @@ class bidRatingViewController: UIViewController, UITableViewDelegate, UITableVie
             
             if let profileImage = userInfo["profileImageUrl"] as! String? {
                 
-                let url = URL(string: profileImage)
-                print("before")
-                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                    if error != nil{
-                        print(error!)//download hit error so return out
-                    }
-                    DispatchQueue.main.async(execute: {
-                        cell.raterPicture.image = UIImage(data: data!)
-                    })
-                }).resume()
+                
+                  cell.raterPicture.loadImageUsingCacheWithUrlString(urlString: profileImage)
+                
+//                let url = URL(string: profileImage)
+//                print("before")
+//                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+//                    if error != nil{
+//                        print(error!)//download hit error so return out
+//                    }
+//                    DispatchQueue.main.async(execute: {
+//                        cell.raterPicture.image = UIImage(data: data!)
+//                    })
+//                }).resume()
             }
             
         })

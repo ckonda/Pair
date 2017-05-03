@@ -106,16 +106,18 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
             
             if let profileImage = nameJSON["profileImageUrl"] as! String? {
                 
-                let url = URL(string: profileImage)
-                print("before")
-                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                    if error != nil{
-                        print(error!)//download hit error so return out
-                    }
-                    DispatchQueue.main.async(execute: {
-                        cell.messagePicture.image = UIImage(data: data!)
-                    })
-                }).resume()
+                  cell.messagePicture.loadImageUsingCacheWithUrlString(urlString: profileImage)
+                
+//                let url = URL(string: profileImage)
+//                print("before")
+//                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+//                    if error != nil{
+//                        print(error!)//download hit error so return out
+//                    }
+//                    DispatchQueue.main.async(execute: {
+//                        cell.messagePicture.image = UIImage(data: data!)
+//                    })
+//                }).resume()
             }
             
         })//end of UserObserve completion block
