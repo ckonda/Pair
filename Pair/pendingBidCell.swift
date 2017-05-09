@@ -80,17 +80,7 @@ public class pendingBidCell: UITableViewCell {
     
     
     
-    /*func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toInitMessage" {
-            let initialMessagePage = segue.destination as! initialMessageViewController
-            print("bidder = \(bidder.text)")
-            //pr
-            //initialMessagePage.user1ID =
-        }
-    }*/
-    
-    
-    
+
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -144,6 +144,8 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
                     postbidView?.selectedDescription = jobData[indexPath.row].description!
                     postbidView?.selectedID = jobData[indexPath.row].postid!
                     
+                    postbidView?.bidpictureUrl = jobData[indexPath.row].profileImageUrl!
+                    
                     postbidView?.toID = jobData[indexPath.row].username!
                     postbidView?.name = jobData[indexPath.row].name!
                     

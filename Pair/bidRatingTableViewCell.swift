@@ -15,7 +15,7 @@ public class bidRatingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var comments: UITextView!
     
-    @IBOutlet weak var raterValue: UILabel!
+
     
     @IBOutlet weak var rater: UILabel!
     
@@ -47,12 +47,11 @@ public class bidRatingTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    public func configure(raterValue: String? , raterPicture: UIImage, comments: String?, rater: String?,  dot1: UIImage,dot2: UIImage,dot3: UIImage,dot4: UIImage, dot5: UIImage){
-        self.raterValue.text = raterValue
+    public func configure(raterPicture: UIImage, comments: String?, rater: String?,  dot1: UIImage,dot2: UIImage,dot3: UIImage,dot4: UIImage, dot5: UIImage){
+ 
         self.raterPicture.image = raterPicture
         self.comments.text = comments
         self.rater.text = rater
-        
         
         self.dot1.image = dot1
         self.dot2.image = dot2

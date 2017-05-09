@@ -93,17 +93,7 @@ class bidRatingViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 
                   cell.raterPicture.loadImageUsingCacheWithUrlString(urlString: profileImage)
-                
-//                let url = URL(string: profileImage)
-//                print("before")
-//                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-//                    if error != nil{
-//                        print(error!)//download hit error so return out
-//                    }
-//                    DispatchQueue.main.async(execute: {
-//                        cell.raterPicture.image = UIImage(data: data!)
-//                    })
-//                }).resume()
+
             }
             
         })
@@ -148,7 +138,7 @@ class bidRatingViewController: UIViewController, UITableViewDelegate, UITableVie
 
         cell.rater.text = rating.rater
         cell.comments.text = rating.comments
-        cell.raterValue.text = String(describing: rating.ratingValue!)
+       // cell.raterValue.text = String(describing: rating.ratingValue!)
         
         return cell
         

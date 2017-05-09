@@ -13,7 +13,8 @@ target 'Pair' do
     pod 'Firebase/Auth'
     pod 'Firebase/Storage'
     pod ‘JSQMessagesViewController’
-    pod 'IQKeyboardManagerSwift'
+    pod 'IQKeyboardManagerSwift' 
+    pod ‘Firebase/Messaging’
 
 
   # Pods for Pair

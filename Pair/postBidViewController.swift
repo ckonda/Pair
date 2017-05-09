@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseStorage
 
 
 
@@ -21,11 +22,28 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         jobName.text = selectedName
         jobDescription.text = selectedDescription
         bidEnter.delegate = self
+        posterName.text = name//name for the user on bid
+        
         
         bidEnter.keyboardType = UIKeyboardType.numberPad
         
+        FIRStorage.storage().reference(forURL: bidpictureUrl).data(withMaxSize: 25 * 1024 * 1024) { (data, error) in
+            self.bidprofilePicture.loadImageUsingCacheWithUrlString(urlString: self.bidpictureUrl)
+        }
+
+        bidprofilePicture.layer.cornerRadius = bidprofilePicture.frame.size.width/2
+        bidprofilePicture.clipsToBounds = true
+        bidprofilePicture.layer.borderColor = UIColor.white.cgColor
+        bidprofilePicture.layer.borderWidth = 1
+        
+    
         
     }
+    
+    
+    
+    @IBOutlet weak var bidprofilePicture: UIImageView!
+    
     
     
     var ref: FIRDatabaseReference!
@@ -38,11 +56,14 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     public var selectedDescription = String()
     public var selectedPrice = Int()
     public var selectedID = String()//the ID for the current post
-
+    
     public var name = String()
     public var toID = String()
     
+    public var bidpictureUrl = String()//Post Owners picture to appear
     
+    
+    @IBOutlet weak var posterName: UILabel!
     
     @IBOutlet weak var cancelPost: UIBarButtonItem!
     
@@ -67,11 +88,19 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    
+
+    
+    
+    
+    
     @IBAction func ratingsButton(_ sender: Any) {
         
         performSegue(withIdentifier: "toPosterRating", sender: self)
         
     }//segue to ratings
+    
+    
     
     
     
