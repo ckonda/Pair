@@ -10,18 +10,27 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class postViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class postViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var openMenu: UIBarButtonItem!
     
     var ref: FIRDatabaseReference!
     var dbHandle: FIRDatabaseHandle?
     var jobData = [JobModel]()
+    var filteredData = [JobModel]()
+    
+    var isSearching = false
+    
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchBar.delegate = self
+        
+        searchBar.returnKeyType = UIReturnKeyType.done
         
         
         tableView.delegate = self
@@ -73,15 +82,37 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if isSearching
+        {
+            return filteredData.count
+        }
+        
         return jobData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath) as! JobsTableViewCell
-        let job = jobData[indexPath.row]
-        cell.postLabel.text = job.jobName
-        cell.postPrice.text = String(describing: job.price!)
-        cell.locationLabel.text = job.location
+        
+        let job:JobModel
+        print("search bar contains ; \(searchBar.text!)")
+        print("about to set up cells")
+        print("filtered data count = \(filteredData.count)")
+        if isSearching {
+            print("\(filteredData.count)")
+            job = filteredData[indexPath.row]
+            cell.postLabel.text = job.jobName
+            cell.postPrice.text = String(describing: job.price!)
+            cell.locationLabel.text = job.location
+        }
+        else{
+            print("\(filteredData.count)")
+            job = jobData[indexPath.row]
+            cell.postLabel.text = job.jobName
+            cell.postPrice.text = String(describing: job.price!)
+            cell.locationLabel.text = job.location
+        }
+        
         
         
         
@@ -97,8 +128,46 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
         cell.timestamp.text = timeAgo
-  
-    
+        
+        let text: String!
+        let text1: String!
+        let text2: String!
+        let text3: String!
+        let text4: String!
+        let text5: String!
+        let text6: String!
+
+
+        let number: Int!
+        if isSearching {
+            if searchBar.text! == job.jobName {
+                 filteredData.append(job)
+                 /*cell.postLabel.text = filteredData[filteredData.count-1].jobName
+                 cell.postPrice.text = String(describing: filteredData[filteredData.count-1].price!)
+                 cell.locationLabel.text = filteredData[filteredData.count-1].location*/
+                 print("filteredData just added \(filteredData[filteredData.count-1].jobName)")
+            }
+           
+            /*text = filteredData[indexPath.row].jobName
+            text1 = filteredData[indexPath.row].description
+            text2 = filteredData[indexPath.row].location
+            text3 = filteredData[indexPath.row].name
+            text4 = filteredData[indexPath.row].postid
+            text5 = filteredData[indexPath.row].profileImageUrl
+            text6 = filteredData[indexPath.row].timestamp
+            number = filteredData[indexPath.row].price*/
+        }
+        else
+        {
+            text = jobData[indexPath.row].jobName
+            print("entered else -> \(text)")
+            
+        }
+        
+        //cell.configure(postLabel: text, postPrice: String(number), locationLabel: text2, profilePicture: text5, timestamp: text6 )
+        
+        
+        
         if let profileImage = job.profileImageUrl {
             
             
@@ -116,8 +185,43 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
 //            }).resume()
             
         }
-
+    
         return cell
+    }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchBar.text == nil || searchBar.text == "") {
+            
+            isSearching = false
+            
+            view.endEditing(true)
+            print ("working")
+            tableView.reloadData()
+            
+        }
+        
+        else
+        {
+            isSearching = true
+            //print({$0.jobName)
+            
+            //filteredData.append(
+            filteredData = jobData.filter({$0.jobName == searchBar.text!})
+            print("filtered data = \(filteredData.count)")
+            if filteredData.count == 1 {
+                print("filtered data [0] = \(filteredData[0].jobName)")
+            }
+            if filteredData.count == 2 {
+                print("filtered data [0] = \(filteredData[0].jobName)")
+                print("filtered data [1] = \(filteredData[1].jobName)")
+            }
+            //jobData = filteredData
+            print("working2")
+            tableView.reloadData()
+            print("reloaded")
+            
+        }
     }
     
     
@@ -153,7 +257,6 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
     }
   
-    
     
     func animateTable(){
         tableView.reloadData()

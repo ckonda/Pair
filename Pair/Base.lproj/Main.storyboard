@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16A312a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -260,15 +260,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fBI-R8-kOh">
-                                <rect key="frame" x="0.0" y="28" width="375" height="639"/>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jGf-3Z-FDP">
+                                <rect key="frame" x="0.0" y="65" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="89" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fBI-R8-kOh">
+                                <rect key="frame" x="0.0" y="91" width="375" height="639"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="jobCell" rowHeight="90" id="oHL-eg-ZI8" customClass="JobsTableViewCell" customModule="Pair" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="jobCell" rowHeight="89" id="oHL-eg-ZI8" customClass="JobsTableViewCell" customModule="Pair" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oHL-eg-ZI8" id="gcz-21-tUm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="88.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Job:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghh-Jl-drR">
@@ -330,8 +335,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="fBI-R8-kOh" secondAttribute="trailing" id="89Z-Ww-tnF"/>
-                            <constraint firstItem="fBI-R8-kOh" firstAttribute="top" secondItem="uf0-2J-yCA" secondAttribute="bottom" constant="8" id="ag9-Mn-ecn"/>
-                            <constraint firstItem="O3F-gR-Cqe" firstAttribute="top" secondItem="fBI-R8-kOh" secondAttribute="bottom" id="dYN-cN-1Xc"/>
+                            <constraint firstItem="fBI-R8-kOh" firstAttribute="top" secondItem="uf0-2J-yCA" secondAttribute="bottom" constant="71" id="ag9-Mn-ecn"/>
+                            <constraint firstItem="O3F-gR-Cqe" firstAttribute="top" secondItem="fBI-R8-kOh" secondAttribute="bottom" constant="-63" id="dYN-cN-1Xc"/>
                             <constraint firstItem="fBI-R8-kOh" firstAttribute="leading" secondItem="Vpc-CJ-tmO" secondAttribute="leading" id="mZL-VG-nnP"/>
                         </constraints>
                     </view>
@@ -348,13 +353,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="openMenu" destination="rc0-d7-Ja5" id="758-U0-DFO"/>
+                        <outlet property="searchBar" destination="jGf-3Z-FDP" id="c1e-aa-0tz"/>
                         <outlet property="tableView" destination="fBI-R8-kOh" id="YBk-21-1yd"/>
                         <segue destination="O0h-r8-Xos" kind="presentation" identifier="gotoBid" id="bES-SD-su1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19x-7s-Hgi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6343" y="-159"/>
+            <point key="canvasLocation" x="6341.6000000000004" y="-159.67016491754123"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="bMW-oy-lAX">
@@ -983,7 +989,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Run-gB-cSF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Seek" image="post" id="IkK-kL-RB7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0cu-IT-pFU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0cu-IT-pFU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1002,7 +1008,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="80H-AS-3X5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Offer" image="offer" id="MPu-dD-AuP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xJw-G1-fsg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xJw-G1-fsg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1219,7 +1225,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate your experience" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RsT-x7-Jin">
-                                <rect key="frame" x="56" y="94" width="263.5" height="38.5"/>
+                                <rect key="frame" x="56.5" y="94" width="263.5" height="38.5"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
