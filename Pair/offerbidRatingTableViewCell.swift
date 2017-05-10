@@ -1,8 +1,8 @@
 //
-//  bidRatingTableViewCell.swift
+//  offerbidRatingTableViewCell.swift
 //  Pair
 //
-//  Created by Chatan Konda on 4/26/17.
+//  Created by Chatan Konda on 5/9/17.
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
@@ -10,11 +10,12 @@ import Foundation
 
 
 
-public class bidRatingTableViewCell: UITableViewCell {
+public class offerbidRatingTableViewCell: UITableViewCell {
     
+
     
+
     @IBOutlet weak var comments: UITextView!
-    
     @IBOutlet weak var rater: UILabel!
     
     @IBOutlet weak var raterPicture: UIImageView!
@@ -37,7 +38,7 @@ public class bidRatingTableViewCell: UITableViewCell {
         raterPicture.clipsToBounds = true
         raterPicture.layer.borderColor = UIColor.white.cgColor
         raterPicture.layer.borderWidth = 1
-
+        
     }
     
     
@@ -46,7 +47,7 @@ public class bidRatingTableViewCell: UITableViewCell {
     }
     
     public func configure(raterPicture: UIImage, comments: String?, rater: String?,  dot1: UIImage,dot2: UIImage,dot3: UIImage,dot4: UIImage, dot5: UIImage){
- 
+        
         self.raterPicture.image = raterPicture
         self.comments.text = comments
         self.rater.text = rater

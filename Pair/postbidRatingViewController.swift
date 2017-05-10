@@ -10,15 +10,27 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class bidRatingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class postbidRatingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
     var ratingRef = FIRDatabase.database().reference().child("Ratings")
-    
-    
     var ref: FIRDatabaseReference!
     
+    
+    
+    
     var bidRatingData = [bidderRatings]()
+    public var Name = String()
+    
+    public var profilepictureUrl = String()
+    
+    
+    
+    
+    
+    
+    @IBOutlet weak var profileName: UILabel!
+    @IBOutlet weak var profilePicture: UIImageView!
     
     
     
@@ -28,6 +40,21 @@ class bidRatingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        profileName.text = Name
+        
+        FIRStorage.storage().reference(forURL: profilepictureUrl).data(withMaxSize: 25 * 1024 * 1024) { (data, error) in
+            self.profilePicture.loadImageUsingCacheWithUrlString(urlString: self.profilepictureUrl)
+        }
+        
+        profilePicture.layer.cornerRadius = profilePicture.frame.size.width/2
+        profilePicture.clipsToBounds = true
+        profilePicture.layer.borderColor = UIColor.white.cgColor
+        profilePicture.layer.borderWidth = 1
+        
+        
+        
+        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -80,10 +107,7 @@ class bidRatingViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let nameIDPath = FIRDatabase.database().reference().child("Users").child(rating.raterID!)
         nameIDPath.observeSingleEvent(of: .value, with: { (snapshot) in
-            print("here")
-            print(snapshot)
-            print("here2")
-            
+    
             let userInfo = snapshot.value as! [String: Any]
             //  cell.senderName.text = (nameJSON["username"] as! String?)!
             
@@ -152,11 +176,6 @@ class bidRatingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
 
-    
-    
-    
-    
-    
     
     
 

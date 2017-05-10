@@ -36,9 +36,39 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
         bidprofilePicture.layer.borderColor = UIColor.white.cgColor
         bidprofilePicture.layer.borderWidth = 1
         
-    
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        
+        
+        bidprofilePicture.isUserInteractionEnabled = true
+        bidprofilePicture.addGestureRecognizer(tapGestureRecognizer)
+        
         
     }
+    
+    
+    
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        
+
+        performSegue(withIdentifier: "toPosterRating", sender: self)
+        
+        // Your action
+    }
+    
+    
+//    let picker = UIImagePickerController()
+//    picker.delegate = self
+//    picker.allowsEditing = true
+//    present(picker, animated: true, completion: nil)
+
+    
+    
+    
+    
+    
     
     
     
@@ -166,8 +196,12 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toPosterRating"){
             
-            let destination = segue.destination as! bidRatingViewController
+            let destination = segue.destination as! postbidRatingViewController
             destination.postuserID = toID
+            destination.Name = name
+            destination.profilepictureUrl = bidpictureUrl
+            
+            
             
 
         }

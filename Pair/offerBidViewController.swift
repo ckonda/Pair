@@ -23,14 +23,19 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
 
     public var selectedName = String()
     public var selectedSkill = String()
-  //  public var selectedPrice = Int()
     public var selectedID = String()//the ID for the current post
-    //public var selectedLocation = String()
+
     public var name = String()
     public var toID = String()
     
 
-   // @IBOutlet weak var userDescription: UILabel!//user Skill
+    public var bidpictureUrl = String()
+    @IBOutlet weak var posterName: UILabel!
+    
+    
+
+    @IBOutlet weak var bidProfilePicture: UIImageView!
+    
     
     @IBOutlet weak var username: UILabel!
     
@@ -117,7 +122,6 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
         bidEnter.delegate = self
         
         userDescription.text = selectedSkill
-    //  offerPrice.text = selectedPrice as String
         
         username.text = selectedName
         

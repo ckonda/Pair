@@ -99,16 +99,6 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
         if let profileImage = offer.profileImageUrl {
             
               cell.profilePicture.loadImageUsingCacheWithUrlString(urlString: profileImage)
-            
-//            let url = URL(string: profileImage)
-//            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-//                if error != nil{
-//                    print(error!)//download hit error so return out
-//                }
-//                DispatchQueue.main.async(execute: {
-//                    cell.profilePicture.image = UIImage(data: data!)
-//                })
-//            }).resume()
         }
 
             
@@ -139,18 +129,15 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
                 if let indexPath = self.tableView.indexPathForSelectedRow{
                     let offerbidView = segue.destination as? offerBidViewController
             
-                     print(offerData[indexPath.row].skill!)
-                     print(offerData[indexPath.row].offerid!)
                  
                     offerbidView?.selectedName = offerData[indexPath.row].offerName!
                     offerbidView?.selectedSkill = offerData[indexPath.row].skill!
                     offerbidView?.selectedID = offerData[indexPath.row].offerid!
                     offerbidView?.toID = offerData[indexPath.row].username!
                     
-                 //   offerbidV
                     
-                 
-           
+                    offerbidView?.name = offerData[indexPath.row].name!
+                    offerbidView?.bidpictureUrl = offerData[indexPath.row].profileImageUrl!
                     
                     
                 }

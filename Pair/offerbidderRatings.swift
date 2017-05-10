@@ -1,8 +1,8 @@
 //
-//  bidderRatings.swift
+//  offerbidderRatings.swift
 //  Pair
 //
-//  Created by Chatan Konda on 4/26/17.
+//  Created by Chatan Konda on 5/9/17.
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 
 
 
-public class bidderRatings{//postbidRatings
+public class offerbidderRatings{
     
     var comments: String?
     var rater: String?
