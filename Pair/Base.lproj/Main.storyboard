@@ -975,7 +975,7 @@
                                     <constraint firstAttribute="height" constant="65" id="Yx6-7U-Eor"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Title" id="MFD-gf-dU8">
+                                    <navigationItem title="Mesage" id="MFD-gf-dU8">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="sml-x2-WZP">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -985,12 +985,12 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send a message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLv-0R-B7b">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send a Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLv-0R-B7b">
                                 <rect key="frame" x="31" y="92" width="324" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="QEi-nN-Bea"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1290,7 +1290,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate your experience" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RsT-x7-Jin">
-                                <rect key="frame" x="56.5" y="94" width="263.5" height="38.5"/>
+                                <rect key="frame" x="56" y="94" width="263.5" height="38.5"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1371,7 +1371,7 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="glowLog" translatesAutoresizingMaskIntoConstraints="NO" id="NfL-eh-OLa">
-                                <rect key="frame" x="42" y="532" width="300" height="49"/>
+                                <rect key="frame" x="42" y="532.5" width="300" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="KCf-wP-waP"/>
                                 </constraints>

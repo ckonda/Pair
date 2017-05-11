@@ -95,9 +95,9 @@ class chatViewController: JSQMessagesViewController{
     
     private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.init(red: 84.0/255.0, green: 211.0/255.0, blue: 187.0/255.0, alpha: 1.0))
     }
-    
+  //  UIColor.jsq_messageBubbleBlue()
     
     
     private func setupIncomingBubble() -> JSQMessagesBubbleImage {
