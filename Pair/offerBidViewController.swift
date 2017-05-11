@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseStorage
 
 
 
@@ -126,10 +127,39 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
         username.text = selectedName
         
         bidEnter.keyboardType = UIKeyboardType.numberPad
+        
+        posterName.text = name
+        
+        
+        FIRStorage.storage().reference(forURL: bidpictureUrl).data(withMaxSize: 25 * 1024 * 1024) { (data, error) in
+            self.bidProfilePicture.loadImageUsingCacheWithUrlString(urlString: self.bidpictureUrl)
+        }
+        
+        bidProfilePicture.layer.cornerRadius = bidProfilePicture.frame.size.width/2
+        bidProfilePicture.clipsToBounds = true
+        bidProfilePicture.layer.borderColor = UIColor.white.cgColor
+        bidProfilePicture.layer.borderWidth = 1
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        
+        
+        bidProfilePicture.isUserInteractionEnabled = true
+        bidProfilePicture.addGestureRecognizer(tapGestureRecognizer)
 
         
     }
     
+    
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        
+        
+        performSegue(withIdentifier: "toBidderRating", sender: self)
+        
+        // Your action
+    }
 
     
     

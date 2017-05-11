@@ -4,21 +4,47 @@
 //
 //  Created by Chatan Konda on 4/11/17.
 //  Copyright © 2017 Apple. All rights reserved.
-//
+
 
 import UIKit
 import Firebase
 import FirebaseAuth
 
-class offerViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class offerViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var openMenu: UIBarButtonItem!
     var ref: FIRDatabaseReference!
     var dbHandle: FIRDatabaseHandle?
     var offerData = [OfferModel]()
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var filteredData = [OfferModel]()
+    var isSearching = false
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        searchBar.resignFirstResponder()
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchBar.resignFirstResponder()
+        
+        return true
+        
+    }
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.done
+        
+        searchBar.placeholder = "Search"
     
 
 
@@ -68,6 +94,11 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearching
+        {
+            return filteredData.count
+        }
+        
         return offerData.count
     }
     
@@ -75,12 +106,26 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "offerCell", for: indexPath) as! OfferTableViewCell
-        let offer = offerData[indexPath.row]
         
-        cell.offerLabel.text = offer.offerName
-        //cell.offerLabel.text = "offer"
-        cell.offerPrice.text = String(describing: offer.price!)
-        cell.locationLabel.text = offer.location
+        
+        let offer:OfferModel
+        if isSearching {
+          
+            offer = filteredData[indexPath.row]
+            cell.offerLabel.text = offer.offerName
+            cell.offerPrice.text = String(describing: offer.price!)
+            cell.locationLabel.text = offer.location
+        }
+        else{
+   
+            offer = offerData[indexPath.row]
+            cell.offerLabel.text = offer.offerName
+            cell.offerPrice.text = String(describing: offer.price!)
+            cell.locationLabel.text = offer.location
+        }
+        
+        
+
         
         let time = offer.timestamp
         //
@@ -96,6 +141,29 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
         cell.timestamp.text = timeAgo
         
         
+        if isSearching {
+            if searchBar.text! == offer.offerName {
+                filteredData.append(offer)
+                
+          
+            }
+            
+        }
+        else
+        {
+//            text = jobData[indexPath.row].jobName
+//            print("entered else -> \(text)")
+     
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
         if let profileImage = offer.profileImageUrl {
             
               cell.profilePicture.loadImageUsingCacheWithUrlString(urlString: profileImage)
@@ -106,13 +174,54 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
         return cell
     }
     
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchBar.text == nil || searchBar.text == "") {
+            
+            isSearching = false
+            
+            view.endEditing(true)
+            print ("working")
+            tableView.reloadData()
+            
+        }
+            
+        else
+        {
+            isSearching = true
+            //print({$0.jobName)
+            
+            //filteredData.append(
+            filteredData = offerData.filter({$0.offerName == searchBar.text!})
+            print("filtered data = \(filteredData.count)")
+            if filteredData.count == 1 {
+  
+            }
+            if filteredData.count == 2 {
+            
+            }
+            //jobData = filteredData
+            print("working2")
+            tableView.reloadData()
+            print("reloaded")
+            
+        }
+    }
+    
+
+    
+    
+    
+    
+    
 
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      
         let index = tableView.indexPathForSelectedRow?.row
         
-       performSegue(withIdentifier: "offerBid", sender: index)
+        performSegue(withIdentifier: "offerBid", sender: index)
+        tableView.deselectRow(at: indexPath, animated: true)
 
     }
     

@@ -143,7 +143,7 @@ class offerbidRatingViewController: UIViewController, UITableViewDelegate, UITab
                 cell.dot4.image = fulldot
                 
             }
-            if ratingControl == 5 {
+            if ratingControl >= 5 {
                 cell.dot1.image = fulldot
                 cell.dot2.image = fulldot
                 cell.dot3.image = fulldot

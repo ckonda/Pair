@@ -164,9 +164,7 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
             let bidCreate = bidRef.childByAutoId()
          //   let newKey = bidCreate?.key//key for message ID
             
-            print(newPrice)
-            print(selectedID)
-            print(selectedDescription)
+          
             
             
             let postBid = [

@@ -10,18 +10,41 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class postViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class postViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var openMenu: UIBarButtonItem!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var ref: FIRDatabaseReference!
     var dbHandle: FIRDatabaseHandle?
     var jobData = [JobModel]()
     
+    var filteredData = [JobModel]()
+    var isSearching = false
+    
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        searchBar.resignFirstResponder()
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchBar.resignFirstResponder()
+        
+        return true
+        
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.done
+
+        
+        searchBar.placeholder = "Search"
         
         
         tableView.delegate = self
@@ -73,15 +96,39 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if isSearching
+        {
+            return filteredData.count
+        }
+        
         return jobData.count
     }
     
+    
+    
+
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath) as! JobsTableViewCell
-        let job = jobData[indexPath.row]
-        cell.postLabel.text = job.jobName
-        cell.postPrice.text = String(describing: job.price!)
-        cell.locationLabel.text = job.location
+        
+        let job:JobModel
+        if isSearching {
+            print("\(filteredData.count)")
+            job = filteredData[indexPath.row]
+            cell.postLabel.text = job.jobName
+            cell.postPrice.text = String(describing: job.price!)
+            cell.locationLabel.text = job.location
+        }
+        else{
+            print("\(filteredData.count)")
+            job = jobData[indexPath.row]
+            cell.postLabel.text = job.jobName
+            cell.postPrice.text = String(describing: job.price!)
+            cell.locationLabel.text = job.location
+        }
+        
+        
         
         
         
@@ -97,35 +144,95 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
         cell.timestamp.text = timeAgo
+        
+        let text: String!
+        let text1: String!
+        let text2: String!
+        let text3: String!
+        let text4: String!
+        let text5: String!
+        let text6: String!
+        
+        
+        let number: Int!
+        if isSearching {
+            if searchBar.text! == job.jobName {
+                filteredData.append(job)
+       
+           
+            }
+            
+        }
+        else
+        {
+            text = jobData[indexPath.row].jobName
+            print("entered else -> \(text)")
+            
+        }
+        
   
     
         if let profileImage = job.profileImageUrl {
             
             
             cell.profilePicture.loadImageUsingCacheWithUrlString(urlString: profileImage)
-            
-//            let url = URL(string: profileImage)
-//            print("before")
-//            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-//                if error != nil{
-//                    print(error!)//download hit error so return out
-//                }
-//                DispatchQueue.main.async(execute: {
-//                    cell.profilePicture.image = UIImage(data: data!)
-//                })
-//            }).resume()
+
             
         }
+
 
         return cell
     }
     
     
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchBar.text == nil || searchBar.text == "") {
+            
+            isSearching = false
+            
+            view.endEditing(true)
+            print ("working")
+            tableView.reloadData()
+            
+        }
+            
+        else
+        {
+            isSearching = true
+            //print({$0.jobName)
+            
+            //filteredData.append(
+            filteredData = jobData.filter({$0.jobName == searchBar.text!})
+            print("filtered data = \(filteredData.count)")
+            if filteredData.count == 1 {
+                print("filtered data [0] = \(filteredData[0].jobName)")
+            }
+            if filteredData.count == 2 {
+                print("filtered data [0] = \(filteredData[0].jobName)")
+                print("filtered data [1] = \(filteredData[1].jobName)")
+            }
+            //jobData = filteredData
+            print("working2")
+            tableView.reloadData()
+            print("reloaded")
+            
+        }
+    }
+    
+
+    
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let index = tableView.indexPathForSelectedRow?.row
+        
+        
         performSegue(withIdentifier: "gotoBid", sender: index)
+        tableView.deselectRow(at: indexPath, animated: true)
         
     }
     

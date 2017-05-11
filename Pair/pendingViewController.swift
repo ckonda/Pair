@@ -88,16 +88,7 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
                 
                   cell.pendingPicture.loadImageUsingCacheWithUrlString(urlString: profileImage)
                 
-//                let url = URL(string: profileImage)
-//                print("before")
-//                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-//                    if error != nil{
-//                        print(error!)//download hit error so return out
-//                    }
-//                    DispatchQueue.main.async(execute: {
-//                        cell.pendingPicture.image = UIImage(data: data!)
-//                    })
-//                }).resume()
+
             }
             
         })
@@ -115,6 +106,8 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
         cell.timeStamp.text = timeAgo
         
+        cell.selectionStyle = .none
+        
         return cell
     }
     
@@ -122,8 +115,7 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print("dkljfosdjf: \(bidData.count)")
+
         
         
         return bidData.count

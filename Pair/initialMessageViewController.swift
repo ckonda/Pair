@@ -69,6 +69,10 @@ class initialMessageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        messageBoxLabel.layer.borderColor = UIColor(red: 84.0/255.0, green: 211.0/255.0, blue: 187.0/255.0, alpha: 1.0).cgColor
+        messageBoxLabel.layer.borderWidth = 1.0
+        messageBoxLabel.layer.cornerRadius = 5
+        
     }
 
 

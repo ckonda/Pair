@@ -89,7 +89,7 @@ class ratingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let fulldot: UIImage = UIImage(named: "oneDot")!
         
         if let ratingControl = testVar{
-            if ratingControl == 1{
+            if ratingControl == 1 || ratingControl == 0{
                 cell.dot1.image = fulldot
             }
             if ratingControl == 2{
@@ -109,7 +109,7 @@ class ratingViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell.dot4.image = fulldot
                 
             }
-            if ratingControl == 5 {
+            if ratingControl >= 5 {
                 cell.dot1.image = fulldot
                 cell.dot2.image = fulldot
                 cell.dot3.image = fulldot
@@ -128,6 +128,10 @@ class ratingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return ratingData.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
  
     

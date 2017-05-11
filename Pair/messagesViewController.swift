@@ -176,6 +176,8 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         let message = channelData[(indexPath as NSIndexPath).row]
         self.performSegue(withIdentifier: "gotoMessage", sender: message)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
    
     

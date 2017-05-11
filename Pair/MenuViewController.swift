@@ -47,10 +47,6 @@ class MenuViewController: UIViewController {
             
         }
         
-
- 
-        
-
         
         
         
@@ -59,11 +55,6 @@ class MenuViewController: UIViewController {
         profilePicture.layer.borderColor = UIColor.white.cgColor
         profilePicture.layer.borderWidth = 1
         
-        
-        
-        
-        
-
         
     }
     
