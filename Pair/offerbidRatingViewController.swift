@@ -99,7 +99,7 @@ class offerbidRatingViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bidRateCell", for: indexPath) as! bidRatingTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "bidRateCell", for: indexPath) as! offerbidRatingTableViewCell
         
         let rating = offerbidRatingData[indexPath.row]
         

@@ -31,6 +31,8 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
     var channelData = [Channel]()
     
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,23 +44,26 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         //observeMessages()
         tableView.delegate = self
         tableView.dataSource = self
+        
+
 
         ref = FIRDatabase.database().reference().child("Channels");
         print(ref)
+        
+        
+        //queryLimited(toLast: 1)
         ref.observe(FIRDataEventType.value, with: {(snapshot) in
             if snapshot.childrenCount>0{
                 //print(snapshot.)
                 self.channelData.removeAll()
                 //print("messages in snapshot")
                 for channels in snapshot.children.allObjects as! [FIRDataSnapshot]{
-                    //print(channels.key)
+             
                     let channelName = channels.key as String
                     var usersInChannel = channelName.components(separatedBy: "*")
-                    print("settings users")
                     let user1 = usersInChannel[0]
-                    print("set user1 to \(user1)")
                     let user2 = usersInChannel[1]
-                    print("set user2 to \(user2)")
+              
                     let displayName: String?
                     if AppDelegate.user.userID == user1{
                         displayName = user2
@@ -67,22 +72,41 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
                         displayName = user1
                     }
                     
-                    let currentChannel = Channel(channelID: channelName, user1ID: user1, user2ID: user2, channelDispID: displayName)
+                    let currentChannel = Channel(channelID: channelName, user1ID: user1, user2ID: user2, channelDispID: displayName, latestMessage: nil)
+                    var channeltimeQuery = FIRDatabase.database().reference().child("Channels").child(channelName).queryLimited(toLast: 1)
+                    channeltimeQuery.observe(.value, with: { (snapshot) in
+                        
+                            let channel = snapshot.value as! [String: Any]
+                            let newChannel = channel["timestamp"] as? String
+                            //print(snapshot)
+                            //currentChannel.mostRecentTimestamp = newChannel
+                            print("new huihiuh = \(newChannel)")
+                            currentChannel.mostRecentTimestamp = newChannel
+                            //print("in the length of channelData = \(self.channelData.count)")
+                    })
                     if AppDelegate.user.userID == user1 || AppDelegate.user.userID == user2 {
+                        //let channelQuery =
+                        
                         self.channelData.insert(currentChannel, at: 0)
+                        
                     }
-                    //print(channels.value)
                 }
                  // self.tableView.reloadData()
             }
-            print("size of mmessage data = \(self.channelData.count)")
+            //let query = channeltimeQuery.child(self.channelData[0].channelID!).queryLimited(toLast: 1)
+            /*query.observe(.value, with: { (snapshot) in
+                let channel = snapshot.value as! [String: Any]
+                let newChannel = channel["timestamp"] as? String
+                print(snapshot)
+                //currentChannel.mostRecentTimestamp = newChannel
+                print("new huihiuh = \(newChannel)")
+                self.channelData[0].mostRecentTimestamp = newChannel
+                print("in the length of channelData = \(self.channelData.count)")
+            })*/
+
             self.tableView.reloadData()
            // self.animateTable()//animate in progress
         })
-
-       print("finished observing")
-
-        //print("size of mmessage data = \(messageData.count)")
         
        //self.tableView.reloadData()
         
@@ -95,7 +119,7 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessagesTableViewCell
         
         let channel = channelData[indexPath.row]
-
+        print("most recent text in \(channel.channelID) was sent at \(channel.mostRecentTimestamp)")
         let loggedInUser = FIRAuth.auth()?.currentUser?.uid
    
         let nameIDPath = FIRDatabase.database().reference().child("Users").child(channel.channelDispID!)
@@ -108,21 +132,11 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
                 
                   cell.messagePicture.loadImageUsingCacheWithUrlString(urlString: profileImage)
                 
-//                let url = URL(string: profileImage)
-//                print("before")
-//                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-//                    if error != nil{
-//                        print(error!)//download hit error so return out
-//                    }
-//                    DispatchQueue.main.async(execute: {
-//                        cell.messagePicture.image = UIImage(data: data!)
-//                    })
-//                }).resume()
             }
             
         })//end of UserObserve completion block
    
-//        let timepathID = FIRDatabase.database().reference().child("Channels").child(channel.channelDispID!)
+
         
 
         cell.senderName.text = channel.channelDispID

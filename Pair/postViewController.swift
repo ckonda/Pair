@@ -203,7 +203,7 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
             //print({$0.jobName)
             
             //filteredData.append(
-            filteredData = jobData.filter({$0.jobName == searchBar.text!})
+            filteredData = jobData.filter({($0.jobName?.localizedCaseInsensitiveContains(searchBar.text!))!})
             print("filtered data = \(filteredData.count)")
             if filteredData.count == 1 {
                 print("filtered data [0] = \(filteredData[0].jobName)")

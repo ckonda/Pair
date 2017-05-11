@@ -162,6 +162,23 @@ class offerBidViewController: UIViewController, UITextFieldDelegate {
     }
 
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "toBidderRating"){
+            let destination = segue.destination as! offerbidRatingViewController
+            destination.postuserID = toID
+            destination.Name = name
+            destination.profilepictureUrl = bidpictureUrl
+            
+            
+        }
+        
+        
+    }
+    
+    
+    
+    
     
 
 

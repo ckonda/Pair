@@ -171,7 +171,7 @@
                                         <rect key="frame" x="0.0" y="72" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dNT-sq-Oyw" id="8uW-ls-Lgz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEa-dD-1iM" userLabel="Skill">
@@ -280,7 +280,7 @@
                                         <rect key="frame" x="0.0" y="72" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oHL-eg-ZI8" id="gcz-21-tUm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghh-Jl-drR">
@@ -440,7 +440,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bWX-t7-81K" id="Cnx-do-pVB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="154.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rater" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JS1-9k-5YR">
@@ -559,7 +559,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rw9-y6-ZY7" id="WlO-r7-5gw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqU-Mh-urV">
@@ -670,11 +670,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aGg-PM-6is" id="BCi-Bf-fIW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="95.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeStamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jg1-9p-vrE">
-                                                    <rect key="frame" x="284" y="11.5" width="74" height="17"/>
+                                                    <rect key="frame" x="284" y="10.5" width="74" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -684,7 +684,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sender Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G71-f2-tnd">
-                                                    <rect key="frame" x="105" y="9" width="105" height="23.5"/>
+                                                    <rect key="frame" x="105" y="9" width="105" height="20"/>
                                                     <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -778,11 +778,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="146"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eca-Ag-5pf" id="9dV-4O-1TZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="145.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="146"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rater: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krz-7Y-Xpe">
-                                                    <rect key="frame" x="71" y="7" width="51" height="23.5"/>
+                                                    <rect key="frame" x="71" y="7" width="51" height="20"/>
                                                     <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -802,7 +802,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8I-d1-3Hx">
-                                                    <rect key="frame" x="8" y="77" width="73" height="20.5"/>
+                                                    <rect key="frame" x="8" y="77" width="74" height="17.5"/>
                                                     <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -975,7 +975,7 @@
                                     <constraint firstAttribute="height" constant="65" id="Yx6-7U-Eor"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Mesage" id="MFD-gf-dU8">
+                                    <navigationItem title="Message" id="MFD-gf-dU8">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="sml-x2-WZP">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -1290,7 +1290,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate your experience" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RsT-x7-Jin">
-                                <rect key="frame" x="56" y="94" width="263.5" height="38.5"/>
+                                <rect key="frame" x="56.5" y="94" width="263.5" height="38.5"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1809,12 +1809,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pve-eg-kXy">
-                                <rect key="frame" x="149" y="198" width="83.5" height="22"/>
-                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="16"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ftr-yp-g39">
                                 <rect key="frame" x="149" y="90" width="90" height="90"/>
                                 <constraints>
@@ -1826,6 +1820,13 @@
                                 <rect key="frame" x="125" y="264" width="138" height="41"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="30"/>
                                 <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Offer Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pve-eg-kXy">
+                                <rect key="frame" x="152" y="197" width="84" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1843,7 +1844,6 @@
                             <constraint firstItem="MXt-as-DDW" firstAttribute="top" secondItem="Zua-lE-nPo" secondAttribute="bottom" constant="33" id="SRz-UP-Vzu"/>
                             <constraint firstItem="srF-lY-m9l" firstAttribute="centerY" secondItem="sL9-gp-mC6" secondAttribute="centerY" id="Sw2-UI-RuW"/>
                             <constraint firstItem="hRR-K2-Vex" firstAttribute="top" secondItem="xyO-57-EfM" secondAttribute="top" id="Tyw-hR-aHE"/>
-                            <constraint firstItem="ftr-yp-g39" firstAttribute="leading" secondItem="Pve-eg-kXy" secondAttribute="leading" id="WHU-YY-wKm"/>
                             <constraint firstItem="hRR-K2-Vex" firstAttribute="centerX" secondItem="sL9-gp-mC6" secondAttribute="centerX" id="Wbs-5U-F9q"/>
                             <constraint firstItem="srF-lY-m9l" firstAttribute="top" secondItem="BVR-gJ-1jD" secondAttribute="bottom" constant="34" id="a3g-Vq-wWu"/>
                             <constraint firstItem="hRR-K2-Vex" firstAttribute="centerX" secondItem="MXt-as-DDW" secondAttribute="centerX" id="amZ-Ds-yay"/>
@@ -1851,7 +1851,6 @@
                             <constraint firstItem="daF-MG-Oj2" firstAttribute="centerY" secondItem="BVR-gJ-1jD" secondAttribute="centerY" id="dcZ-aO-OAt"/>
                             <constraint firstItem="ftr-yp-g39" firstAttribute="leading" secondItem="xyO-57-EfM" secondAttribute="leading" constant="149" id="hqH-Dm-fCz"/>
                             <constraint firstItem="BVR-gJ-1jD" firstAttribute="top" secondItem="MXt-as-DDW" secondAttribute="bottom" constant="45" id="ip8-pU-RLZ"/>
-                            <constraint firstItem="Pve-eg-kXy" firstAttribute="top" secondItem="ftr-yp-g39" secondAttribute="bottom" constant="18" id="v7Z-Pn-den"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1865,7 +1864,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oaT-Ev-ErZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8208.7999999999993" y="390.85457271364322"/>
+            <point key="canvasLocation" x="6696.8000000000002" y="1302.9985007496252"/>
         </scene>
         <!--Offerbid Rating View Controller-->
         <scene sceneID="LiF-QK-Et6">
@@ -1904,7 +1903,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="146"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V0h-Gz-Vqj" id="0XF-N8-Qtc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="145.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="146"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bVF-Dl-lRw">
@@ -2009,7 +2008,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVU-V9-2xu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8993" y="391"/>
+            <point key="canvasLocation" x="7449" y="1303"/>
         </scene>
     </scenes>
     <resources>

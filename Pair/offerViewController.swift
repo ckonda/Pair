@@ -192,7 +192,11 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
             //print({$0.jobName)
             
             //filteredData.append(
-            filteredData = offerData.filter({$0.offerName == searchBar.text!})
+            //filteredData = offerData.filter({$0.offerName == searchBar.text!})
+            
+            filteredData = offerData.filter({($0.offerName?.localizedCaseInsensitiveContains(searchBar.text!))!})
+            
+            
             print("filtered data = \(filteredData.count)")
             if filteredData.count == 1 {
   

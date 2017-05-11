@@ -13,11 +13,13 @@ class Channel: NSObject{
     var channelID:String?
     var user1ID: String?
     var user2ID: String?
+    var mostRecentTimestamp: String?
     
-    init(channelID: String, user1ID: String, user2ID: String, channelDispID: String?){
+    init(channelID: String, user1ID: String, user2ID: String, channelDispID: String?, latestMessage: String?){
         self.channelDispID = channelDispID
         self.channelID = channelID
         self.user1ID = user1ID
         self.user2ID = user2ID
+        self.mostRecentTimestamp = latestMessage
     }
 }
