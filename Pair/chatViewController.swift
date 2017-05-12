@@ -34,17 +34,8 @@ class chatViewController: JSQMessagesViewController{
     public var selectedchannelID = String()
     public var chatUserID = String()
     public var senderID = String()
-    //public var senderDisplayName = String()
-    /*public var selectedfromID = String()
-    public var selectedIDfrom = String()
-    public var selectedIDto = String()
-    public var chatUserID = String()
     
-    public var selectedtimeStamp = String()
-    public var selectedText = String()
 
-    
-    public var selectedchannelID = String()//channel ID for the post*/
 
     
 
@@ -62,9 +53,10 @@ class chatViewController: JSQMessagesViewController{
         super.viewDidLoad()
         
         addNavBar()
-        print("USER you're chatting with = \(chatUserID)")
         
-        title = "Chat Now!"
+        title = "Chat"
+        
+       // print("You're chatting with == \(chatName)")
         
         
         self.topContentAdditionalInset = CGFloat(66)//lowering the bar height
@@ -259,8 +251,7 @@ class chatViewController: JSQMessagesViewController{
             performSegue(withIdentifier: "gotoRating", sender: self)
         
         
-        print("JOB HAS FINISHED")
-        
+
         
     }
     

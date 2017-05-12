@@ -4,7 +4,6 @@
 //
 //  Created by Chatan Konda on 4/17/17.
 //  Copyright © 2017 Apple. All rights reserved.
-//
 
 import UIKit
 import Firebase
@@ -41,22 +40,19 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        //observeMessages()
         tableView.delegate = self
         tableView.dataSource = self
-        
+  
 
 
         ref = FIRDatabase.database().reference().child("Channels");
         print(ref)
         
-        
-        //queryLimited(toLast: 1)
+
         ref.observe(FIRDataEventType.value, with: {(snapshot) in
             if snapshot.childrenCount>0{
-                //print(snapshot.)
+
                 self.channelData.removeAll()
-                //print("messages in snapshot")
                 for channels in snapshot.children.allObjects as! [FIRDataSnapshot]{
              
                     let channelName = channels.key as String
@@ -73,37 +69,21 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
                     }
                     
                     let currentChannel = Channel(channelID: channelName, user1ID: user1, user2ID: user2, channelDispID: displayName, latestMessage: nil)
-                    var channeltimeQuery = FIRDatabase.database().reference().child("Channels").child(channelName).queryLimited(toLast: 1)
-                    channeltimeQuery.observe(.value, with: { (snapshot) in
-                        
-                            let channel = snapshot.value as! [String: Any]
-                            let newChannel = channel["timestamp"] as? String
-                            //print(snapshot)
-                            //currentChannel.mostRecentTimestamp = newChannel
-                            print("new huihiuh = \(newChannel)")
-                            currentChannel.mostRecentTimestamp = newChannel
+           
+                            if AppDelegate.user.userID == user1 || AppDelegate.user.userID == user2 {
+                                //let channelQuery =
+                                self.channelData.insert(currentChannel, at: 0)
+                            }
                             //print("in the length of channelData = \(self.channelData.count)")
-                    })
-                    if AppDelegate.user.userID == user1 || AppDelegate.user.userID == user2 {
-                        //let channelQuery =
-                        
-                        self.channelData.insert(currentChannel, at: 0)
-                        
-                    }
+                   // })
+                    
+                    
                 }
+               
                  // self.tableView.reloadData()
             }
-            //let query = channeltimeQuery.child(self.channelData[0].channelID!).queryLimited(toLast: 1)
-            /*query.observe(.value, with: { (snapshot) in
-                let channel = snapshot.value as! [String: Any]
-                let newChannel = channel["timestamp"] as? String
-                print(snapshot)
-                //currentChannel.mostRecentTimestamp = newChannel
-                print("new huihiuh = \(newChannel)")
-                self.channelData[0].mostRecentTimestamp = newChannel
-                print("in the length of channelData = \(self.channelData.count)")
-            })*/
-
+     
+            
             self.tableView.reloadData()
            // self.animateTable()//animate in progress
         })
@@ -119,11 +99,11 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessagesTableViewCell
         
         let channel = channelData[indexPath.row]
-        print("most recent text in \(channel.channelID) was sent at \(channel.mostRecentTimestamp)")
+   
         let loggedInUser = FIRAuth.auth()?.currentUser?.uid
    
         let nameIDPath = FIRDatabase.database().reference().child("Users").child(channel.channelDispID!)
-        //print("name = \(nameJSON["username"] as! String?)")
+  
         nameIDPath.observeSingleEvent(of: .value, with: { (snapshot) in
             let nameJSON = snapshot.value as! [String: Any]
             cell.senderName.text = (nameJSON["username"] as! String?)!
@@ -139,7 +119,7 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
 
         
 
-        cell.senderName.text = channel.channelDispID
+       // cell.senderName.text = channel.channelDispID
         
         
         let timeQuery = FIRDatabase.database().reference().child("Channels").child(channel.channelID!).queryLimited(toLast: 1)
@@ -159,14 +139,14 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
             dateformatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
             dateformatter.timeZone = NSTimeZone(abbreviation: "PT+0:00") as TimeZone!
             let dateFromString = dateformatter.date(from: dateString!)
-            
-            
+            //self.channelData[indexPath.row].mostRecentTimestamp = messageTime
+            print("(inside observe)at index \(indexPath.row) the time is -> \(self.channelData[indexPath.row].mostRecentTimestamp)")
             let timeAgo:String = self.timeAgoSinceDate((dateFromString)!, numericDates: true)
             cell.timeStamp.text = timeAgo
     
             
         })
-        
+        print("at index \(indexPath.row) the time is -> \(channelData[indexPath.row].mostRecentTimestamp)")
         
        
         return cell
@@ -210,7 +190,13 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 let chatVC = segue.destination as? chatViewController
                 
+                
                 chatVC?.selectedchannelID = channelData[indexPath.row].channelID!
+                
+         
+                
+                
+               // chatVC?.chatName = channelData[indexPath.row].channelDispID!
 
                 
                 //app delegate user -> guy who's signed in aka the sender
