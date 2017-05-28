@@ -74,21 +74,16 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
                                 //let channelQuery =
                                 self.channelData.insert(currentChannel, at: 0)
                             }
-                            //print("in the length of channelData = \(self.channelData.count)")
-                   // })
                     
                     
                 }
                
-                 // self.tableView.reloadData()
             }
      
             
             self.tableView.reloadData()
            // self.animateTable()//animate in progress
         })
-        
-       //self.tableView.reloadData()
         
     }
     
@@ -140,14 +135,11 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
             dateformatter.timeZone = NSTimeZone(abbreviation: "PT+0:00") as TimeZone!
             let dateFromString = dateformatter.date(from: dateString!)
             //self.channelData[indexPath.row].mostRecentTimestamp = messageTime
-            print("(inside observe)at index \(indexPath.row) the time is -> \(self.channelData[indexPath.row].mostRecentTimestamp)")
             let timeAgo:String = self.timeAgoSinceDate((dateFromString)!, numericDates: true)
             cell.timeStamp.text = timeAgo
     
             
         })
-        print("at index \(indexPath.row) the time is -> \(channelData[indexPath.row].mostRecentTimestamp)")
-        
        
         return cell
     }
@@ -192,12 +184,6 @@ class messagesViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 
                 chatVC?.selectedchannelID = channelData[indexPath.row].channelID!
-                
-         
-                
-                
-               // chatVC?.chatName = channelData[indexPath.row].channelDispID!
-
                 
                 //app delegate user -> guy who's signed in aka the sender
                     chatVC?.senderId = AppDelegate.user.userID

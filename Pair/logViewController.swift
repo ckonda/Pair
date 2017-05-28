@@ -216,8 +216,6 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
         })
         
         
-        
-        //self.performSegue(withIdentifier: "gotoMain", sender: self)
     }
     
     
@@ -234,10 +232,7 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
             let user = User()
             
             //this setter crashes if keys dont match
-            
-            
-      //  AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid)
-            
+
             
             AppDelegate.user.setValuesForKeys(values)
             
@@ -297,10 +292,6 @@ class logViewController: UIViewController, UITextFieldDelegate ,  UIImagePickerC
                     
                     
                 })
-                // }
-                
-                //  AppDelegate.user.initialize(username: nil, email: self.emailtextField.text, password: self.passwordtextField.text, userID: uid, profileImageURL: profileImageUrl )
-                
             }
             else {
                 print("register error")

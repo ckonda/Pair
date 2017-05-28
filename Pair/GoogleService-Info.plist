@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>38885191998-o4h4po02nt88r5ksamd7vs1keskevncc.apps.googleusercontent.com</string>
+	<string>923875943481-ngdq8gmtegfbki0h3pvfp77qhhkl900f.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.38885191998-o4h4po02nt88r5ksamd7vs1keskevncc</string>
+	<string>com.googleusercontent.apps.923875943481-ngdq8gmtegfbki0h3pvfp77qhhkl900f</string>
 	<key>API_KEY</key>
-	<string>AIzaSyByeDoBdQrFKGyezzSLJNG8B4Goxoh3EqA</string>
+	<string>AIzaSyBeaUF4uQc8Nm3yY5kjnKCg0X57GSiV1tw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>38885191998</string>
+	<string>923875943481</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.MAC.Pair</string>
+	<string>com.MAC.newpairdb</string>
 	<key>PROJECT_ID</key>
-	<string>pair-4a005</string>
+	<string>newpair-b3a52</string>
 	<key>STORAGE_BUCKET</key>
-	<string>pair-4a005.appspot.com</string>
+	<string>newpair-b3a52.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:38885191998:ios:329648f44417c6ab</string>
+	<string>1:923875943481:ios:916a391ac06070b7</string>
 	<key>DATABASE_URL</key>
-	<string>https://pair-4a005.firebaseio.com</string>
+	<string>https://newpair-b3a52.firebaseio.com</string>
 </dict>
 </plist>

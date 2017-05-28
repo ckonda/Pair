@@ -42,9 +42,6 @@ class rateViewController: UIViewController , UITextFieldDelegate{
     
     
     @IBAction func submitRating(_ sender: Any) {
-        print("user youre rating = \(userID)")
-        var ratingData: String
-        var commentsData: String
         
         if rating.text != nil && comments.text != nil {
             let ratingRef = ref.child(userID!).childByAutoId()

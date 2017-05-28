@@ -146,15 +146,7 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.timestamp.text = timeAgo
         
         let text: String!
-        let text1: String!
-        let text2: String!
-        let text3: String!
-        let text4: String!
-        let text5: String!
-        let text6: String!
         
-        
-        let number: Int!
         if isSearching {
             if searchBar.text! == job.jobName {
                 filteredData.append(job)
@@ -200,22 +192,12 @@ class postViewController: UIViewController, UITableViewDelegate, UITableViewData
         else
         {
             isSearching = true
-            //print({$0.jobName)
             
             //filteredData.append(
             filteredData = jobData.filter({($0.jobName?.localizedCaseInsensitiveContains(searchBar.text!))!})
-            print("filtered data = \(filteredData.count)")
-            if filteredData.count == 1 {
-                print("filtered data [0] = \(filteredData[0].jobName)")
-            }
-            if filteredData.count == 2 {
-                print("filtered data [0] = \(filteredData[0].jobName)")
-                print("filtered data [1] = \(filteredData[1].jobName)")
-            }
-            //jobData = filteredData
-            print("working2")
+   
             tableView.reloadData()
-            print("reloaded")
+ 
             
         }
     }

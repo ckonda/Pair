@@ -151,8 +151,6 @@ class offerViewController: UIViewController,UITableViewDelegate, UITableViewData
         }
         else
         {
-//            text = jobData[indexPath.row].jobName
-//            print("entered else -> \(text)")
      
             
         }

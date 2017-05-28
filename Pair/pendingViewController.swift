@@ -51,62 +51,92 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
                     let biderID = bid?["bidderID"] as! String?//job type
                     let ownerID = bid?["ownerID"] as! String?//job price
                     let postID = bid?["postID"] as! String?// username
-                    //let jobSkill = job?["skill"]
                     let postPrice = bid?["postPrice"] as! Int?
                     let timeStamp = bid?["timestamp"] as! String?// job description
                     let name = bid?["name"] as!  String?
                     let Description = bid?["description"] as! String?
                     
-                    let bidObject = pastBids(postPrice: postPrice , postID: postID , bidderID: biderID , ownerID: ownerID! , timeStamp: timeStamp!, Description: Description, name: name)
+                    let displayName: String?
+                    if AppDelegate.user.userID == ownerID{
+                        displayName = ownerID
+                    }else {
+                        displayName = biderID
+                    }
+                    
+          
+                    
+                    
+                    let bidObject = pastBids(postPrice: postPrice , postID: postID , bidderID: biderID , ownerID: displayName! , timeStamp: timeStamp!, Description: Description, name: name)
+                    
+                    
+                   // let bidObject = pastBids(postPrice: postPrice , postID: postID , bidderID: biderID ,ownerID: ownerID! , timeStamp: timeStamp!, Description: Description, name: name)
                     //append data
-                    self.bidData.insert(bidObject, at: 0)
+                    
+                    if AppDelegate.user.userID == ownerID{
+                           self.bidData.insert(bidObject, at: 0)
+                    }
+                    
+                 
                 }
             }
-            print(self.bidData.count)
+ 
             self.tableView.reloadData()
         })
     }
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+    
         let cell = tableView.dequeueReusableCell(withIdentifier: "pastbidCell", for: indexPath) as! pendingBidCell
-        
+    
         let bid = bidData[indexPath.row]
 
-        cell.timeStamp.text = bid.timeStamp
-        cell.price.text = String(describing: bid.postPrice!)
-        cell.bidder.text = bid.name
-        cell.Description.text = bid.Description
-        
-        let nameIDPath = FIRDatabase.database().reference().child("Users").child(bid.bidderID!)
-        nameIDPath.observeSingleEvent(of: .value, with: { (snapshot) in
-            let pendingPicture = snapshot.value as! [String: Any]
+    
+            cell.timeStamp.text = bid.timeStamp
+            cell.price.text = String(describing: bid.postPrice!)
+            cell.bidder.text = bid.name
+            cell.Description.text = bid.Description
             
-            if let profileImage = pendingPicture["profileImageUrl"] as! String? {
+            let nameIDPath = FIRDatabase.database().reference().child("Users").child(bid.bidderID!)
+            nameIDPath.observeSingleEvent(of: .value, with: { (snapshot) in
+                let pendingPicture = snapshot.value as! [String: Any]
                 
-                  cell.pendingPicture.loadImageUsingCacheWithUrlString(urlString: profileImage)
+                if let profileImage = pendingPicture["profileImageUrl"] as! String? {
+                    
+                    cell.pendingPicture.loadImageUsingCacheWithUrlString(urlString: profileImage)
+                    
+                    
+                }
                 
-
-            }
+            })
             
-        })
+            
+            let time = bid.timeStamp
+            //
+            let dateString = time
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+            dateformatter.timeZone = NSTimeZone(abbreviation: "PT+0:00") as TimeZone!
+            let dateFromString = dateformatter.date(from: dateString!)
+            
+            
+            let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
+            cell.timeStamp.text = timeAgo
+            
+            cell.selectionStyle = .none
+            
+           // return cell
+            
         
-        
-        let time = bid.timeStamp
-        //
-        let dateString = time
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        dateformatter.timeZone = NSTimeZone(abbreviation: "PT+0:00") as TimeZone!
-        let dateFromString = dateformatter.date(from: dateString!)
-        
-        
-        let timeAgo:String = timeAgoSinceDate((dateFromString)!, numericDates: true)
-        cell.timeStamp.text = timeAgo
-        
-        cell.selectionStyle = .none
         
         return cell
     }
@@ -115,6 +145,7 @@ class pendingViewController: UIViewController,  UITableViewDelegate, UITableView
         
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
 
         
         

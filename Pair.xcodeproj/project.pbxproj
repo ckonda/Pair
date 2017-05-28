@@ -12,7 +12,6 @@
 		BA4AA9851E9AED55001B1FDB /* JobModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4AA9841E9AED55001B1FDB /* JobModel.swift */; };
 		BA66DB461E9EB2120048253A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66DB451E9EB2120048253A /* SWRevealViewController.m */; };
 		EE1445BF1E8B57BB000C9E51 /* postComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1445BE1E8B57BB000C9E51 /* postComposeViewController.swift */; };
-		EE213E7F1E9837DC003999FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE213E7E1E9837DC003999FC /* GoogleService-Info.plist */; };
 		EE213E821E9AF155003999FC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE213E811E9AF155003999FC /* User.swift */; };
 		EE33E6781EA6995100A63FBA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE33E6771EA6995100A63FBA /* MenuViewController.swift */; };
 		EE48A5351EC2C4D00030B209 /* offerbidRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48A5341EC2C4D00030B209 /* offerbidRatingViewController.swift */; };
@@ -33,6 +32,7 @@
 		EE58D79D1EB0811C00D6B9B1 /* bidderRatings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D79C1EB0811C00D6B9B1 /* bidderRatings.swift */; };
 		EE58D79F1EB0826000D6B9B1 /* bidRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D79E1EB0826000D6B9B1 /* bidRatingTableViewCell.swift */; };
 		EE58D7A11EB3000700D6B9B1 /* initialMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE58D7A01EB3000700D6B9B1 /* initialMessageViewController.swift */; };
+		EE822EA01ECD6D4500BAE5C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE822E9F1ECD6D4500BAE5C3 /* GoogleService-Info.plist */; };
 		EE8D082F1EA41F0F00EF293E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8D082E1EA41F0F00EF293E /* Message.swift */; };
 		EEAC65F91EB9938700769DE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAC65F81EB9938700769DE3 /* Extensions.swift */; };
 		EEBAC1871EA7DAAF00BE22F9 /* chatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */; };
@@ -62,7 +62,6 @@
 		BA66DB451E9EB2120048253A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		D0E93F1CA1F55F5228401C27 /* Pods-Pair.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pair.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pair/Pods-Pair.release.xcconfig"; sourceTree = "<group>"; };
 		EE1445BE1E8B57BB000C9E51 /* postComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postComposeViewController.swift; sourceTree = "<group>"; };
-		EE213E7E1E9837DC003999FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE213E811E9AF155003999FC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EE33E6771EA6995100A63FBA /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		EE48A5341EC2C4D00030B209 /* offerbidRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = offerbidRatingViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		EE58D79C1EB0811C00D6B9B1 /* bidderRatings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bidderRatings.swift; sourceTree = "<group>"; };
 		EE58D79E1EB0826000D6B9B1 /* bidRatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bidRatingTableViewCell.swift; sourceTree = "<group>"; };
 		EE58D7A01EB3000700D6B9B1 /* initialMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = initialMessageViewController.swift; sourceTree = "<group>"; };
+		EE822E9F1ECD6D4500BAE5C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE8D082E1EA41F0F00EF293E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EEAC65F81EB9938700769DE3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EEBAC1861EA7DAAF00BE22F9 /* chatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatViewController.swift; sourceTree = "<group>"; };
@@ -210,8 +210,8 @@
 				BA66DB441E9EB2120048253A /* SWRevealViewController.h */,
 				BA66DB451E9EB2120048253A /* SWRevealViewController.m */,
 				EE4EEBB31E7614B50044FE39 /* Assets.xcassets */,
+				EE822E9F1ECD6D4500BAE5C3 /* GoogleService-Info.plist */,
 				EE4EEBB51E7614B50044FE39 /* LaunchScreen.storyboard */,
-				EE213E7E1E9837DC003999FC /* GoogleService-Info.plist */,
 				EE4EEBB81E7614B50044FE39 /* Info.plist */,
 				BA66DB431E9EB2100048253A /* Pair-Bridging-Header.h */,
 			);
@@ -322,10 +322,10 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = T24NKQARLL;
 						LastSwiftMigration = 0830;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -357,10 +357,10 @@
 				FE605A651EAC1CD000477185 /* Nunito-SemiBold.ttf in Resources */,
 				FE605A641EAC1CCB00477185 /* Nunito-Regular.ttf in Resources */,
 				FE605A631EAC1CC700477185 /* Oregano-Regular.ttf in Resources */,
-				EE213E7F1E9837DC003999FC /* GoogleService-Info.plist in Resources */,
 				EE4EEBB71E7614B50044FE39 /* LaunchScreen.storyboard in Resources */,
 				EE4EEBB41E7614B50044FE39 /* Assets.xcassets in Resources */,
 				EE4EEBB21E7614B50044FE39 /* Main.storyboard in Resources */,
+				EE822EA01ECD6D4500BAE5C3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,14 +576,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Pair/Pair.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = T24NKQARLL;
 				INFOPLIST_FILE = Pair/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.MAC.pair;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MAC.newpairdb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "d4b2d32a-f333-4efa-a98b-9016d958ba8d";
+				PROVISIONING_PROFILE_SPECIFIER = Pair;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pair/Pair-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -597,14 +599,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = Pair/Pair.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = T24NKQARLL;
 				INFOPLIST_FILE = Pair/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.MAC.pair;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MAC.newpairdb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "9fe02838-8aa0-49c0-91d3-e40179950f6d";
+				PROVISIONING_PROFILE_SPECIFIER = NewPair;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pair/Pair-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

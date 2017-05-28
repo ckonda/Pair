@@ -23,15 +23,9 @@ public class pendingBidCell: UITableViewCell {
     
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var Description: UILabel!
-
-
-//    @IBOutlet weak var messagePicture: UIImageView!
-    
     
     @IBAction func chatButton(_ sender: Any) {
-        //chatButton.tag
-        
-        print(bidder)
+  
         let bidderRef = FIRDatabase.database().reference().child("Users")
         
         let date = Date()
@@ -40,14 +34,13 @@ public class pendingBidCell: UITableViewCell {
         let stringDate = dateFormatter.string(from: date)
         
         bidderRef.observe(.value, with: { (snapshot) in
-            //print(snapshot.value)
+      
             for users in snapshot.children.allObjects as! [FIRDataSnapshot]{
                 let user = users.value as! [String:Any]
-                //print("\((user["username"] as! String?)!) : \((user["userID"] as! String?)!)")
                 let username = (user["username"] as! String?)!
                 let userid = (user["userID"] as! String?)!
                 if username == self.bidder.text! {
-                    //print("we have a match. Your bidder in this cell is \(username) with an id of \(userid)")
+          
                     //we have a match so lets find chatroom id
                     let chatRoomID: String?
                     if userid > AppDelegate.user.userID! {
@@ -67,15 +60,11 @@ public class pendingBidCell: UITableViewCell {
                     
 
                     let messageRef = FIRDatabase.database().reference().child("Channels").child(chatRoomID!).childByAutoId()
-                    //messageRef.setValue(initialMessage)
-                    
-                    
+            
                 }
             }
             
         })
-        //chatButton.add
-        //observe
     }
     
     
@@ -84,7 +73,6 @@ public class pendingBidCell: UITableViewCell {
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
         
         pendingPicture.layer.cornerRadius = pendingPicture.frame.size.width/2
         pendingPicture.clipsToBounds = true

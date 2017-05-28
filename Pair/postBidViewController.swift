@@ -153,7 +153,6 @@ class postBidViewController: UIViewController, UITextFieldDelegate {
             
             let bidRef = FIRDatabase.database().reference().child("Bids")
             let bidCreate = bidRef.childByAutoId()
-         //   let newKey = bidCreate?.key//key for message ID
             
           
             

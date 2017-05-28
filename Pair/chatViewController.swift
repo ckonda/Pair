@@ -102,10 +102,8 @@ class chatViewController: JSQMessagesViewController{
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = self.messages[indexPath.item]//message retrieved
         if message.senderId == AppDelegate.user.userID {//return the outgoing image view to user
-            print("Outgoing message bubble because \(message.senderId) == \(AppDelegate.user.userID)")
             return outgoingBubbleImageView
         }else {//otherwise return the incoming image view
-            print("Incoming message bubble because \(self.senderID) != \(AppDelegate.user.userID)")
             return incomingBubbleImageView
         }
     }

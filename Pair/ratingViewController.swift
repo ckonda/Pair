@@ -48,7 +48,6 @@ class ratingViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.ratingData.insert(ratingValues, at: 0)
 
                 }
-                // self.tableView.reloadData()
             }
              self.tableView.reloadData()
             

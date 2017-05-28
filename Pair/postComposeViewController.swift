@@ -9,10 +9,17 @@
 import UIKit
 import FirebaseDatabase
 import Firebase
+import CoreLocation
+import MapKit
 
-class postComposeViewController: UIViewController, UITextFieldDelegate{
+
+class postComposeViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate{
     
     var ref: FIRDatabaseReference?
+    let locationManager = CLLocationManager()
+    
+
+    
   
 
 
@@ -24,8 +31,6 @@ class postComposeViewController: UIViewController, UITextFieldDelegate{
         jobType.delegate = self
         jobDescription.delegate = self
         jobPrice.delegate = self
-        
-        
             
         jobType.backgroundColor = UIColor.white;
         jobType.alpha = 0.2;
@@ -41,8 +46,46 @@ class postComposeViewController: UIViewController, UITextFieldDelegate{
         jobPrice.layer.cornerRadius = 4.0
         
         
-    
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.requestLocation();
+        }
+        
+        
+      
 
+    }
+    
+    
+    
+    
+    //if we have no permission to access user location, then ask user for permission.
+    func isAuthorizedtoGetUserLocation() {
+        
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse     {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    
+    //this method will be called each time when a user change his location access preference.
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            print("User allowed us to access location")
+            //do whatever init activities here.
+        }
+    }
+    
+    
+    //this method is called by the framework on         locationManager.requestLocation();
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("Did location updates is called")
+        //store the user location here to firebase or somewhere
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Did location updates is called but failed getting location \(error)")
     }
     
     

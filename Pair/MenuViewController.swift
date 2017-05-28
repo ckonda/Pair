@@ -32,10 +32,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // print(emailLabel.text!)
-        print("\n")
-       
-//        uName.text?.append(AppDelegate.user.username!)
+
         
         uName.text = AppDelegate.user.username
         
